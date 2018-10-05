@@ -1,0 +1,31 @@
+
+.cd {
+    width: 680px;
+    top: 44px;
+    margin: auto auto 50px;
+}
+
+.signup {
+    float: left;
+    width: 250px;
+    padding: 15px 0 0 5px;
+}
+
+.icon {
+    float: right;
+    width: 250px;
+    padding: 0 0 0 147px;
+    font-size: 60px;
+}
+
+.fn {
+    float: left;
+    width: 328px;
+    padding: 0;
+}
+
+.ln {
+    float: right;
+    width: 319px;
+    padding: 0;
+}

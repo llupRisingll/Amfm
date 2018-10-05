@@ -171,14 +171,14 @@ class CLIHandler{
 
 			    // Command Options
 			    $shellOutput = array();
-			    $uglifyCSSPath = "rut/resources/uglifycss";
+			    $uglifyCSSPath = ROOT.DS."rut/resources/uglifycss";
 			    $outputPathCSS = "public/css/".md5($presenterName).".min.css";
 
 			    // Command Execution
 			    exec("\"$uglifyCSSPath\" $CSSLinks --ugly-comments --output $outputPathCSS", $shellOutput);
 
 			    // Output Message
-			    if (count($shellOutput < 0))
+			    if (count($shellOutput) > 0)
 				    echo "Successfully compressed CSS files within `".$presenterName."` Directory\n";
 		    }
 
@@ -193,14 +193,14 @@ class CLIHandler{
 
 			    // Command Options
 			    $shellOutput = array();
-			    $uglifyJSPath = "rut/resources/uglifyjs";
+			    $uglifyJSPath = ROOT.DS."rut/resources/uglifyjs";
 			    $outputPathJS = "public/js/".md5($presenterName).".min.js";
 
 			    // Command Execution
 			    exec("\"$uglifyJSPath\" $JSLinks --compress --mangle toplevel --output $outputPathJS", $shellOutput);
 
 			    // Output Message
-			    if (count($shellOutput < 0))
+			    if (count($shellOutput) > 0)
 				    echo "Successfully compressed JS files within `".$presenterName."` Directory\n";
 		    }
 
