@@ -3,5 +3,6 @@
     "\/profile": "BinaryPresenter.php",
     "\/login": "loginPresenter.php",
     "\/signup": "signupPresenter.php",
-    "\/logout": "logoutPresenter.php"
+    "\/logout": "logoutPresenter.php",
+    "\/uni": "unilevelPresenter.php"
 }

@@ -4,6 +4,7 @@ class loginPresenter {
     // Used to retrive a data or a view
     public function get(){
         View::addVar("view_title", "AMFM Login");
+        View::addVar("BODY_CLASS", "bg-light");
         View::addCSS("/_layouts/login/login.css");
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
     }
