@@ -11,7 +11,43 @@ class loginPresenter {
     // HTTP Header Method: POST
     // Usually used when to insert a new data
     public function post(){
-        Route::returnCode(401);
+        Params::permit('usn', 'pwd');
+
+        $usn = Params::get('usn');
+        $pwd = Params::get('pwd');
+        $invalid = 'Invalid Username and Password';
+
+        // Check if all form is may laman
+        if (!isset($usn, $pwd)){
+            echo $invalid;
+            exit;
+        }
+        // Check the length of Usn
+        if(strlen($usn) < 3 || strlen($usn) > 32){
+            echo $invalid;
+            exit;
+        }
+        // Check the length of password
+        if(strlen($pwd) < 3 || strlen($pwd) > 32){
+            echo $invalid;
+            exit;
+        }
+
+        // Start Account checking...
+        $account = LoginAuthModel::checkAccount($usn, $pwd);
+        if ($account !== false){
+            // Save the session
+            SessionModel::setUser($usn);
+            SessionModel::setID($account);
+
+            // Redirect to the main page
+            header("location: /");
+            exit;
+        }
+
+        // Show the invalid error
+        echo $invalid;
+        exit;
     }
 
     // HTTP Header Method: PUT

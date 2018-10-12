@@ -20,7 +20,6 @@ class BinaryPresenter {
         // Use the server domain name address on the layout
         View::addVar("DN", Route::domain());
         View::addVar("hash_id", md5(1));
-
     }
 
     // HTTP Header Method: POST

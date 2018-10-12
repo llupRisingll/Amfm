@@ -5,18 +5,18 @@
             <h3>AMFM Login</h3>
             <small>Don't have an account? <a href="/signup">Click here</a></small>
         </div>
-        <form style="padding: 13px;">
+        <form action="/login" method="post" style="padding: 13px;">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="Enter Username" name="username">
+                <input type="text" class="form-control" placeholder="Enter Username" name="usn">
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Enter Password" name="password">
+                <input type="password" class="form-control" placeholder="Enter Password" name="pwd">
             </div>
 
-            <button class="btn btn-primary btn-block">Login</button>
+            <button class="btn btn-primary btn-block" type="submit" >Login</button>
             <small style="float: right; margin-bottom: 10px;"><a href="#">Forgot Password?</a></small>
         </form>
     </div>
