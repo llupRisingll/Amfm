@@ -4,6 +4,7 @@ class BinaryPresenter {
     // Used to retrive a data or a view
     public function get(){
         View::addVar("view_title", "BinaryPresenter View Page");
+        View::addVar("BODY_CLASS", "bg-light");
         View::addCSS("/_layouts/Binary/Treant.css");
         View::addCSS("/_layouts/Binary/collapsable.css");
         View::addCSS("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
