@@ -18,7 +18,7 @@
         <div class="social_link">
             <ul class="nav navbar-nav navbar-right call_to">
                 <li>
-                    <a class="#" href="tel:+0000000000"><i class="icon-phone"></i> 202-123-4567</a>
+                    <a class="#" href="/login">SIGNUP</a>
                 </li>
             </ul>
         </div>
@@ -32,55 +32,43 @@
             <div class="col-sm-7">
                 <div class="header-content">
                     <div class="header-content-inner">
-                        <h1>Instant Approval For Home Loan</h1>
-                        <p>Lowest Interest Rates - Calculate EMI - Check Eligibility - Instant e-Approval - Special Offers</p>
-                        <h2>7.25% <span>For New Home</span></h2>
-                        <h2>8.30% <span>For Old Home</span></h2>
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#features" class="btn btn-outline btn-xl page-scroll">Why Choose Us ?</a>
+                        <h1>MOONLIGHT OFW COOPERATIVE</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida erat sit amet
+                            nunc iaculis mattis. Vivamus aliquam, eros sed tempor lacinia, ante metus sodales libero in.
+                        </p>
+                        <a href="#features" class="btn btn-outline btn-xl page-scroll">Why Choose Us ?</a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="form-container">
                     <div class="form-mockup">
-                        <h2>Request Quote Now</h2>
-                        <h4>Easy to apply for a loan with us,Once you have complete this form. </h4>
-                        <form action="http://onushorit.com/EasyLoan/lead.php" method="post">
+                        <h2>Join now!</h2>
+                        <h4>Easy to apply for a loan with us,Once you have complete this form.</h4>
+                        <form action="/login" method="post">
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                                <label for="username" style="color:#15549a;">Username</label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="usn">
                             </div>
+
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="E-mail" required="">
+                                <label for="password" style="color:#15549a;">Password</label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="pwd">
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="phone" class="form-control" placeholder="Phone" required="">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="autocomplete" name="city" class="form-control" placeholder="Type Your City Name" required="" autocomplete="off">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="zip_code" placeholder="Zip Code" required="">
-                            </div>
-                            <div class="form-group">
-                                <div class="button-slider">
-                                    <div class="btn-group btn_group">
-                                        <div class="btn btn-default btn_amount">Amount </div>
-                                        <div class="btn btn-default btn_slider">
-                                            <div class="slider slider-horizontal" id=""><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 49.999%;"></div><div class="slider-handle min-slider-handle round" tabindex="0" style="left: 49.999%;"></div><div class="slider-handle max-slider-handle round hide" tabindex="0" style="left: 0%;"></div></div><div class="tooltip tooltip-main top" style="left: 49.999%; margin-left: -25.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">25000</div></div><div class="tooltip tooltip-min top"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max bottom" style="top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div></div><input id="bootstrap-slider" type="text" name="amount" data-slider-min="1" data-slider-max="50000" data-slider-step="1" data-slider-value="25000" data="value: &#39;25000&#39;" value="25000" style="display: none;">
-                                            <div class="valueLabel"><span class="text_span">Amount &nbsp; &nbsp;</span> $<span id="sliderValue">25000</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-default quote_btn">Send Request</button>
+
+                            <input class="btn btn-primary btn-block" type="submit" style="margin-bottom: 8px;" value="Login">
+
+                            <a href="/signup" style="color:#15549a;" >Don't have an account? Click here</a> <br />
+                            <small><a href="#" style="color:#15549a;">Forgot Password?</a></small>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</header><!-- End Of Header -->
-
+</header>
+<!-- End Of Header -->
 <!-- Section Features -->
 <section id="features" class="features">
     <div class="container">
@@ -88,7 +76,9 @@
             <div class="col-lg-12 text-center">
                 <div class="section-heading">
                     <h2>Reason to Choose Us</h2>
-                    <p class="text-muted">Bad credit is worse than a bad swing but at Cardomain.com your credit is good with us. Easy to apply for a loan with us, Once you have complete this form.  </p>
+                    <p class="text-muted">
+                        The Moonlight OFW Cooperative will develop a descent family which will have a single minded devotion to succeed.
+                    </p>
                     <hr>
                 </div>
             </div>
@@ -99,7 +89,7 @@
                     <div class="device-mockup iphone6_plus portrait white">
                         <div class="device">
                             <div class="screen">
-                                <img src="./template_files/demo-screen-1.jpg" class="img-responsive" alt="">
+                                <img src="./_layouts/Home/demo-screen-1.jpg" class="img-responsive" alt="">
                             </div>
                         </div>
                     </div>
@@ -110,30 +100,23 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="feature-item">
-                                <i class="icon-check"></i>
                                 <h3>Easy Loan Approvals</h3>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida erat sit amet nunc iaculis mattis. Vivamus aliquam, eros sed tempor lacinia, ante metus sodales libero in.</p>
+                                <p class="text-muted">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida erat sit amet
+                                    nunc iaculis mattis. Vivamus aliquam, eros sed tempor lacinia, ante metus sodales libero in.
+                                </p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="feature-item">
-                                <i class="icon-clock"></i>
-                                <h3>Fast and FREE</h3>
+                                <h3>Hassle free</h3>
                                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida erat sit amet nunc iaculis mattis. Vivamus aliquam, eros sed tempor lacinia, ante metus sodales libero in.</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="feature-item">
-                                <i class="icon-user-follow"></i>
-                                <h3>Hassle free</h3>
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida erat sit amet nunc iaculis mattis. Vivamus aliquam, eros sed tempor lacinia, ante metus sodales libero in.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="feature-item last-one">
-                                <i class="icon-lock"></i>
                                 <h3>100% Safe and Secure</h3>
                                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida erat sit amet nunc iaculis mattis. Vivamus aliquam, eros sed tempor lacinia, ante metus sodales libero in.</p>
                             </div>
@@ -146,51 +129,6 @@
 </section>
 <!-- End Of Section Features -->
 
-<!-- Section About And Counter -->
-<section id="about" class="about text-center" style="background:#fff">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <h2 class="section-heading">Home Loans - Bad Credit, Good Credit, or No Credit!</h2>
-                <p class="about_p">Getting a Home loan with bad credit has never been easier! At EasyLoan, we want to help you get into the Home you deserve.</p>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="main_counter_content text-center white-text wow fadeInUp">
-                <div class="col-md-3 col-sm-6">
-                    <div class="single_counter">
-                        <p class="counter_icon"><i class="icon-people"></i></p>
-                        <span class="counter">500</span>K
-                        <p>Satisfied Clients</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single_counter">
-                        <p class="counter_icon"><i class="fa fa-usd" aria-hidden="true"></i></p>
-                        <span class="counter">550</span>K
-                        <p>Home Loan</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single_counter">
-                        <p class="counter_icon"><i class="icon-user-following"></i></p>
-                        <span class="counter">150</span>K
-                        <p>Repeat Client</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single_counter">
-                        <p class="counter_icon"><i class="icon-check"></i></p>
-                        <span class="counter">100</span>%
-                        <p>Safe &amp; Secure</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Section Of About And Counter -->
 
 <!-- Section Agents -->
 <section id="agents" class="agents text-center">
@@ -209,75 +147,45 @@
                         <div class="carousel-inner">
                             <div class="item  active">
                                 <div class="row">
-                                    <div class="col-md-4 padtop30">
+                                    <div class="col-md-3 padtop30">
                                         <div class="parent_circle">
                                             <div class="parent_circle_contain">
-                                                <p>Brain Adams </p>
-                                                <p>Developer PROFILE</p>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#">Know More...</a>
+                                                <p>Jimmy Allan Monserate</p>
+                                                <a href="#" class="text-italic">Chairman of the Board</a>
                                             </div>
                                             <div class=" child_round_circle child_round_circle_img1"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 padtop30">
+                                    <div class="col-md-3 padtop30">
                                         <div class="parent_circle">
                                             <div class="parent_circle_contain">
-                                                <p>Jhon Khan</p>
-                                                <p>DESIGNER PROFILE</p>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#">Know More...</a>
+                                                <p>Luis Edward Miranda</p>
+                                                <a href="#" class="text-italic">Lead Developer</a>
                                             </div>
                                             <div class="child_round_circle child_round_circle_img2"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 padtop30">
+                                    <div class="col-md-3 padtop30">
                                         <div class="parent_circle">
                                             <div class="parent_circle_contain">
-                                                <p>Jessica biel</p>
-                                                <p>DESIGNER PROFILE</p>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#">Know More...</a>
+                                                <p>Kim Jay Luta</p>
+                                                <a href="#" class="text-italic">Software Engineer</a>
                                             </div>
                                             <div class=" child_round_circle child_round_circle_img3 "></div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-md-4 padtop30">
+                                    <div class="col-md-3 padtop30">
                                         <div class="parent_circle">
                                             <div class="parent_circle_contain">
-                                                <p>Brain Adams </p>
-                                                <p>Developer PROFILE</p>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#">Know More...</a>
+                                                <p>Jacin Jake Arbas</p>
+                                                <a href="#" class="text-italic">I.T. Head, General Manager</a>
                                             </div>
                                             <div class=" child_round_circle child_round_circle_img1"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 padtop30">
-                                        <div class="parent_circle">
-                                            <div class="parent_circle_contain">
-                                                <p>Jhon Khan</p>
-                                                <p>DESIGNER PROFILE</p>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#">Know More...</a>
-                                            </div>
-                                            <div class="child_round_circle child_round_circle_img2"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 padtop30">
-                                        <div class="parent_circle">
-                                            <div class="parent_circle_contain">
-                                                <p>Jessica biel</p>
-                                                <p>DESIGNER PROFILE</p>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#">Know More...</a>
-                                            </div>
-                                            <div class=" child_round_circle child_round_circle_img3 "></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a data-slide="prev" href="http://onushorit.com/EasyLoan/index_home.html#media" class="left carousel-control">‹</a>
-                        <a data-slide="next" href="http://onushorit.com/EasyLoan/index_home.html#media" class="right carousel-control">›</a>
                     </div>
                 </div>
             </div>
@@ -285,426 +193,23 @@
     </div>
 </section>
 <!-- End Section Agents -->
-
-<!-- Section Testimonials -->
-<section id="testimonials" class="text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="section-title text-center">Reviews</h2>
-                <p class="testimonials_p">What our clients say about us.</p>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3">
-                <div class="testimonials-list slick-initialized slick-slider" role="toolbar">
-                    <span class="fa-stack testimonial-left-handle fa-lg slick-arrow" style="display: block;">
-                        <i class="fa fa-square-o fa-stack-2x"></i>
-                        <i class="fa fa-caret-left fa-stack-1x"></i>
-                    </span>
-                    <!-- Single Testimonial -->
-                    <div aria-live="polite" class="slick-list draggable"><div class="slick-track" role="listbox" style="opacity: 1; width: 3330px; left: -555px;">
-                            <div class="single-testimonial slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 525px;">
-                                <div class="testimonial-holder">
-                                    <div class="testimonial-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia
-                                        <div class="testimonial-caret"><i class="fa fa-caret-down"></i></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="testimonial-user clearfix">
-                                            <div class="testimonial-user-image"><img src="./t1.jpg" alt=""></div>
-                                            <div class="testimonial-user-name">Bruce Wayne<br>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#" tabindex="-1">Austin, TX</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><div class="single-testimonial slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 525px;">
-                                <div class="testimonial-holder">
-                                    <div class="testimonial-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia
-                                        <div class="testimonial-caret">
-                                            <i class="fa fa-caret-down"></i>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="testimonial-user clearfix">
-                                            <div class="testimonial-user-image"><img src="./t3.jpg" alt=""></div>
-                                            <div class="testimonial-user-name">Dev Krishna <br>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#" tabindex="0">Roswell, GA</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><div class="single-testimonial slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide01" style="width: 525px;">
-                                <div class="testimonial-holder">
-                                    <div class="testimonial-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia
-                                        <div class="testimonial-caret"><i class="fa fa-caret-down"></i></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="testimonial-user clearfix">
-                                            <div class="testimonial-user-image"><img src="./t2.jpg" alt=""></div>
-                                            <div class="testimonial-user-name">Donny J. Griffin <br>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#" tabindex="-1">Brooklyn, NYC</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><div class="single-testimonial slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide02" style="width: 525px;">
-                                <div class="testimonial-holder">
-                                    <div class="testimonial-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia
-                                        <div class="testimonial-caret"><i class="fa fa-caret-down"></i></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="testimonial-user clearfix">
-                                            <div class="testimonial-user-image"><img src="./t3.jpg" alt=""></div>
-                                            <div class="testimonial-user-name">Ryder Lothian <br>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#" tabindex="-1">Atlanta, GA</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><div class="single-testimonial slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide03" style="width: 525px;">
-                                <div class="testimonial-holder">
-                                    <div class="testimonial-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia
-                                        <div class="testimonial-caret"><i class="fa fa-caret-down"></i></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="testimonial-user clearfix">
-                                            <div class="testimonial-user-image"><img src="./t1.jpg" alt=""></div>
-                                            <div class="testimonial-user-name">Bruce Wayne<br>
-                                                <a href="http://onushorit.com/EasyLoan/index_home.html#" tabindex="-1">Austin, TX</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><div class="single-testimonial slick-slide slick-cloned" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 525px;">
-                                <div class="testimonial-holder">
-                                    <div class="testimonial-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia
-                                        <div class="testimonial-caret"><i class="fa fa-caret-down"></i></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="testimonial-user clearfix">
-                                            <div class="testimonial-user-image"><img src="./t3.jpg" alt=""></div>
-                                            <div class="testimonial-user-name">Dev Krishna <br><a href="http://onushorit.com/EasyLoan/index_home.html#" tabindex="-1">Roswell, GA</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div></div>
-                    <!-- End of Single Testimonial -->
-
-                    <!-- Single Testimonial -->
-
-                    <!-- End of Single Testimonial -->
-
-                    <!-- Single Testimonial -->
-
-                    <!-- End of Single Testimonial -->
-
-                    <!-- Single Testimonial -->
-
-                    <!-- End of Single Testimonial -->
-
-                    <span class="fa-stack testimonial-right-handle fa-lg slick-arrow" style="display: block;">
-                        <i class="fa fa-square-o fa-stack-2x"></i>
-                        <i class="fa fa-caret-right fa-stack-1x"></i>
-                    </span>
-                    <ul class="slick-dots" style="display: block;" role="tablist">
-                        <li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation00" id="slick-slide00">
-                            <button type="button" data-role="none" role="button" aria-required="false" tabindex="0">1</button>
-                        </li>
-                        <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation01" id="slick-slide01" class="">
-                            <button type="button" data-role="none" role="button" aria-required="false" tabindex="0">2</button>
-                        </li>
-                        <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation02" id="slick-slide02" class="">
-                            <button type="button" data-role="none" role="button" aria-required="false" tabindex="0">3</button>
-                        </li>
-                        <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation03" id="slick-slide03" class="">
-                            <button type="button" data-role="none" role="button" aria-required="false" tabindex="0">4</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Of Section Testimonials -->
-
-<!-- Section FAQ -->
-<section id="faq" class="faq">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <i class="icon-question faq_icon"></i>
-                <h2 class="faq_title">Ask about our low rate Home loans?</h2>
-                <p>Porttitor acese its commodo non lorem estibulum finibus urna eu efficitur non lorem acese its do remmselorem ipusm dolro sit commodo.</p>
-                <a class="btn btn-primary page-scroll" href="http://onushorit.com/EasyLoan/index_home.html#contact">Ask Question</a>
-            </div>
-            <div class="col-md-7 mar-20t">
-                <div class="panel-group" id="accordion">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="http://onushorit.com/EasyLoan/index_home.html#collapseOne">Lorem ipsum dolor sit?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                Lorem ipsum dolor sit amet, consectetur <strong>adipisicing elit</strong>. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="http://onushorit.com/EasyLoan/index_home.html#collapseTen">Lorem ipsum dolor sit amet, consectetur adipisicing?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseTen" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="http://onushorit.com/EasyLoan/index_home.html#collapseEleven">Lorem ipsum dolor sit amet, consectetur?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseEleven" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicingelit. Adipisci animi consequatur cupiditate <strong>delectus dicta dolore dolorem ex harum</strong> ipsum laborum nobis nulla odit officia. Adipisci animi consequatur cupiditate.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="http://onushorit.com/EasyLoan/index_home.html#collapseTwo">Lorem ipsum dolor?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicingelit. Adipisci animi consequatur cupiditate delectus dicta dolore dolorem ex harum ipsum laborum nobis nulla odit officia. Adipisci animi <strong>consequatur cupiditate</strong>.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="http://onushorit.com/EasyLoan/index_home.html#collapseThree">Lorem ipsum dolor sit amet?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicingelit:
-                                <ul>
-                                    <li>Adipisci animi consequatur</li>
-                                    <li>Adipisci animi consequatur cupiditate</li>
-                                    <li>Adipisci animi consequatur cupiditate delectus</li>
-                                    <li>Adipisci animi consequatur cupiditate delectus dicta</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Of Section FAQ -->
-
-<!-- Section Blog -->
-<section id="blog" class="blog" style="background:#F1F1F1">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="setion-title text-center">Our Blog</h2>
-            </div>
-        </div>
-        <div class="row mr_top_10">
-            <div class="col-md-4 col-sm-12 mar-20t">
-                <div class="blog_worp">
-                    <div class="blog_img">
-                        <a class="imghover" href="http://onushorit.com/EasyLoan/index_home.html#">
-                            <img class="img-responsive" alt="Blog Img 01" src="./_layouts/Home/blog-home.jpg">
-                        </a>
-                    </div>
-                    <div class="blog_content">
-                        <h2><a class="title" href="http://onushorit.com/EasyLoan/index_home.html#">Home Loan For You</a></h2>
-                        <h4>By Admin on Jan 19, 2017</h4>
-                        <p>Lorem ipsum dolor sitamet secteture adipiscing eilit mauris diem lorem ipsum anibus atdsim eipit.</p>
-                        <a class="btn-link" href="http://onushorit.com/EasyLoan/index_home.html#">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mar-20t">
-                <div class="blog_worp">
-                    <div class="blog_img">
-                        <a class="imghover" href="http://onushorit.com/EasyLoan/index_home.html#">
-                            <img class="img-responsive" alt="Blog Img 01" src="./_layouts/Home/blog-car.jpg"></a>
-                    </div>
-                    <div class="blog_content">
-                        <h2><a class="title" href="http://onushorit.com/EasyLoan/index_home.html#">Car Loan For You</a></h2>
-                        <h4>By Admin on Feb 14, 2017</h4>
-                        <p>Lorem ipsum dolor sitamet secteture adipiscing eilit mauris diem lorem ipsum anibus atdsim eipit. </p>
-                        <a class="btn-link" href="http://onushorit.com/EasyLoan/index_home.html#">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mar-20t">
-                <div class="blog_worp">
-                    <div class="blog_img">
-                        <a class="imghover" href="http://onushorit.com/EasyLoan/index_home.html#">
-                            <img class="img-responsive" alt="Blog Img 01" src="./_layouts/Home/blog-edu.jpg"></a>
-                    </div>
-                    <div class="blog_content">
-                        <h2><a class="title" href="http://onushorit.com/EasyLoan/index_home.html#">Education Loan For You</a></h2>
-                        <h4>By Admin on Mar 26, 2017</h4>
-                        <p>Lorem ipsum dolor sitamet secteture adipiscing eilit mauris diem lorem ipsum anibus atdsim eipit.</p>
-                        <a class="btn-link" href="http://onushorit.com/EasyLoan/index_home.html#">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Of Section Blog -->
-
-<!-- Section Brand -->
-<section id="brand_logo" style="background:#fff">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="setion-title text-center">Our Partner</h2>
-            </div>
-        </div>
-        <div class="row mr_top_10">
-            <div class="col-sm-12">
-                <ul class="list-inline list-logo">
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/1.png" alt="Brand Logo"></a>
-                    </li>
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/2.png" alt="Brand Logo"></a>
-                    </li>
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/3.png" alt="Brand Logo"></a>
-                    </li>
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/4.png" alt="Brand Logo"></a>
-                    </li>
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/1.png" alt="Brand Logo"></a>
-                    </li>
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/2.png" alt="Brand Logo"></a>
-                    </li>
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/3.png" alt="Brand Logo"></a>
-                    </li>
-                    <li class="">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><img src="./_layouts/Home/4.png" alt="Brand Logo"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Of Section Brand -->
-
-<!-- Section Social And NewsLetter -->
-<section id="Social" class="social_contact" style="background:#F1F1F1">
-    <div class="container">
-        <div class="row">
-            <h2>Stay Connected <i class="fa fa-handshake-o" aria-hidden="true"></i> With Us</h2>
-            <div class="tab-content custom-tab-content">
-                <div class="subscribe-panel">
-                    <p>Subscribe to our weekly Newsletter and stay tuned.</p>
-                    <form action="http://onushorit.com/EasyLoan/index_home.html#" method="post">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control input-lg" name="email" id="email" placeholder="Enter your Email">
-                            </div>
-                        </div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-12">
-                            <button class="btn btn-info btn-lg">Subscribe Now!</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="list-inline list-social">
-                    <li class="social-twitter">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li class="social-facebook">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li class="social-google-plus">
-                        <a href="http://onushorit.com/EasyLoan/index_home.html#"><i class="fa fa-google-plus"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Of Section Social And NewsLetter -->
-
 <!-- Section Contact -->
 <section id="contact">
-    <h2 id="dev-snippet-title" class="text-center">Contact Us</h2>
+    <h2 id="dev-snippet-title" class="text-center" style="color: #3c4d6b;">Contact Information</h2>
     <div class="container mr_top_10">
         <div class="row">
-            <div class="col-lg-7 col-md-6 col-sm-6">
-                <form action="http://onushorit.com/EasyLoan/mailer.php" method="post">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required="">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required="">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="InputPhone" name="InputPhone" placeholder="Enter Phone Number" required="">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="InputZipCode" name="InputZipCode" placeholder="Enter Zip Code" required="">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" placeholder="Type Message Text" required=""></textarea>
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-outline btn-xl page-scroll pull-right">Submit</button>
-                    </div>
-                </form>
+            <div class="col-md-3">
             </div>
-            <div class="col-lg-4 col-md-5 col-sm-6 col-md-offset-1">
-                <address>
-                    <p class="address_icon"><i class="icon-home"></i></p>
-                    <p class="lead">Office Location</p>
-                    <p class="lead"><i class="icon-location-pin"></i> EasyLoan LLC.<br> Washington, DC 20301.</p>
-                    <p class="lead"><i class="icon-screen-smartphone"></i> Phone: 121-000-1234</p>
-                    <p class="lead"><i class="icon-paper-plane"></i> Fax: 121-000-9876</p>
-                    <p class="lead"><i class="icon-envelope-open"></i> Email: info@yourdomain.com</p>
-                </address>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body" style="color: #3c4d6b;">
+                        <h4 class="m-0"><b>Address:</b><span> Zone 3, Baranggay Tambang Tinambac, 4426 Camarines Sur</span></h4>
+                        <h4 class="m-0"><b>Email Address:</b><span> monseratejimmyallan@gmail.com</span></h4>
+                        <h4 class="m-0"><b>Contact Number:</b><span> 0999-7995-757/+852-5217-1401</span></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
             </div>
         </div>
     </div>
@@ -714,13 +219,13 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <p>© 2017 EasyLoan. All Rights Reserved.</p>
+        <p>© 2018 Moonlight Ofw Cooperative, All Rights Reserved.</p>
         <ul class="list-inline">
             <li>
-                <a href="http://onushorit.com/EasyLoan/index_home.html#">Privacy</a>
+                <a href="#">Privacy</a>
             </li>
             <li>
-                <a href="http://onushorit.com/EasyLoan/index_home.html#">Terms</a>
+                <a href="#">Terms</a>
             </li>
         </ul>
     </div>
