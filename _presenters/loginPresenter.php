@@ -42,7 +42,7 @@ class loginPresenter {
             SessionModel::setID($account);
 
             // Redirect to the main page
-            header("location: /");
+            header("location: /uni");
             exit;
         }
 
