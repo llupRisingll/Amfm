@@ -3,6 +3,8 @@ class HomePresenter {
     // HTTP Header Method: GET
     // Used to retrive a data or a view
     public function get(){
+    	SessionModel::restrictLogged();
+
         View::addVar("view_title", "Binary Level");
         View::addCSS("http://onushorit.com/EasyLoan/img/favicon_home.ico");
         View::addCSS("/_layouts/Home/css/bootstrap.min.css");
@@ -33,6 +35,7 @@ class HomePresenter {
         View::addScript("/_layouts/Home/js/testimonials.js");
         View::addScript("https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js");
         View::addScript("https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js");
+
     }
 
     // HTTP Header Method: POST

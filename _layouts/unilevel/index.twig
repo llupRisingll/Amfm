@@ -1,32 +1,8 @@
-<!-- HTML/TWIG body content here -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <a class="navbar-brand" href="#">Amfm</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">E-Wallet <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-    </div>
-    <div class="dropdown" style="margin-right: 35px;">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Username
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Account setting</a>
-            <a class="dropdown-item" href="#">Change Password</a>
-            <a class="dropdown-item" href="/logout">Logout</a>
-        </div>
-    </div>
-</nav>
+{# Use the header in the profile#}
+
+{% set page = "unilevel" %}
+{% include "Profile/header.twig" %}
+
 <div class="container-fluid">
     <div class="row m-3">
         <div class="col-4">

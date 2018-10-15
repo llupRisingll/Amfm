@@ -41,8 +41,8 @@ class loginPresenter {
             SessionModel::setUser($usn);
             SessionModel::setID($account);
 
-            // Redirect to the main page
-            header("location: /uni");
+            // Reload the page to redirect to the new page
+            header("location: /");
             exit;
         }
 

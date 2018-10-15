@@ -5,6 +5,9 @@ class BinaryPresenter {
     public function get(){
         View::addVar("view_title", "BinaryPresenter View Page");
         View::addVar("BODY_CLASS", "bg-light");
+
+	    View::addVar("username", SessionModel::getUser());
+
         View::addCSS("/_layouts/Binary/Treant.css");
         View::addCSS("/_layouts/Binary/collapsable.css");
         View::addCSS("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");

@@ -76,7 +76,7 @@ class signupPresenter {
         }
 
         // Validation of contact number
-        if(!preg_match('/\d*$/gs',$contact_num)){
+        if(!preg_match('/^\d*$/',$contact_num)){
             echo "Error: Contact number is Invalid! Please input a number only";
             exit;
         }
