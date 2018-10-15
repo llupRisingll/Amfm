@@ -3,17 +3,18 @@ class ProfilePresenter {
     // HTTP Header Method: GET
     // Used to retrive a data or a view
     public function get(){
-        View::addVar("view_title", "ProfilePresenter View Page");
+        View::addVar("view_title", "Profile Page");
+	    View::addVar("BODY_CLASS", "bg-light");
         View::addVar("username", SessionModel::getUser());
 
 	    // Import the Bootstrap
-	    View::addCSS("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
+	    View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
 	    // Import JQUERy
 	    View::addScript("/_layouts/Binary/jquery.min.js");
 
 	    // Include the bootstrap JS
-	    View::addScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js");
+	    View::addCSS("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
     }
 
     // HTTP Header Method: POST
