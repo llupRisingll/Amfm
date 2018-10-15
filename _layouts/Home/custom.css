@@ -170,7 +170,7 @@ header {
 
 header.demos{
   min-height: 400px;
-  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg");
+  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
   background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg"); 
   background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg"); 
   background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg"); 
@@ -191,11 +191,11 @@ header.car_loan{
 }
 
 header.home_loan{
-  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_home.jpg");
-  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_home.jpg"); 
-  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_home.jpg"); 
-  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_home.jpg"); 
-  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_home.jpg");
+  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
+  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
+  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
+  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
+  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
 }
 
 header.education_loan{
@@ -1547,7 +1547,7 @@ section.social_contact ul.list-social li.social-google-plus a:hover {
 /*** Section Contact Us ***/
 
 #contact{
-  background: #15549A;
+  background: #f1f1f1;
 }
 
 #contact h2{
