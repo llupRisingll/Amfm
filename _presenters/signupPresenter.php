@@ -3,13 +3,13 @@ class signupPresenter {
     // HTTP Header Method: GET
     // Used to retrive a data or a view
     public function get(){
+	    // Restrict Logged User
+	    SessionModel::restrictLogged();
+
         View::addVar("view_title", "AMFM Signup");
         View::addCSS("/_layouts/login/signup.css");
         View::addVar("BODY_CLASS", "bg-light");
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
-
-        // Restrict Logged User
-        SessionModel::restrictLogged();
     }
 
     // HTTP Header Method: POST

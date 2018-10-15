@@ -8,12 +8,18 @@ class loginPresenter {
 	}
 
     public function get(){
+	    // Restrict Logged User
+	    SessionModel::restrictLogged();
+
         View::addVar("view_title", "AMFM Login");
         View::addVar("BODY_CLASS", "bg-light");
         View::addCSS("/_layouts/login/login.css");
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
         View::addVar("fc", Plugins\FlashCard::getFlashCard()[0]);
+
+	    View::addScript("/_layouts/Home/js/jquery.min.js");
+	    View::addScript("/_layouts/Home/js/bootstrap.min.js");
     }
 
     public function post(){
