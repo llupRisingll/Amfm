@@ -27,7 +27,7 @@ class unilevelPresenter {
 	    View::addScript("/_layouts/Binary/raphael.js");
 
 	    // Import Bootstrap Javascript
-	    View::addCSS("http://" . Route::domain() . "/js/" . md5("Bootstrap") . ".min.js");
+	    View::addScript("http://" . Route::domain() . "/js/" . md5("Bootstrap") . ".min.js");
 
     }
     // HTTP Header Method: POST

@@ -21,7 +21,7 @@ class BinaryPresenter {
         View::addScript("/_layouts/Binary/raphael.js");
         View::addScript("/_layouts/Binary/raphael.js");
 
-	    View::addCSS("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
+	    View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
 
         // Use the server domain name address on the layout
         View::addVar("DN", Route::domain());

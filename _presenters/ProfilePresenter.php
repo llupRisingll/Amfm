@@ -14,7 +14,7 @@ class ProfilePresenter {
 	    View::addScript("/_layouts/Binary/jquery.min.js");
 
 	    // Include the bootstrap JS
-	    View::addCSS("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
+	    View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
     }
 
     // HTTP Header Method: POST
