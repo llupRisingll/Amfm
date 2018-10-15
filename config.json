@@ -15,5 +15,12 @@
         "password": "",
         "dbname": "amfm"
     },
+    "luis_db": {
+        "host": "127.0.0.1",
+        "username": "root",
+        "password": "1b9392ebef12172af18fc10a3192c78997084d1ba1f72497",
+        "dbname": "amfm"
+    },
+
     "revisionID": "dde6df12896cf6a14b79e7940e55ba85"
 }
