@@ -40,6 +40,12 @@ class SessionModel {
         self::start();
         $_SESSION["userID"] = $userID;
     }
+
+    // Log the user's name
+    public static function setName(String $fn, String $ln){
+        self::start();
+        $_SESSION["name"] = $fn. " ".$ln;
+    }
     // Get Logged user
     public static function getUser(){
         self::start();
@@ -49,6 +55,11 @@ class SessionModel {
     public static function getUserID(){
         self::start();
         return $_SESSION["userID"];
+    }
+    // Get Logged User ID
+    public static function getName(){
+        self::start();
+        return ucwords($_SESSION["name"]);
     }
     // Destroy the session
     public static function destroy(){

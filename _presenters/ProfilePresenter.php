@@ -6,6 +6,7 @@ class ProfilePresenter {
         View::addVar("view_title", "Profile Page");
 	    View::addVar("BODY_CLASS", "bg-light");
         View::addVar("username", SessionModel::getUser());
+        View::addVar("FULL_NAME", SessionModel::getName());
 
 	    // Import the Bootstrap
 	    View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
