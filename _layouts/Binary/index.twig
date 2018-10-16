@@ -45,9 +45,9 @@
                 <hr class="separator">
                 <div>
                     <b class="float-left">Referral link</b>
-                    <a class="float-right" href="javascript:void(0)">Copy Link</a>
+                    <a class="float-right" id="copy_link" href="javascript:void(0)">Copy Link</a>
                 </div>
-                <input type="text" class="form-control" disabled="" value="http://{{ DN }}/register?id={{ HASH_ID }}">
+                <input type="text" id="hash_id" class="form-control" readonly="readonly" value="http://{{ DN }}/register?id={{ HASH_ID }}">
             </div>
         </div>
         <div class="col-8">
@@ -82,9 +82,40 @@
         $(".add-person").on("click", function (e) {
             alert("asd");
         });
+
+
         $("#malory").data("treenode").collapse();
         tree.tree.addNode($("#malory").data("treenode"), acctList.lana);
         tree.tree.addNode($("#lana").data("treenode"), acctList.figgs);
         $("#malory").data("treenode").expand();
+
+
+	    function copyToClipboard(text) {
+
+		    var textArea = document.createElement( "textarea" );
+		    textArea.value = text;
+		    document.body.appendChild( textArea );
+
+		    textArea.select();
+
+		    try {
+			    var successful = document.execCommand( 'copy' );
+			    var msg = successful ? 'successful' : 'unsuccessful';
+			    console.log('Copying text command was ' + msg);
+		    } catch (err) {
+			    console.log('Oops, unable to copy');
+		    }
+
+		    document.body.removeChild( textArea );
+	    }
+        // Copy Link
+        $("#copy_link").on("click", function (e) {
+        	var hash_id = $("#hash_id");
+	        var clipboardText = $( '#hash_id' ).val();
+	        copyToClipboard( clipboardText );
+	        alert( "Copied to Clipboard" );
+
+	        hash_id.select();
+        });
     });
 </script>
