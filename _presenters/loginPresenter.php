@@ -47,8 +47,8 @@ class loginPresenter {
         $account = LoginAuthModel::checkAccount($usn, $pwd);
         if ($account !== false){
             // Save the session
-            SessionModel::setUser($usn);
-            SessionModel::setID($account);
+            SessionModel::setUser($usn, $account["hash_id"]);
+            SessionModel::setID($account["id"]);
 
             // Reload the page to redirect to the new page
             header("location: /");

@@ -31,9 +31,10 @@ class SessionModel {
         }
     }
     // Log a user
-    public static function setUser(String $username){
+    public static function setUser(String $username, String $hash_id){
         self::start();
         $_SESSION["username"] = $username;
+        $_SESSION["hash_id"] = $hash_id;
     }
     // Log the users id
     public static function setID(String $userID){
@@ -60,6 +61,11 @@ class SessionModel {
     public static function getName(){
         self::start();
         return ucwords($_SESSION["name"]);
+    }
+    // Get Logged User HASHID
+    public static function getHash(){
+        self::start();
+        return $_SESSION["hash_id"];
     }
     // Destroy the session
     public static function destroy(){

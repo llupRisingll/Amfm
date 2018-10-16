@@ -7,7 +7,7 @@ class LoginAuthModel {
         $connection = DatabaseModel::getConnection();
 
         // Process of querying data
-        $sql = "SELECT id FROM `accounts` WHERE `username`=:username AND `pass`=:password LIMIT 1";
+        $sql = "SELECT id, hash_id FROM `accounts` WHERE `username`=:username AND `pass`=:password LIMIT 1";
         $prepare = $database->mysqli_prepare($connection, $sql);
         $database->mysqli_execute($prepare, array(
             ':username'=>$usn,
@@ -21,13 +21,13 @@ class LoginAuthModel {
         if (count($result) < 1)
             return false;
 
-        $ResultID = $result[0]["id"];
+        $resultArray = $result[0];
 
         // Save the Full name as the primary account information
-        self::saveFullName($ResultID);
+        self::saveFullName($resultArray["id"]);
 
         // Return the user id from the database
-        return $ResultID;
+        return $resultArray;
     }
 
 
