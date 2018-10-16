@@ -7,6 +7,7 @@ class unilevelPresenter {
 	    View::addVar("BODY_CLASS", "bg-light");
 
 	    View::addVar("username", SessionModel::getUser());
+	    View::addVar("FULL_NAME", SessionModel::getName());
 
 	    // Import Dependencies
 	    View::addCSS("/_layouts/Binary/Treant.css");

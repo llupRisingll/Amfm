@@ -7,6 +7,7 @@ class BinaryPresenter {
         View::addVar("BODY_CLASS", "bg-light");
 
 	    View::addVar("username", SessionModel::getUser());
+	    View::addVar("FULL_NAME", SessionModel::getName());
 
         View::addCSS("/_layouts/Binary/Treant.css");
         View::addCSS("/_layouts/Binary/collapsable.css");
