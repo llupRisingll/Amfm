@@ -26,7 +26,7 @@ class SessionModel {
         self::start();
         // Disallow: User Visit if it is not yet logged in
         if (!self::getLoginStatus()){
-            header("location: /");
+            header("location: /login");
             exit;
         }
     }

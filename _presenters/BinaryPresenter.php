@@ -3,7 +3,7 @@ class BinaryPresenter {
     // HTTP Header Method: GET
     // Used to retrive a data or a view
     public function get(){
-        View::addVar("view_title", "BinaryPresenter View Page");
+        View::addVar("view_title", "Binary Affiliation Program");
         View::addVar("BODY_CLASS", "bg-light");
 
 	    View::addVar("username", SessionModel::getUser());

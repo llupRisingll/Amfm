@@ -8,12 +8,13 @@ class unilevelPresenter {
 
 	    View::addVar("username", SessionModel::getUser());
 
-	    // Import the Bootstrap
-	    View::addCSS("http://" . Route::domain() . "/css/" . md5("Bootstrap") . ".min.css");
-
 	    // Import Dependencies
 	    View::addCSS("/_layouts/Binary/Treant.css");
 	    View::addCSS("/_layouts/Binary/collapsable.css");
+
+
+	    // Import the Bootstrap
+	    View::addCSS("http://" . Route::domain() . "/css/" . md5("Bootstrap") . ".min.css");
 
 
 	    // Import JQUERy
