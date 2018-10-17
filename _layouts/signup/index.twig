@@ -1,55 +1,66 @@
-<!-- HTML/TWIG body content here -->
+{% include "login/header.twig" %}
+
 <div class="container mt-5 mb-5" style="width: 572px;">
     <div class="card cd">
         <div class="card-header signup" style="background-color: #83dca9; border: 0;">
             <h3>Join AMFM now!</h3>
             <small>Already have an account? <a href="/login">Click here</a></small>
         </div>
+
+	    {% if fc.title == "Authentication Error" %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ fc.title }} </strong>
+                <span>{{ fc.message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+	    {% endif %}
         <form action="/signup" method="post" style="padding: 14px;">
             <div class="form-row">
                 <div class="col fn">
                     <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" placeholder="Enter First name" name="fn">
+                    <input type="text" class="form-control" placeholder="Enter First name" name="fn" required>
                 </div>
                 <div class="col ln">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Last name" name="ln">
-                    </div>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Last name" name="ln" required>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="birthday">Birthday</label>
-                <input type="date" class="form-control" placeholder="Enter Birthday" name="bd">
+                <input type="date" class="form-control" placeholder="Enter Birthday" name="bd" required>
             </div>
 
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" placeholder="Enter Permanent Address" name="ad">
+                <input type="text" class="form-control" placeholder="Enter Permanent Address" name="ad" required>
             </div>
 
             <div class="form-group">
                 <label for="contact_number">Contact Number</label>
-                <input type="text" class="form-control" placeholder="Enter number" name="cn">
+                <input type="text" class="form-control" placeholder="Enter number" name="cn" required>
             </div>
 
             <div class="form-group">
                 <label for="address">Email Address <i>(Optional)</i> </label>
-                <input type="email" class="form-control" placeholder="Enter Permanent Address" name="ea">
+                <input type="email" class="form-control" placeholder="Enter Permanent Address" name="ea" required>
             </div>
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="Enter Username" name="usn">
+                <input type="text" class="form-control" placeholder="Enter Username" name="usn" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Enter Password" name="pwd">
+                <input type="password" class="form-control" placeholder="Enter Password" name="pwd" required>
             </div>
 
             <div class="form-group">
                 <label for="confirm_password">Confirm Password</label>
-                <input type="password" class="form-control" placeholder="Enter Confirm password" name="cfpwd">
+                <input type="password" class="form-control" placeholder="Enter Confirm password" name="cfpwd" required>
             </div>
 
             <button class="btn btn-block btn-success" type="submit">Sign up</button>

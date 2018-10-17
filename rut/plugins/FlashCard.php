@@ -4,7 +4,7 @@ namespace Plugins;
 class FlashCard {
 	public static function setFlashCard(string $title, string $uri, $message=""){
         if(session_status() != PHP_SESSION_ACTIVE){
-	        session_name("_sA");
+		        session_name("_sA");
             session_start();
         }
 

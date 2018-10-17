@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+	<a class="navbar-brand" href="#">[LOGO]</a>
+
+
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<ul class="navbar-nav">
+			<li class="nav-item {{ (page == "profile") ? "active" : "" }}">
+				<a class="nav-link" href="/profile">Dashboard <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item {{ (page == "binary") ? "active" : "" }}">
+				<a class="nav-link" href="/binary">Binary Program</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item {{ (page == "unilevel") ? "active" : "" }}">
+				<a class="nav-link" href="/unilevel">Unilevel Program</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item {{ (page == "ewallet") ? "active" : "" }}">
+				<a class="nav-link" href="#">eWallet</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="dropdown">
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+			{{ username }}
+		</button>
+		<div class="dropdown-menu" style="right: 0; left: auto;">
+			<a href="#" class="dropdown-item">Account Setting</a>
+			<a href="#" class="dropdown-item">Change Password</a>
+			<a href="/logout" class="dropdown-item">Logout</a>
+		</div>
+	</div>
+</nav>

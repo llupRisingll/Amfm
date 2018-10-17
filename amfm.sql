@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2018 at 05:17 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Oct 16, 2018 at 03:30 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.0.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,16 +33,16 @@ CREATE TABLE `accounts` (
   `username` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `acct_type` tinyint(1) NOT NULL DEFAULT '0',
-  `activated` tinyint(1) NOT NULL DEFAULT '0'
+  `activated` tinyint(1) NOT NULL DEFAULT '0',
+  `hash_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `username`, `pass`, `acct_type`, `activated`) VALUES
-(60, 'jacinarbas', 'password', 0, 0),
-(61, 'jacinarbas', 'password', 0, 0);
+INSERT INTO `accounts` (`id`, `username`, `pass`, `acct_type`, `activated`, `hash_id`) VALUES
+(63, 'llupRisingll', 'mnycnajrad', 0, 0, '4048dda5ab392192924f3f2864bc08ca1539696121');
 
 -- --------------------------------------------------------
 
@@ -67,8 +67,7 @@ CREATE TABLE `account_info` (
 --
 
 INSERT INTO `account_info` (`id`, `fn`, `ln`, `ad`, `email`, `photo`, `cn`, `accnt_id`, `bdate`) VALUES
-(10, 'jacin', 'arbas', 'caimito street dayangdang naga city', 'fafaffafafaffafafa@gmail.com', NULL, '0953212e1we1e', 60, '2017-03-31'),
-(11, 'jacin', 'arbas', 'caimito street dayangdang naga city', 'fafaffafafaffafafa@gmail.com', NULL, '0931131311981381', 61, '2017-03-31');
+(13, 'Luis Edward', 'Miranda', 'Sipocot, Camarines Sur', 'luisedward.miranda@gmail.com', NULL, '09292709026', 63, '2018-10-15');
 
 -- --------------------------------------------------------
 
@@ -117,7 +116,8 @@ CREATE TABLE `uni_level` (
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `account_info`
@@ -156,32 +156,27 @@ ALTER TABLE `uni_level`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
-
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 --
 -- AUTO_INCREMENT for table `account_info`
 --
 ALTER TABLE `account_info`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `binary_level`
 --
 ALTER TABLE `binary_level`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `earnings`
 --
 ALTER TABLE `earnings`
   MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `uni_level`
 --
 ALTER TABLE `uni_level`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
 --
 -- Constraints for dumped tables
 --

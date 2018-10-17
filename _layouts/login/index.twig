@@ -1,10 +1,33 @@
-<!-- HTML/TWIG body content here -->
+{% include "login/header.twig" %}
+
 <div class="container pt-5">
     <div class="card w-50 m-auto">
         <div class="card-header" style="border: 0; background-color: #71b6f0;">
             <h3>AMFM Login</h3>
             <small>Don't have an account? <a href="/signup">Click here</a></small>
         </div>
+
+        {% if fc.title == "Authentication Error" %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ fc.title }} </strong>
+            <span>{{ fc.message }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+
+
+	    {% if fc.title == "Registration Success" %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ fc.title }} </strong>
+            <span>{{ fc.message }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+	    {% endif %}
+
         <form action="/login" method="post" style="padding: 13px;">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -19,5 +42,6 @@
             <button class="btn btn-primary btn-block" type="submit" >Login</button>
             <small style="float: right; margin-bottom: 10px;"><a href="#">Forgot Password?</a></small>
         </form>
+
     </div>
 </div>

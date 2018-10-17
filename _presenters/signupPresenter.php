@@ -1,19 +1,27 @@
 <?php
 class signupPresenter {
-    // HTTP Header Method: GET
-    // Used to retrive a data or a view
+
+	public static function showError(String $msg){
+		// Add the FlashCard then reload the page
+		\Plugins\FlashCard::setFlashCard(
+			"Registration Error", "/signup", $msg
+		);
+		header("location: /signup");
+		exit;
+	}
+
     public function get(){
+	    // Restrict Logged User
+	    SessionModel::restrictLogged();
+
         View::addVar("view_title", "AMFM Signup");
         View::addCSS("/_layouts/login/signup.css");
         View::addVar("BODY_CLASS", "bg-light");
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
-        // Restrict Logged User
-        SessionModel::restrictLogged();
+	    View::addVar("fc", Plugins\FlashCard::getFlashCard()[0]);
     }
 
-    // HTTP Header Method: POST
-    // Usually used when to insert a new data
     public function post(){
         Params::permit('fn', 'ln', 'bd', 'ad', 'cn', 'ea', 'usn', 'pwd', 'cfpwd');
 
@@ -30,71 +38,62 @@ class signupPresenter {
 
         // Check kung may laman ang gabos na data
         if(!isset($first_name, $last_name, $address, $contact_num, $usn, $pwd, $cfpwd)){
-            echo "Fill all forms of data!";
-            exit;
+	        self::showError(" Fill all forms of data!");
         }
         // Check if the passwords match
         if($pwd != $cfpwd){
-            echo "Error: Password does not match!";
-            exit;
+	        self::showError(" Password does not match!");
         }
         // Check the length of passsword
         if(strlen($pwd) < 8 || strlen($pwd) > 32 ){
-            echo "Error: Password must be 8-32 characters only! ";
-            exit;
+	        self::showError(" Password must be 8-32 characters only! ");
         }
         // Check the length of username
         if (strlen($usn) < 8 || strlen($usn) > 32 ){
-            echo "Error: Username must be 8-32 characters only! ";
-            exit;
+	        self::showError(" Username must be 8-32 characters only! ");
         }
         // Check if the characters of usn is valid
         if(!preg_match('/^[a-z\d_]{0,}$/i', $usn)){
-            echo "Username must be alpha numeric characters only!";
-            exit;
+	        self::showError(" Username must be alpha numeric characters only!");
         }
         // Check the length of first name
         if (strlen($first_name) < 1 || strlen($first_name) > 32 ){
-            echo "Error: First name must be 1-32 characters only! ";
-            exit;
+	        self::showError(" First name must be 1-32 characters only!");
         }
         // To check the length of last name
         if (strlen($last_name) < 1 || strlen($last_name) > 32 ){
-            echo "Error: Last name must be 1-32 characters only! ";
-            exit;
+	        self::showError(" Last name must be 1-32 characters only!");
         }
         // To check the length of address
         if (strlen($address) < 1 || strlen($address) > 60 ){
-            echo "Error: Address must be 1-32 characters only! ";
-            exit;
+	        self::showError(" Address must be 1-32 characters only! ");
         }
 
         // To check the length of contact number
         if(strlen($contact_num) < 5 || strlen($contact_num) > 13 ){
-            echo "Error: Contact number is Invalid!";
-            exit;
+	        self::showError(" Contact number is Invalid!");
         }
 
         // Validation of contact number
-        if(!preg_match('/\d/gs',$contact_num)){
-            echo "Error: Contact number is Invalid! Please input a number only";
-            exit;
+        if(!preg_match('/^\d*$/',$contact_num)){
+	        self::showError(" Contact number is Invalid! Please input a number only");
         }
 
         // Email validation
         if(!filter_var($email_add, FILTER_VALIDATE_EMAIL)){
-            echo "Error: Your Email is invalid";
+	        self::showError(" You have entered an invalid Email Address");
         }
 
         // Start the Registration Backend process
         $registered = RegisterAuthModel::register($first_name, $last_name, $birth_date, $address, $email_add, $contact_num, $usn, $pwd, $cfpwd);
 
         if ($registered === true){
-            echo "Successfully registered";
-            exit;
+	        \Plugins\FlashCard::setFlashCard("Registration Success", "/login", " You may now login and proceed. Thank you.");
+	        header("location: /login");
+	        exit;
         }
-        echo "Error found while trying to register";
-        exit;
+
+        self::showError(" There was an unknown error occurs while trying to register your details. Please try again layer Thank you.");
     }
 
     // HTTP Header Method: PUT

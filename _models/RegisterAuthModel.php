@@ -15,13 +15,14 @@ class RegisterAuthModel {
         try {
             // Save the account auth data
             $prepared = $database->mysqli_prepare($connection, "
-                INSERT INTO `accounts`(`username`, `pass`) 
-                      VALUES (:username,:password);
+                INSERT INTO `accounts`(`username`, `pass`, `hash_id`) 
+                      VALUES (:username,:password, :hash_id);
             ");
 
             $database->mysqli_execute($prepared, array(
                 ":username" => $un,
-                ":password" => $pw
+                ":password" => $pw,
+	            ":hash_id" =>md5($un).time()
             ));
 
             // Save the insert id

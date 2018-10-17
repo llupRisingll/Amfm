@@ -1,8 +1,9 @@
 {
     "\/": "HomePresenter.php",
-    "\/profile": "BinaryPresenter.php",
+    "\/binary": "BinaryPresenter.php",
     "\/login": "loginPresenter.php",
     "\/signup": "signupPresenter.php",
     "\/logout": "logoutPresenter.php",
-    "\/uni": "unilevelPresenter.php"
+    "\/unilevel": "unilevelPresenter.php",
+    "\/profile": "ProfilePresenter.php"
 }

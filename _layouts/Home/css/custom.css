@@ -170,11 +170,11 @@ header {
 
 header.demos{
   min-height: 400px;
-  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
-  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg"); 
-  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg"); 
-  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg"); 
-  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_demo.jpg"); 
+  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/bg.jpg");
+  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_demo.jpg");
+  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_demo.jpg");
+  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_demo.jpg");
+  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_demo.jpg");
 }
 
 header.demos .header-content{
@@ -183,27 +183,27 @@ header.demos .header-content{
 }
 
 header.car_loan{
-  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_car.jpg");
-  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_car.jpg"); 
-  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_car.jpg"); 
-  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_car.jpg"); 
-  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_car.jpg"); 
+  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("img/header_car.jpg");
+  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_car.jpg");
+  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_car.jpg");
+  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_car.jpg");
+  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_car.jpg");
 }
 
 header.home_loan{
-  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
-  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
-  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
-  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
-  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/_layouts/Home/bg.jpg");
+  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/bg.jpg");
+  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/bg.jpg");
+  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/bg.jpg");
+  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/bg.jpg");
+  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/bg.jpg");
 }
 
 header.education_loan{
-  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_edu.jpg");
-  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_edu.jpg"); 
-  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_edu.jpg"); 
-  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_edu.jpg"); 
-  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("../img/header_edu.jpg");
+  background-image: linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_edu.jpg");
+  background-image: -webkit-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_edu.jpg");
+  background-image:    -moz-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_edu.jpg");
+  background-image:     -ms-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_edu.jpg");
+  background-image:      -o-linear-gradient(rgba(21, 84, 154, 0.85), rgba(21, 84, 154, 0.85)), url("/img/header_edu.jpg");
 }
 
 header.top-slider{
@@ -954,32 +954,32 @@ section.agents hr{
 }
 
 #agents .parent_circle .child_round_circle_img1 {
-  background: url("../img/agents/1.jpg");
+  /*background: url("/img/1.jpg");*/
   background-size: 100%; 
 }
 
 #agents .parent_circle .child_round_circle_img2 {
-  background: transparent url("../img/agents/2.jpg") repeat scroll 0 -11px/100% auto; 
+  /*background: transparent url("/img//2.jpg") repeat scroll 0 -11px/100% auto;*/
   background-position:top;
 }
 
 #agents .parent_circle .child_round_circle_img3 {
-  background: url("../img/agents/3.jpg");
+  /*background: url("/img/3.jpg");*/
   background-size: 100%; 
 }
 
 #agents .parent_circle .child_round_circle_img4 {
-  background: url("../img/agents/4.jpg");
+  /*background: url("/img/4.jpg");*/
   background-size: 100%; 
 }
 
 #agents .parent_circle .child_round_circle_img5 {
-  background: url("../img/agents/5.jpg");
+  /*background: url("/img/a5.jpg");*/
   background-size: 100%; 
 }
 
 #agents .parent_circle .child_round_circle_img6 {
-  background: url("../img/agents/6.jpg");
+  /*background: url("/img/a6.jpg");*/
   background-size: 100%; 
 }
 

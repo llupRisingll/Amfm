@@ -26,19 +26,26 @@ class SessionModel {
         self::start();
         // Disallow: User Visit if it is not yet logged in
         if (!self::getLoginStatus()){
-            header("location: /");
+            header("location: /login");
             exit;
         }
     }
     // Log a user
-    public static function setUser(String $username){
+    public static function setUser(String $username, String $hash_id){
         self::start();
         $_SESSION["username"] = $username;
+        $_SESSION["hash_id"] = $hash_id;
     }
     // Log the users id
     public static function setID(String $userID){
         self::start();
         $_SESSION["userID"] = $userID;
+    }
+
+    // Log the user's name
+    public static function setName(String $fn, String $ln){
+        self::start();
+        $_SESSION["name"] = $fn. " ".$ln;
     }
     // Get Logged user
     public static function getUser(){
@@ -49,6 +56,16 @@ class SessionModel {
     public static function getUserID(){
         self::start();
         return $_SESSION["userID"];
+    }
+    // Get Logged User ID
+    public static function getName(){
+        self::start();
+        return ucwords($_SESSION["name"]);
+    }
+    // Get Logged User HASHID
+    public static function getHash(){
+        self::start();
+        return $_SESSION["hash_id"];
     }
     // Destroy the session
     public static function destroy(){
