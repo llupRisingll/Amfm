@@ -13,7 +13,7 @@ class DatabaseModel {
         }
 
         // Get authentication credentials from the configuration file
-        $AC = Route::config("luis_db");
+        $AC = Route::config("kim_db");
 
         // Connect to the Database Server
         $DB = new Plugins\MySQLiPDO();
