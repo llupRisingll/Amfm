@@ -1,0 +1,67 @@
+<!-- HTML/TWIG body content here -->
+
+{% set page = "profile" %}
+{% include "Profile/header.twig" %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 ">
+            <div class="card">
+                <div class="card-body">
+
+                    <div>
+                        <h5 class="text-muted">Binary level Income: </h5>
+                        <input type="text" class="form-control disabled" value="PHP 5,000" style="display: inline-block; width: 335px; text-align: right" disabled>
+                        <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer">Transfer fund</button>
+                    </div>
+                    <hr class="sepator">
+
+                    <div>
+                        <h5 class="text-muted">Uni level Income: </h5>
+                        <input type="text" class="form-control disabled" value="PHP 5,000" style="display: inline-block; width: 335px; text-align: right" disabled>
+                        <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer">Transfer fund</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 p-2">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <h5 class="text-muted">E-Wallet Amount: </h5>
+                        <input type="text" class="form-control disabled" value="PHP 5,000" style="display: inline-block; width: 427px; text-align: right" disabled>
+                    </div>
+                    <hr class="sepator">
+                    <div>
+                        <h5 class="text-muted">Enter Amount: </h5>
+                        <input type="text" class="form-control disabled" style="display: inline-block; width: 307px; text-align: right">
+                        <button class="btn btn-outline-primary m-2" style="display: inline-block;">withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Transfer-->
+<div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="exampleModalLabel">Transfer Amount:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Input the amount you want to transfer to E-Wallet</span>
+                <input type="number" class="form-control" placeholder="input amount">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Transfer</button>
+            </div>
+        </div>
+    </div>
+</div>

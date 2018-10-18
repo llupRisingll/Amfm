@@ -5,5 +5,9 @@
     "\/signup": "signupPresenter.php",
     "\/logout": "logoutPresenter.php",
     "\/unilevel": "unilevelPresenter.php",
-    "\/profile": "ProfilePresenter.php"
+    "\/profile": "ProfilePresenter.php",
+    "\/eWallet": "eWalletPresenter.php",
+    "\/accnt_set": "accnt_setPresenter.php",
+    "\/change_pass": "change_passPresenter.php"
+
 }
