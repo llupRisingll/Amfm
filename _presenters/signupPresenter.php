@@ -6,6 +6,7 @@ class signupPresenter {
 		\Plugins\FlashCard::setFlashCard(
 			"Registration Error", "/signup", $msg
 		);
+//		echo $msg;
 		header("location: /signup");
 		exit;
 	}
@@ -19,7 +20,7 @@ class signupPresenter {
         View::addVar("BODY_CLASS", "bg-light");
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
-	    View::addVar("fc", Plugins\FlashCard::getFlashCard()[0]);
+	    View::addVar("fc", \Plugins\FlashCard::getFlashCard()[0]);
     }
 
     public function post(){
@@ -36,6 +37,7 @@ class signupPresenter {
         $pwd = Params::get("pwd");
         $cfpwd = Params::get("cfpwd");
 
+        var_dump(Params::getAll());
         // Check kung may laman ang gabos na data
         if(!isset($first_name, $last_name, $address, $contact_num, $usn, $pwd, $cfpwd)){
 	        self::showError(" Fill all forms of data!");
@@ -85,10 +87,10 @@ class signupPresenter {
         }
 
         // Start the Registration Backend process
-        $registered = RegisterAuthModel::register($first_name, $last_name, $birth_date, $address, $email_add, $contact_num, $usn, $pwd, $cfpwd);
+        $registered = RegisterAuthModel::register($first_name, $last_name, $birth_date, $address, $email_add, $contact_num, $usn, $pwd);
 
         if ($registered === true){
-	        \Plugins\FlashCard::setFlashCard("Registration Success", "/login", " You may now login and proceed. Thank you.");
+	        \Plugins\FlashCard::setFlashCard("Registration Success", "/login", " Thank you for joining with us. Your journey to rise starts now!");
 	        header("location: /login");
 	        exit;
         }
