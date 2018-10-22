@@ -33,6 +33,10 @@ class unilevelPresenter {
 	    // Import Bootstrap Javascript
 	    View::addScript("http://" . Route::domain() . "/js/" . md5("Bootstrap") . ".min.js");
 
+	    // Use the server domain name address on the layout
+	    View::addVar("DN", Route::domain());
+	    View::addVar("HASH_ID", SessionModel::getHash());
+
     }
     // HTTP Header Method: POST
     // Usually used when to insert a new data
