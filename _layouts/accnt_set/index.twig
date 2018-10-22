@@ -6,10 +6,12 @@
         <div class="float-left ml-3 mt-0">
             <h3 >{{ FULL_NAME }}</h3>
             <div class="mt-1">
-                <strong>Username: </strong><span></span>
+                <strong>Username: </strong>{{ username }}<span></span>
             </div>
             <div class="mt-1">
-                <strong>Password: </strong><span>ENCRYPTED</span>
+                <strong>Password: </strong>
+                {#<span style="font-style: italic">ENCRYPTED </span>#}
+                <a href="/account/password">Encrypted, click to change</a>
             </div>
             <div class="mt-1">
                 <a href="#" data-target="#editbasicInfo" data-toggle="modal">Edit basic info</a>
