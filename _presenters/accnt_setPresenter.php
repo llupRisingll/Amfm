@@ -3,6 +3,8 @@ class accnt_setPresenter {
     // HTTP Header Method: GET
     // Used to retrive a data or a view
     public function get(){
+    	SessionModel::restrictNotLogged();
+
         View::addVar("view_title", "Account Settings");
         View::addVar("BODY_CLASS", "bg-light");
         View::addVar("username", SessionModel::getUser());

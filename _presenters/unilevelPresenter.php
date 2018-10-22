@@ -3,6 +3,8 @@ class unilevelPresenter {
     // HTTP Header Method: GET
     // Used to retrive a data or a view
     public function get() {
+	    SessionModel::restrictNotLogged();
+
 	    View::addVar("view_title", "Unilevel");
 	    View::addVar("BODY_CLASS", "bg-light");
 

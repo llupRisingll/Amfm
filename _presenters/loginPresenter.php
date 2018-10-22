@@ -16,7 +16,7 @@ class loginPresenter {
         View::addCSS("/_layouts/login/login.css");
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
-        View::addVar("fc", Plugins\FlashCard::getFlashCard()[0]);
+        View::addVar("fc", @Plugins\FlashCard::getFlashCard()[0]);
 
 	    View::addScript("/_layouts/Home/js/jquery.min.js");
 	    View::addScript("/_layouts/Home/js/bootstrap.min.js");

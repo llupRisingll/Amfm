@@ -1,4 +1,6 @@
 {
+    "activeDB": "luis_db",
+
     "production": false,
     "time_record": false,
     "cache": false,
