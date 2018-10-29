@@ -17,4 +17,3 @@ class BinPathModel {
     		WHERE b.anc = :user_id";
     }
 }
-    
