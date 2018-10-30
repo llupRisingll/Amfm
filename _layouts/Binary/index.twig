@@ -90,9 +90,36 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("#proceed").on("click", function () {
-				alert($(this).data("target"));
+				var self = $(this),                     {# The current Element #}
+					parentID = self.data("target"),     {# the id of the person invites you #}
+					origBtnText = self.text();          {# save the original button text #}
 
 				// Ajax Request to the binary request
+				var JQXHR = $.ajax({
+					type: "POST",
+					url: "binary",
+					data: {"targetID": parentID},
+					beforeSend: function () {
+						{# Change the button text and disable it before sending the server request #}
+						self.text("Sending Request...");
+						self.attr("disabled", "disabled");
+					}
+				})
+
+				{# Get the server response when the request is successful #}
+				JQXHR.done(function(data){
+					alert("done");
+					console.log(data);
+				});
+
+				JQXHR.fail(function(xhr, status, error) {
+					{# Show the Server Error #}
+					alert("Server Error: An internet connection distortion occur while trying to send your request. Please try again later");
+
+					{# Bring back the original text and remove the disable attribute #}
+					self.text(origBtnText);
+					self.removeAttr("disabled");
+				});
 			});
 		});
 	</script>

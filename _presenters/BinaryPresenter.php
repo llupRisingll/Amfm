@@ -41,10 +41,13 @@ class BinaryPresenter {
         View::addVar("HASH_ID", SessionModel::getHash());
     }
 
-    // HTTP Header Method: POST
-    // Usually used when to insert a new data
     public function post(){
-        Route::returnCode(401);
+    	// Require the following Parameter to use the post method
+    	Params::require("targetID");
+
+    	// Send a server response
+    	echo Params::get("targetID");
+    	exit;
     }
 
     // HTTP Header Method: PUT
