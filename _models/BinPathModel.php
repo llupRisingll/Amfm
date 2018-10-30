@@ -2,8 +2,8 @@
 class BinPathModel {
     public static function checkReference(String $ref){
 	    // Database connection
-	    $database = DatabaseModel::db();
-	    $connection = DatabaseModel::getConnection();
+	    $database = DatabaseModel::initConnections();
+	    $connection = DatabaseModel::getMainConnection();
 
 	    // Process of querying data
 	    $sql = "SELECT `id`  FROM `accounts` WHERE `hash_id`=:REF LIMIT 1";

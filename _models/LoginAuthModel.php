@@ -3,8 +3,8 @@ class LoginAuthModel {
 
     public static function checkAccount($usn, $pwd) {
         // Database connection
-        $database = DatabaseModel::db();
-        $connection = DatabaseModel::getConnection();
+        $database = DatabaseModel::initConnections();
+        $connection = DatabaseModel::getMainConnection();
 
         // Process of querying data
         $sql = "SELECT id, hash_id FROM `accounts` WHERE `username`=:username AND `pass`=:password LIMIT 1";
@@ -33,8 +33,8 @@ class LoginAuthModel {
 
     public static function saveFullName($ID){
 	    // Database connection
-	    $database = DatabaseModel::db();
-	    $connection = DatabaseModel::getConnection();
+	    $database = DatabaseModel::initConnections();
+	    $connection = DatabaseModel::getMainConnection();
 
 	    /// Process of querying data
         $sql = "SELECT `fn`, `ln` FROM `account_info` WHERE `accnt_id`=:userID LIMIT 1";

@@ -7,12 +7,10 @@ class BinaryPresenter {
 	    // Permit only r parameters and remove the others
 	    Params::permit("r");
 
-	    // Add Variable if the reference provided is valid
+	    // Add Variable of the provided reference, use false when not valid.
 	    $_REFERENCE = Params::get("r");
 	    $_REFERENCE = BinPathModel::checkReference($_REFERENCE);
-	    if ($_REFERENCE != false){
-		    View::addVar("VALID_REFERENCE", $_REFERENCE);
-	    }
+	    View::addVar("VALID_REFERENCE", $_REFERENCE);
 
 	    // Set up the body class and the view_title
         View::addVar("view_title", "Binary Affiliation Program");
