@@ -16,6 +16,19 @@
 			    <button class="btn btn-warning mt-2" data-target="{{ VALID_REFERENCE }}" id="proceed">Proceed and Apply Now &raquo;</button>
 		    </div>
 	    </div>
+	{% elseif REFERENCE %}
+		<div class="container card text-center mb-3">
+			<div class="card-body">
+				<h4 align="center" class="text-success">Your application request has been successfully sent.</h4>
+				<hr class="separator">
+				<span>YOu have successfully applied to the company's binary affiliation program.</span>
+				<span>To activate your account, please go yo our office and prepare </span>
+				<span style="text-decoration: underline"><b>PHP</b> 10,000.00</span> as the registration fee. </span>
+				<span>You can also cancel this request if you think that you used a different reference link.</span>
+				<div><b>Reference Used:</b> /{{ REFERENCE.hash }}</div>
+				<button class="btn btn-warning mt-2" data-target="{{ REFERENCE.id }}" id="proceed">Proceed and Apply Now &raquo;</button>
+			</div>
+		</div>
 	{% else %}
 		<div class="container card text-center mb-3">
 			<div class="card-body">
@@ -26,6 +39,7 @@
 			</div>
 		</div>
 	{% endif %}
+
 
 	{%  if binary %}
 	<div class="row mt-3">
