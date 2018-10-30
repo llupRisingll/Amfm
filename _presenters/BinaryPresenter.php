@@ -25,17 +25,16 @@ class BinaryPresenter {
         View::addCSS("/_layouts/Binary/collapsable.css");
 	    View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
-	    // Add the JS dependencies
-        View::addScript("/_layouts/Binary/jquery.min.js");
-        View::addScript("/_layouts/Binary/Treant.js");
-        View::addScript("/_layouts/Binary/jquery.easing.js");
-        View::addScript("/_layouts/Binary/collapsable.js");
-        View::addScript("/_layouts/Binary/collapsable.js");
-        View::addScript("/_layouts/Binary/raphael.js");
-        View::addScript("/_layouts/Binary/raphael.js");
-
         // Add the compiled JS dependencies
+	    View::addScript("http://".Route::domain()."/js/".md5("JQueryOnly").".min.js");
 	    View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
+
+	    // Add the JS dependencies
+	    View::addScript("/_layouts/Binary/Treant.js");
+	    View::addScript("/_layouts/Binary/jquery.easing.js");
+	    View::addScript("/_layouts/Binary/collapsable.js");
+	    View::addScript("/_layouts/Binary/raphael.js");
+	    View::addScript("/_layouts/Binary/raphael.js");
 
         // Use the server domain name address on the layout
         View::addVar("DN", Route::domain());
