@@ -14,10 +14,33 @@
 				<span style="text-decoration: underline"><b>PHP</b> 10,000.00</span> as the registration fee. </span>
 				<span>You can also cancel this request if you think that you used a different reference link.</span>
 				<div><b>Reference Used:</b> /{{ REFERENCE }}</div>
-				<button class="btn btn-warning mt-2" id="cancel">&laquo; Cancel Current Application Request</button>
+				<button class="btn btn-outline-danger mt-2" data-toggle="modal" data-target="#cancelRequest">
+					<span>&laquo; Cancel Current Application Request</span>
+				</button>
 			</div>
 		</div>
 
+
+		{# Cancel Current Application Request Confirmation #}
+		<div class="modal fade" id="cancelRequest" tabindex="-1" role="dialog"  aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header bg-danger text-white">
+						<h5 class="modal-title" >Cancel Binary Application</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Are you sure to cancel this current application?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-danger" id="cancel" data-dismiss="modal">Cancel Request</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	{% elseif VALID_REFERENCE %}
 		<div class="container card text-center">
 			<div class="card-body">
