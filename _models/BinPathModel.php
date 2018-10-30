@@ -27,6 +27,39 @@ class BinPathModel {
 	    return $resultArray["id"];
     }
 
+
+    public static function addPending(String $parentID, String $type){
+	    // Database connection
+	    $database = DatabaseModel::initConnections();
+	    $connection = DatabaseModel::getMainConnection();
+
+	    try {
+		    // Save the account auth data
+		    $prepared = $database->mysqli_prepare($connection, "
+                INSERT INTO `pending_requests`(`user_id`, `parent_id`, `type`) 
+                		VALUES (:USER_ID, :PARENT_ID, :TYPE);
+            ");
+
+		    $database->mysqli_execute($prepared, array(
+			    ":USER_ID" => SessionModel::getUserID(),
+			    ":PARENT_ID" => $parentID,
+			    ":TYPE" => $type
+		    ));
+
+		    return true;
+
+	    } catch(Exception $e){
+		    /**
+		     * An exception has occured, which means that one of our database queries
+		     * failed. Print out the error message.
+		     */
+		    echo $e->getMessage();
+
+		    return false;
+	    }
+
+    }
+
     public static function addNode($parent, $id){
     	"INSERT INTO `binpath`(`anc`, `desc`, `parent`)
 			(SELECT `anc`, 65 AS `desc`,  64 AS `parent` FROm `binpath` WHERE `desc`=64) UNION

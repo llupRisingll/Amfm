@@ -45,8 +45,14 @@ class BinaryPresenter {
     	// Require the following Parameter to use the post method
     	Params::require("targetID");
 
+    	$pendingStatus = BinPathModel::addPending(Params::get("targetID"), "binary");
+    	if ($pendingStatus){
+    		echo 1;
+    		exit;
+	    }
+
     	// Send a server response
-    	echo Params::get("targetID");
+    	echo -1;
     	exit;
     }
 
