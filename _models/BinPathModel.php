@@ -88,7 +88,34 @@ class BinPathModel {
 
 		    return false;
 	    }
+    }
 
+    public static function removePending(String $type){
+		// DELETE FROM DATABASE algorithm
+	    // Database connection
+	    $database = DatabaseModel::initConnections();
+	    $connection = DatabaseModel::getMainConnection();
+
+	    try {
+		    // Save the account auth data
+		    $prepared = $database->mysqli_prepare($connection, "
+                DELETE FROM `pending_requests` WHERE `type`=:TYPE AND `user_id`=:USER_ID;
+            ");
+
+		    $database->mysqli_execute($prepared, array(
+			    ":USER_ID" => SessionModel::getUserID(),
+			    ":TYPE" => $type
+		    ));
+
+		    return true;
+	    } catch(Exception $e){
+		    /**
+		     * An exception has occured, which means that one of our database queries
+		     * failed. Print out the error message.
+		     */
+		    echo $e->getMessage();
+		    return false;
+	    }
     }
 
     public static function addNode($parent, $id){

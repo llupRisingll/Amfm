@@ -15,7 +15,7 @@
 				<span>You can also cancel this request if you think that you used a different reference link.</span>
 				<div><b>Reference Used:</b> /{{ REFERENCE }}</div>
 				<button class="btn btn-outline-danger mt-2" data-toggle="modal" data-target="#cancelRequest">
-					<span>&laquo; Cancel Current Application Request</span>
+					<span id="cancelText">&laquo; Cancel Current Application Request</span>
 				</button>
 			</div>
 		</div>
@@ -123,8 +123,50 @@
 	{% endif %}
 </div>
 
+{# When a reference is already used in an account #}
+{% if REFERENCE %}
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#cancel").on("click", function () {
+				var cancelButtonText = $("#cancelText"),                     {# The current Element #}
+					origBtnText = cancelButtonText.text(),          {# save the original button text #}
+					errorMethod = function () {         {# Use this when an error has occured #}
+						{# Show the Server Error #}
+						alert("Server Error: An internet connection distortion occur while trying to send your request. Please try again later");
+
+						{# Bring back the original text and remove the disable attribute #}
+						cancelButtonText.text(origBtnText);
+						cancelButtonText.parent().removeAttr("disabled");
+					};
+
+				{# Ajax Request to the binary request #}
+				var JQXHR = $.ajax({
+					type: "POST",
+					url: "binary",
+					data: {"cancelRequest": 1},
+					beforeSend: function () {
+						{# Change the button text and disable it before sending the server request #}
+						cancelButtonText.text("Sending Request...");
+						cancelButtonText.parent().attr("disabled", "disabled");
+					}
+				})
+
+				{# Get the server response when the request is successful #}
+				JQXHR.done(function(data){
+					if (data == "1"){
+						location.href = "binary";
+						return;
+					}
+					{# Show server error message #}
+					errorMethod();
+				});
+
+				JQXHR.fail(errorMethod);
+			});
+		});
+	</script>
 {# When a valid reference is provided #}
-{% if VALID_REFERENCE %}
+{% elseif VALID_REFERENCE %}
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("#proceed").on("click", function () {
@@ -167,6 +209,7 @@
 		});
 	</script>
 {% endif %}
+
 
 {# When the account is activated in binary program #}
 {%  if binary %}

@@ -49,16 +49,25 @@ class BinaryPresenter {
 
     public function post(){
     	// Require the following Parameter to use the post method
-    	Params::require("targetID");
+    	Params::permit("targetID", "cancelRequest");
 
-    	$pendingStatus = BinPathModel::addPending(Params::get("targetID"), "binary");
-    	if ($pendingStatus){
-    		echo 1;
-    		exit;
-	    }
+	    if (Params::get("cancelRequest")){
+			$removedPending = BinPathModel::removePending("binary");
+			if ($removedPending){
+				echo 1;
+				exit;
+			}
+		}
+
+		if (Params::get("targetID")){
+			$pendingStatus = BinPathModel::addPending(Params::get("targetID"), "binary");
+			if ($pendingStatus){
+				echo 1;
+				exit;
+			}
+		}
 
     	// Send a server response
-    	echo -1;
     	exit;
     }
 
