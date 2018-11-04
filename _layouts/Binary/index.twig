@@ -124,19 +124,64 @@
 {# When the account is activated in binary program #}
 {%  if BINARY %}
 	<script type="text/javascript">
-		var tree = new Treant( chart_config, null, $);
-
 		$(document).ready(function () {
+			var chart_config = [config, {
+				HTMLid: "a_{{ USER_ID }}",
+				image: "img/person_icon.png"
+			}];
+			var tree = new Treant( chart_config, null, $);
+
+			var addNode = function(parentNode, dataArr){
+				return tree.tree.addNode(parentNode.data("treenode"), dataArr);
+			}
+
+			var collapseNode = function (parentNode) {
+				return  parentNode.data("treenode").collapse();
+			}
+			
+			var errorMethod = function () {
+				{# Show the Server Error #}
+				alert("Server Error: An internet connection distortion occur while trying to send your request. Please try again later");
+
+			}
+
+			// TODO: Change it to treeNode > addperson, then use ajax to update modal
 			$(".add-person").on("click", function (e) {
 				alert("asd");
 			});
 
-			$("#malory").data("treenode").collapse();
-			tree.tree.addNode($("#malory").data("treenode"), acctList.lana);
-			tree.tree.addNode($("#lana").data("treenode"), acctList.figgs);
-			$("#malory").data("treenode").expand();
+//			addNode($("#malory"), acctList.lana);
+//			addNode($("#lana"), acctList.figgs);
+//			addNode($("#lana"), acctList.plus);
+//			addNode($("#lana"), acctList.plus);
+			collapseNode($("#a_{{ USER_ID }}"));
 
+			{# Ajax Request to the binary request #}
+			var JQXHR = $.ajax({
+				type: "POST",
+				url: "binary",
+				data: {"getNodes": 1},
+				beforeSend: function () {
+					{# On the future use this to display updating data #}
+				}
+			})
 
+			{# Get the server response when the request is successful #}
+			JQXHR.done(function(data){
+				if (data.length > 0){
+					data = JSON.parse(data);
+
+					for (var i=0; i < data.length; i++){
+						addNode($("#"+data[i]["parentId"]), data[i]);
+					}
+
+					return;
+				}
+				{# Show server error message #}
+				errorMethod();
+			});
+
+			JQXHR.fail(errorMethod);
 		});
 	</script>
 

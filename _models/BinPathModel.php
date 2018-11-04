@@ -124,16 +124,53 @@ class BinPathModel {
     }
 
     public static function addNode($parent, $id){
-/*
+
 		echo "INSERT INTO `binpath`(`anc`, `desc`, `parent`)
 			(SELECT `anc`, $id AS `desc`,  $parent AS `parent` FROm `binpath` WHERE `desc`=$parent) UNION
- 			(SELECT $id AS `enc`,$id AS `desc`, $parent AS `parent`);";*/
+ 			(SELECT $id AS `enc`,$id AS `desc`, $parent AS `parent`);";
     }
 
-    public static function selectNodes($user_id){
-    	"SELECT a.*, b.parent FROM `accounts` a 
+    public static function selectNodes(){
+	    // Database connection
+	    $database = DatabaseModel::initConnections();
+	    $connection = DatabaseModel::getMainConnection();
+
+	    // Process of querying data
+	    $sql = "SELECT a.*, b.parent FROM `accounts` a 
 			JOIN `binpath` b
     			ON (a.id=b.`desc`)
-    		WHERE b.anc = :user_id";
+    		WHERE b.anc = :USER_ID AND  a.id != :USER_ID";
+
+	       $prepare = $database->mysqli_prepare($connection, $sql);
+	    $database->mysqli_execute($prepare, array(
+		    ":USER_ID" => SessionModel::getUserID()
+	    ));
+
+	    // Get the matched data from the database
+	    $result = $database->mysqli_fetch_assoc($prepare);
+
+	    // Return false when the reference provided is wrong
+	    if (count($result) < 1)
+		    return false;
+
+	    // Return the user id and hash from the database
+	    return self::node2JSON($result);
+    }
+
+    private static function node2JSON(Array $nodeData){
+		$jsonArr = array();
+
+		foreach ($nodeData as $nodes){
+			$dataArr = array(
+				"collapsed" =>  true,
+				"image" => "img/person_icon.png",
+				"HTMLid" => "a_".$nodes["id"],
+				"parentId" => "a_".$nodes["parent"]
+			);
+
+			array_push($jsonArr, $dataArr);
+		}
+
+		return json_encode($jsonArr,JSON_PRETTY_PRINT);
     }
 }

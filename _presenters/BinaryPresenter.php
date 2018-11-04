@@ -31,6 +31,7 @@ class BinaryPresenter {
 	    // Use the server domain name address on the layout
 	    View::addVar("DN", Route::domain());
 	    View::addVar("HASH_ID", SessionModel::getHash());
+	    View::addVar("USER_ID", SessionModel::getUserID());
 
 	    // Check of already registered on the binary program
 	    if (SessionModel::getBinStatus()){
@@ -60,22 +61,28 @@ class BinaryPresenter {
 
     public function post(){
     	// Require the following Parameter to use the post method
-    	Params::permit("targetID", "cancelRequest");
+    	Params::permit("targetID", "cancelRequest", "getNodes");
+
+    	if (Params::get("getNodes")){
+    		$dbData = BinPathModel::selectNodes();
+    		echo ($dbData);
+    		exit;
+	    }
 
 	    if (Params::get("cancelRequest")){
 			$removedPending = BinPathModel::removePending("binary");
 			if ($removedPending){
 				echo 1;
-				exit;
 			}
-		}
+		    exit;
+	    }
 
 		if (Params::get("targetID")){
 			$pendingStatus = BinPathModel::addPending(Params::get("targetID"), "binary");
 			if ($pendingStatus){
 				echo 1;
-				exit;
 			}
+			exit;
 		}
 
     	// Send a server response
