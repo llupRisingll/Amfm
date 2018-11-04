@@ -48,6 +48,8 @@ class loginPresenter {
         if ($account !== false){
             // Save the session
             SessionModel::setUser($usn, $account["hash_id"]);
+            SessionModel::setBinStatus($account["bin_active"]);
+            SessionModel::setUniStatus($account["uni_active"]);
             SessionModel::setID($account["id"]);
 
             // Reload the page to redirect to the new page

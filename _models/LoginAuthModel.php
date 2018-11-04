@@ -7,7 +7,10 @@ class LoginAuthModel {
         $connection = DatabaseModel::getMainConnection();
 
         // Process of querying data
-        $sql = "SELECT id, hash_id FROM `accounts` WHERE `username`=:username AND `pass`=:password LIMIT 1";
+        $sql = "SELECT id, hash_id, `bin_active`, `uni_active` 
+					FROM `accounts` 
+				WHERE `username`=:username 
+					AND `pass`=:password LIMIT 1";
         $prepare = $database->mysqli_prepare($connection, $sql);
         $database->mysqli_execute($prepare, array(
             ':username'=>$usn,

@@ -4,7 +4,63 @@
 
 <div class="container-fluid mt-3">
 
-	{% if REFERENCE %}
+
+	{%  if BINARY %}
+		<div class="row mt-3">
+			<div class="col-4">
+				<div class="card card-body">
+					<div>
+						<div class="float-left" style="width: 140px; height: 140px; background: url('/img/person_icon.png') no-repeat; background-size: cover"></div>
+						<div class="float-left mt-0 ml-2">
+							<h5 class="m-0">{{ FULL_NAME }}</h5>
+							<div class="mt-1">
+								<b>Level: </b>NAN
+							</div>
+							<div class="mt-1">
+								<b>Direct Referrals: </b>NAN
+							</div>
+							<div class="mt-1">
+								<b>Indirect Referrals: </b>NAN
+							</div>
+							<div class="mt-1">
+								<b>Earnings: PHP </b><span>NAN</span><span>.00</span>
+							</div>
+						</div>
+					</div>
+					<hr class="separator">
+					<div>
+						<b class="float-left">Referral link</b>
+						<a class="float-right" id="copy_link" href="javascript:void(0)">Copy Link</a>
+					</div>
+					<input type="text" id="hash_id" class="form-control" readonly="readonly" value="http://{{ DN }}/binary?ref={{ HASH_ID }}">
+				</div>
+			</div>
+			<div class="col-8">
+				<div class="chart" id="collapsable-example"></div>
+			</div>
+		</div>
+
+		{# Add the pending person #}
+		<div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						...
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% elseif REFERENCE %}
 		<div class="container card text-center mb-3">
 			<div class="card-body">
 				<h4 align="center" class="text-success">Your application request has been successfully sent.</h4>
@@ -63,68 +119,56 @@
 			</div>
 		</div>
 	{% endif %}
-
-
-	{%  if binary %}
-	<div class="row mt-3">
-        <div class="col-4">
-            <div class="card card-body">
-                <div>
-                    <div class="float-left" style="width: 140px; height: 140px; background: url('/img/person_icon.png') no-repeat; background-size: cover"></div>
-                    <div class="float-left mt-0 ml-2">
-                        <h5 class="m-0">{{ FULL_NAME }}</h5>
-                        <div class="mt-1">
-                            <b>Level: </b>NAN
-                        </div>
-                        <div class="mt-1">
-                            <b>Direct Referrals: </b>NAN
-                        </div>
-                        <div class="mt-1">
-                            <b>Indirect Referrals: </b>NAN
-                        </div>
-                        <div class="mt-1">
-                            <b>Earnings: PHP </b><span>NAN</span><span>.00</span>
-                        </div>
-                    </div>
-                </div>
-                <hr class="separator">
-                <div>
-                    <b class="float-left">Referral link</b>
-                    <a class="float-right" id="copy_link" href="javascript:void(0)">Copy Link</a>
-                </div>
-                <input type="text" id="hash_id" class="form-control" readonly="readonly" value="http://{{ DN }}/binary?ref={{ HASH_ID }}">
-            </div>
-        </div>
-        <div class="col-8">
-            <div class="chart" id="collapsable-example"></div>
-        </div>
-    </div>
-
-	{# Add the pending person #}
-	<div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					...
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	{% endif %}
 </div>
 
+{# When the account is activated in binary program #}
+{%  if BINARY %}
+	<script type="text/javascript">
+		var tree = new Treant( chart_config, null, $);
+
+		$(document).ready(function () {s
+			$(".add-person").on("click", function (e) {
+				alert("asd");
+			});
+
+
+			$("#malory").data("treenode").collapse();
+			tree.tree.addNode($("#malory").data("treenode"), acctList.lana);
+			tree.tree.addNode($("#lana").data("treenode"), acctList.figgs);
+			$("#malory").data("treenode").expand();
+
+
+			function copyToClipboard(text) {
+				var textArea = document.createElement( "textarea" );
+				textArea.value = text;
+				document.body.appendChild( textArea );
+
+				textArea.select();
+
+				try {
+					var successful = document.execCommand( 'copy' );
+					var msg = successful ? 'successful' : 'unsuccessful';
+					console.log('Copying text command was ' + msg);
+				} catch (err) {
+					console.log('Oops, unable to copy');
+				}
+
+				document.body.removeChild( textArea );
+			}
+			// Copy Link
+			$("#copy_link").on("click", function (e) {
+				var hash_id = $("#hash_id");
+				var clipboardText = $( '#hash_id' ).val();
+				copyToClipboard( clipboardText );
+				alert( "Copied to Clipboard" );
+
+				hash_id.select();
+			});
+		});
+	</script>
+
 {# When a reference is already used in an account #}
-{% if REFERENCE %}
+{% elseif REFERENCE %}
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("#cancel").on("click", function () {
@@ -210,50 +254,3 @@
 	</script>
 {% endif %}
 
-
-{# When the account is activated in binary program #}
-{%  if binary %}
-	<script type="text/javascript">
-		var tree = new Treant( chart_config, null, $);
-
-		$(document).ready(function () {
-			$(".add-person").on("click", function (e) {
-				alert("asd");
-			});
-
-
-			$("#malory").data("treenode").collapse();
-			tree.tree.addNode($("#malory").data("treenode"), acctList.lana);
-			tree.tree.addNode($("#lana").data("treenode"), acctList.figgs);
-			$("#malory").data("treenode").expand();
-
-
-			function copyToClipboard(text) {
-				var textArea = document.createElement( "textarea" );
-				textArea.value = text;
-				document.body.appendChild( textArea );
-
-				textArea.select();
-
-				try {
-					var successful = document.execCommand( 'copy' );
-					var msg = successful ? 'successful' : 'unsuccessful';
-					console.log('Copying text command was ' + msg);
-				} catch (err) {
-					console.log('Oops, unable to copy');
-				}
-
-				document.body.removeChild( textArea );
-			}
-			// Copy Link
-			$("#copy_link").on("click", function (e) {
-				var hash_id = $("#hash_id");
-				var clipboardText = $( '#hash_id' ).val();
-				copyToClipboard( clipboardText );
-				alert( "Copied to Clipboard" );
-
-				hash_id.select();
-			});
-		});
-	</script>
-{% endif %}

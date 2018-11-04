@@ -4,34 +4,20 @@ class BinaryPresenter {
     	// Do not allow those users that is not logged
 	    SessionModel::restrictNotLogged();
 
-	    // Permit only r parameters and remove the others
-	    Params::permit("r");
-
-	    // Check if the user has a pending request to the server
-	    $_REFHASH = BinPathModel::checkOnPending("binary");
-	    if ($_REFHASH !== false){
-		    View::addVar("REFERENCE", $_REFHASH);
-	    }else{
-		    // Add Variable of the provided reference, use false when not valid.
-		    $_REFERENCE = Params::get("r");
-		    $_REFERENCE = BinPathModel::checkReference($_REFERENCE);
-		    View::addVar("VALID_REFERENCE", $_REFERENCE);
-	    }
-
 	    // Set up the body class and the view_title
-        View::addVar("view_title", "Binary Affiliation Program");
-        View::addVar("BODY_CLASS", "bg-light");
+	    View::addVar("view_title", "Binary Affiliation Program");
+	    View::addVar("BODY_CLASS", "bg-light");
 
-        // Add the User Data as variables
+	    // Add the User Data as variables
 	    View::addVar("username", SessionModel::getUser());
 	    View::addVar("FULL_NAME", SessionModel::getName());
 
 	    // Add the CSS dependencies
-        View::addCSS("/_layouts/Binary/Treant.css");
-        View::addCSS("/_layouts/Binary/collapsable.css");
+	    View::addCSS("/_layouts/Binary/Treant.css");
+	    View::addCSS("/_layouts/Binary/collapsable.css");
 	    View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
-        // Add the compiled JS dependencies
+	    // Add the compiled JS dependencies
 	    View::addScript("http://".Route::domain()."/js/".md5("JQueryOnly").".min.js");
 	    View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
 
@@ -42,9 +28,34 @@ class BinaryPresenter {
 	    View::addScript("/_layouts/Binary/raphael.js");
 	    View::addScript("/_layouts/Binary/raphael.js");
 
-        // Use the server domain name address on the layout
-        View::addVar("DN", Route::domain());
-        View::addVar("HASH_ID", SessionModel::getHash());
+	    // Use the server domain name address on the layout
+	    View::addVar("DN", Route::domain());
+	    View::addVar("HASH_ID", SessionModel::getHash());
+
+	    // Check of already registered on the binary program
+	    if (SessionModel::getBinStatus()){
+		    View::addVar("BINARY", SessionModel::getBinStatus());
+		    return;
+	    }
+
+	    // Check if the user has a pending request to the server
+	    $_REFHASH = BinPathModel::checkOnPending("binary");
+	    if ($_REFHASH !== false){
+		    View::addVar("REFERENCE", $_REFHASH);
+		    return;
+	    }
+
+	    // Permit only r parameters and remove the others
+	    Params::permit("r");
+
+	    // Add Variable of the provided reference, use false when not valid.
+	    if (Params::get("r")){
+		    $_REFERENCE = Params::get("r");
+		    $_REFERENCE = BinPathModel::checkReference($_REFERENCE);
+		    View::addVar("VALID_REFERENCE", $_REFERENCE);
+		    return;
+	    }
+
     }
 
     public function post(){

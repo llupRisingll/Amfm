@@ -27,6 +27,11 @@ class BinPathModel {
 	    return $resultArray["id"];
     }
 
+    public static function checkAccountStatus(){
+		// Check the status of the account according to its session id
+
+    }
+
 	/**
 	 * Check the current user if it has a pending request
 	 * @param String $type
@@ -119,9 +124,10 @@ class BinPathModel {
     }
 
     public static function addNode($parent, $id){
-    	"INSERT INTO `binpath`(`anc`, `desc`, `parent`)
-			(SELECT `anc`, 65 AS `desc`,  64 AS `parent` FROm `binpath` WHERE `desc`=64) UNION
- 			(SELECT 65 AS `enc`,65 AS `desc`, 64 AS `parent`)";
+/*
+		echo "INSERT INTO `binpath`(`anc`, `desc`, `parent`)
+			(SELECT `anc`, $id AS `desc`,  $parent AS `parent` FROm `binpath` WHERE `desc`=$parent) UNION
+ 			(SELECT $id AS `enc`,$id AS `desc`, $parent AS `parent`);";*/
     }
 
     public static function selectNodes($user_id){
