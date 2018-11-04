@@ -126,11 +126,10 @@
 	<script type="text/javascript">
 		var tree = new Treant( chart_config, null, $);
 
-		$(document).ready(function () {s
+		$(document).ready(function () {
 			$(".add-person").on("click", function (e) {
 				alert("asd");
 			});
-
 
 			$("#malory").data("treenode").collapse();
 			tree.tree.addNode($("#malory").data("treenode"), acctList.lana);
@@ -155,15 +154,19 @@
 
 				document.body.removeChild( textArea );
 			}
-			// Copy Link
-			$("#copy_link").on("click", function (e) {
-				var hash_id = $("#hash_id");
-				var clipboardText = $( '#hash_id' ).val();
-				copyToClipboard( clipboardText );
-				alert( "Copied to Clipboard" );
+		});
+	</script>
 
-				hash_id.select();
-			});
+	{# Coply Referal Link Algorithm #}
+	<script type="text/javascript">
+		// Copy Link
+		$("#copy_link").on("click", function (e) {
+			var hash_id = $("#hash_id");
+			var clipboardText = $( '#hash_id' ).val();
+			copyToClipboard( clipboardText );
+			alert( "Copied to Clipboard" );
+
+			hash_id.select();
 		});
 	</script>
 
