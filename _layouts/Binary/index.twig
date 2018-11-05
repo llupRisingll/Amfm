@@ -41,25 +41,59 @@
 		</div>
 
 		{# Add the pending person #}
-		<div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<h5 class="modal-title">Select Unplotted Invites</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						...
+						<label class="form-control">
+							<input type="radio" name="group1" value="Milk">
+							Milk
+						</label>
+						<label class="form-control">
+							<input type="radio" name="group1" value="Milk">
+							Milk
+						</label>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#confirmAction">
+							<span>Save changes</span>
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		{# Confirmation Modal #}
+		<div class="modal fade" id="confirmAction" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Confirm action</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<span>Plotting your invited persons in the binary tree is permanent and cannot be changed. </span>
+						<span>Do you want to proceed?</span>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addPerson" data-dismiss="modal">
+							<span>Cancel</span>
+						</button>
+						<button type="button" class="btn btn-primary">Proceed</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	{% elseif REFERENCE %}
 		<div class="container card text-center mb-3">
 			<div class="card-body">
