@@ -136,7 +136,7 @@ class BinPathModel {
 	    $connection = DatabaseModel::getMainConnection();
 
 	    // Process of querying data
-	    $sql = "SELECT a.*, b.parent FROM `accounts` a 
+	    $sql = "SELECT a.username, a.id, b.lside, b.parent FROM `accounts` a 
 			JOIN `binpath` b
     			ON (a.id=b.`desc`)
     		WHERE b.anc = :USER_ID AND  a.id != :USER_ID";
@@ -158,48 +158,72 @@ class BinPathModel {
     }
 
     private static function node2JSON(Array $nodeData){
-		$jsonArr = array();
+		$jsonArr = array();     // JS friendly arrays
+		$nodeList = array();    // Node Child Counts
 
-		$nodeList = array();
-
-		// Loop Nodes from database to count the children and
-	    // generate graph JSON
-		foreach ($nodeData as $nodes){
-			$dataArr = array(
-				"collapsed" =>  true,
-				"image" => "img/person_icon.png",
-				"HTMLid" => "a_".$nodes["id"],
-				"parentId" => "a_".$nodes["parent"],
-				"text" => array(
-					"data-toggle" => "tooltip",
-					"data-html" => true,
-					"data-title" => "<b>Username: </b>".$nodes["username"]
-				)
-			);
-			array_push($jsonArr, $dataArr);
-
-			// Increment the parent
-			$nodeList[$nodes["parent"]] += 1;
-		}
-
-		// Loop Nodes from database to generate the plus icon as the last children
-	    foreach ($nodeData as $nodes){
-			// If the node does not have a child
-		    if (!isset($nodeList[$nodes["id"]])){
-			    $dataArr = array(
-				    "image" => "img/plus-logo.png",
-				    "HTMLclass" => "add-person",
-				    "parentId" => "a_".$nodes["id"],
-				    "text" => array(
-				    	"data-toggle" => "modal",
-			            "data-target" => "#addPerson"
-				    )
-			    );
-			    array_push($jsonArr, $dataArr);
-			    array_push($jsonArr, $dataArr);
+	    foreach($nodeData as $nodes){
+	    	if (!isset($nodeList[$nodes["id"]])){
+			    $nodeList[$nodes["id"]] = 0; // default 0 for the children Nodes
 		    }
+
+		    // Increment the parent
+		    $nodeList[$nodes["parent"]] += 1;
 	    }
 
+	    // Generating a node Data config
+	    function addNodeArr(String $parent){
+		    return array(
+			    "image" => "img/plus-logo.png",
+			    "HTMLclass" => "add-person",
+			    "parentId" => "a_".$parent,
+			    "text" => array(
+				    "data-toggle" => "modal",
+				    "data-target" => "#addPerson"
+			    )
+		    );
+	    }
+
+	    // generate the JS Array
+	    foreach($nodeData as $nodes){
+	    	// Person Node Configuration
+		    $personNode = array(
+			    "collapsed" =>  true,
+			    "image" => "img/person_icon.png",
+			    "HTMLid" => "a_".$nodes["id"],
+			    "parentId" => "a_".$nodes["parent"],
+			    "text" => array(
+				    "data-toggle" => "tooltip",
+				    "data-html" => true,
+				    "data-title" => "<b>Username: </b>".$nodes["username"]
+			    )
+		    );
+
+		    // Add 1 plus button and sort dependent to the lside if it has 1 child according to node list count
+		    if (intval($nodeList[$nodes["parent"]]) == 1){
+		    	// Left or Right Positioning
+			    if (!$nodes["lside"]){
+				    // Remove the last element, add the plus button first, then the person
+				    array_push($jsonArr, addNodeArr($nodes["parent"]));
+				    array_push($jsonArr, $personNode);
+			    }else{
+				    array_push($jsonArr, $personNode);
+				    array_push($jsonArr, addNodeArr($nodes["parent"]));
+			    }
+		    }else{
+
+			    // Normally add the person if has no person or has 2 person
+			    array_push($jsonArr, $personNode);
+		    }
+
+		    // Add 2 plus buttons to the nodes that does not have a children according to node list count
+		    if (intval($nodeList[$nodes["id"]]) == 0){
+			    array_push($jsonArr, addNodeArr($nodes["id"]));
+			    array_push($jsonArr, addNodeArr($nodes["id"]));
+		    }
+
+	    }
+
+	    // Encode the the JSON the plot to the Javascript Graph
 		return json_encode($jsonArr,JSON_PRETTY_PRINT);
     }
 }
