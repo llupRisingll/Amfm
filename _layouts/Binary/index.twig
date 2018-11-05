@@ -245,9 +245,6 @@
 						}
 						return;
 					}
-
-					{# Show server error message #}
-					errorMethod();
 				});
 
 				JQXHR.fail(errorMethod);
@@ -304,13 +301,8 @@
 							title: $("#"+data[i]["HTMLid"]).attr("data-title")
 						});
 					}
-
-
 					return;
 				}
-
-				{# Show server error message #}
-				errorMethod();
 			});
 
 			JQXHR.fail(errorMethod);
