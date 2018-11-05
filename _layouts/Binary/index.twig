@@ -125,11 +125,11 @@
 {%  if BINARY %}
 	<script type="text/javascript">
 		$(document).ready(function () {
-			var chart_config = [config, {
+			{# Initialize the Treant JS #}
+			var tree = new Treant( [config, {
 				HTMLid: "a_{{ USER_ID }}",
 				image: "img/person_icon.png"
-			}];
-			var tree = new Treant( chart_config, null, $);
+			}], null, $);
 
 			var addNode = function(parentNode, dataArr){
 				return tree.tree.addNode(parentNode.data("treenode"), dataArr);
@@ -150,10 +150,7 @@
 				alert("asd");
 			});
 
-//			addNode($("#malory"), acctList.lana);
-//			addNode($("#lana"), acctList.figgs);
-//			addNode($("#lana"), acctList.plus);
-//			addNode($("#lana"), acctList.plus);
+			// Collapse the parentNode
 			collapseNode($("#a_{{ USER_ID }}"));
 
 			{# Ajax Request to the binary request #}
@@ -171,12 +168,21 @@
 				if (data.length > 0){
 					data = JSON.parse(data);
 
+					{# Generate Node #}
 					for (var i=0; i < data.length; i++){
 						addNode($("#"+data[i]["parentId"]), data[i]);
+
+						{# Generate Tooltip #}
+						$('[data-toggle="tooltip"]').tooltip({
+							html:true,
+							title: $("#"+data[i]["HTMLid"]).attr("data-title")
+						});
 					}
+
 
 					return;
 				}
+
 				{# Show server error message #}
 				errorMethod();
 			});

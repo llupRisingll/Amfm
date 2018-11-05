@@ -160,16 +160,45 @@ class BinPathModel {
     private static function node2JSON(Array $nodeData){
 		$jsonArr = array();
 
+		$nodeList = array();
+
+		// Loop Nodes from database to count the children and
+	    // generate graph JSON
 		foreach ($nodeData as $nodes){
 			$dataArr = array(
 				"collapsed" =>  true,
 				"image" => "img/person_icon.png",
 				"HTMLid" => "a_".$nodes["id"],
-				"parentId" => "a_".$nodes["parent"]
+				"parentId" => "a_".$nodes["parent"],
+				"text" => array(
+					"data-toggle" => "tooltip",
+					"data-html" => true,
+					"data-title" => "<b>Username: </b>".$nodes["username"]
+				)
 			);
-
 			array_push($jsonArr, $dataArr);
+
+			// Increment the parent
+			$nodeList[$nodes["parent"]] += 1;
 		}
+
+		// Loop Nodes from database to generate the plus icon as the last children
+	    foreach ($nodeData as $nodes){
+			// If the node does not have a child
+		    if (!isset($nodeList[$nodes["id"]])){
+			    $dataArr = array(
+				    "image" => "img/plus-logo.png",
+				    "HTMLclass" => "add-person",
+				    "parentId" => "a_".$nodes["id"],
+				    "text" => array(
+				    	"data-toggle" => "modal",
+			            "data-target" => "#addPerson"
+				    )
+			    );
+			    array_push($jsonArr, $dataArr);
+			    array_push($jsonArr, $dataArr);
+		    }
+	    }
 
 		return json_encode($jsonArr,JSON_PRETTY_PRINT);
     }
