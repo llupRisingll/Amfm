@@ -61,7 +61,13 @@ class BinaryPresenter {
 
     public function post(){
     	// Require the following Parameter to use the post method
-    	Params::permit("targetID", "cancelRequest", "getNodes");
+    	Params::permit("targetID", "cancelRequest", "getNodes", "getPending");
+
+    	if (Params::get("getPending")){
+		    $dbData = BinPathModel::checkPendingPath();
+		    echo ($dbData);
+		    exit;
+	    }
 
     	if (Params::get("getNodes")){
     		$dbData = BinPathModel::selectNodes();

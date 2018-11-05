@@ -27,9 +27,30 @@ class BinPathModel {
 	    return $resultArray["id"];
     }
 
-    public static function checkAccountStatus(){
+    public static function checkPendingPath(){
 		// Check the status of the account according to its session id
+	    // Database connection
+	    $database = DatabaseModel::initConnections();
+	    $connection = DatabaseModel::getMainConnection();
 
+	    // Process of querying data
+	    $sql = "SELECT `invitee_id`, `username` FROM `pending_binpath` pbp 
+					LEFT JOIN accounts a ON pbp.`invitee_id`=a.id
+				 WHERE `invitor_id` = :USER_ID";
+	    $prepare = $database->mysqli_prepare($connection, $sql);
+	    $database->mysqli_execute($prepare, array(
+		    ":USER_ID" => SessionModel::getUserID()
+	    ));
+
+	    // Get the matched data from the database
+	    $result = $database->mysqli_fetch_assoc($prepare);
+
+	    // Return false when there is no result found
+	    if (count($result) < 1)
+		    return false;
+
+	    // Return the user id and hash from the database
+	    return json_encode($result, JSON_PRETTY_PRINT);
     }
 
 	/**
@@ -178,7 +199,8 @@ class BinPathModel {
 			    "parentId" => "a_".$parent,
 			    "text" => array(
 				    "data-toggle" => "modal",
-				    "data-target" => "#addPerson"
+				    "data-target" => "#addPerson",
+				    "data-parent" => $parent
 			    )
 		    );
 	    }
@@ -194,7 +216,7 @@ class BinPathModel {
 			    "text" => array(
 				    "data-toggle" => "tooltip",
 				    "data-html" => true,
-				    "data-title" => "<b>Username: </b>".$nodes["username"]
+				    "data-title" => "<b>Username: </b>".$nodes["username"],
 			    )
 		    );
 
@@ -202,12 +224,16 @@ class BinPathModel {
 		    if (intval($nodeList[$nodes["parent"]]) == 1){
 		    	// Left or Right Positioning
 			    if (!$nodes["lside"]){
+
 				    // Remove the last element, add the plus button first, then the person
 				    array_push($jsonArr, addNodeArr($nodes["parent"]));
 				    array_push($jsonArr, $personNode);
 			    }else{
+				    $rightNode = addNodeArr($nodes["parent"]);
+				    $rightNode["text"]["data-r"] = "true";
+
 				    array_push($jsonArr, $personNode);
-				    array_push($jsonArr, addNodeArr($nodes["parent"]));
+				    array_push($jsonArr, $rightNode);
 			    }
 		    }else{
 
@@ -217,8 +243,11 @@ class BinPathModel {
 
 		    // Add 2 plus buttons to the nodes that does not have a children according to node list count
 		    if (intval($nodeList[$nodes["id"]]) == 0){
+			    $rightNode = addNodeArr($nodes["id"]);
+			    $rightNode["text"]["data-r"] = "true";
+
 			    array_push($jsonArr, addNodeArr($nodes["id"]));
-			    array_push($jsonArr, addNodeArr($nodes["id"]));
+			    array_push($jsonArr, $rightNode);
 		    }
 
 	    }

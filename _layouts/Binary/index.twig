@@ -1,7 +1,6 @@
 
 {% set page = "binary" %}
 {% include "Profile/header.twig" %}
-
 <div class="container-fluid mt-3">
 
 
@@ -45,20 +44,13 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Select Unplotted Invites</h5>
+						<h5 class="modal-title">Select Not plotted Invites</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						<label class="form-control">
-							<input type="radio" name="group1" value="Milk">
-							Milk
-						</label>
-						<label class="form-control">
-							<input type="radio" name="group1" value="Milk">
-							Milk
-						</label>
+						Loading... Please wait...
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -158,6 +150,59 @@
 {# When the account is activated in binary program #}
 {%  if BINARY %}
 	<script type="text/javascript">
+		var errorMethod = function () {
+			{# Show the Server Error #}
+			alert("Server Error: An internet connection distortion occur while trying to send your request. Please try again later");
+		}
+
+		var global;
+	</script>
+	{# Modal Handling #}
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var modalBody = $("#addPerson").find(".modal-body");
+
+			$('#addPerson').on('shown.bs.modal', function () {
+				// When the add Person modal is shown  send Ajax request to List all of the avaiable Users
+				{# Ajax Request to the binary request #}
+				var JQXHR = $.ajax({
+					type: "POST",
+					url: "binary",
+					data: {"getPending": 1},
+					beforeSend: function () {
+						modalBody.html("Loading... Please wait...");
+					}
+				})
+
+				{# Get the server response when the request is successful #}
+				JQXHR.done(function(data){
+					if (data.length > 0){
+						data = JSON.parse(data);
+
+						modalBody.html("");
+
+						for (var i=0; i < data.length; i++){
+							modalBody.append(
+								$("<input/>", {
+									"type": "radio", "name": "invitee", "value": "", "id":"a_"+data[i].id
+								}).css("display", "none")
+							).append(
+								$("<label/>", {"class": "form-control", "for": "a_"+data[i].id}).text(data[i].username)
+							)
+						}
+						return;
+					}
+
+					{# Show server error message #}
+					errorMethod();
+				});
+
+				JQXHR.fail(errorMethod);
+			})
+		});
+	</script>
+
+	<script type="text/javascript">
 		$(document).ready(function () {
 			{# Initialize the Treant JS #}
 			var tree = new Treant( [config, {
@@ -171,12 +216,6 @@
 
 			var collapseNode = function (parentNode) {
 				return  parentNode.data("treenode").collapse();
-			}
-			
-			var errorMethod = function () {
-				{# Show the Server Error #}
-				alert("Server Error: An internet connection distortion occur while trying to send your request. Please try again later");
-
 			}
 
 			// TODO: Change it to treeNode > addperson, then use ajax to update modal
