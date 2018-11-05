@@ -80,7 +80,7 @@
 						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addPerson" data-dismiss="modal">
 							<span>Cancel</span>
 						</button>
-						<button type="button" class="btn btn-primary">Proceed</button>
+						<button type="button" class="btn btn-primary" id="commitTreeChange">Proceed</button>
 					</div>
 				</div>
 			</div>
@@ -150,12 +150,64 @@
 {# When the account is activated in binary program #}
 {%  if BINARY %}
 	<script type="text/javascript">
+		var user_id, parent, r;
+
+		{# It is a fucking error to display when a fucking ajax request fails or responses an unexpected fucking response. #}
 		var errorMethod = function () {
 			{# Show the Server Error #}
 			alert("Server Error: An internet connection distortion occur while trying to send your request. Please try again later");
 		}
 
-		var global;
+		{# Check the fucking selected input radio before displaying the confirmation #}
+		$('#confirmAction').on('shown.bs.modal', function () {
+			user_id = $("#addPerson").find("input:checked:eq(0)").val();
+
+			if (user_id !== undefined && user_id !== null){
+				return;
+			}
+
+			if (parent === undefined || parent === null || r === undefined || r === null){
+				alert("An error occurs. Please contact Administrator. Error Code: PR01");
+				return;
+			}
+
+			{# Do the following when the program passes throughout the constraints #}
+			alert("Opps. Please select a user before proceeding. Thank you.");
+			$("#confirmAction").modal("hide");
+			$("#addPerson").modal("show");
+
+		});
+
+		{# The "Proceed" button on the confirmation modal, for fucking verifying your damn process #}
+		$("#commitTreeChange").on("click", function () {
+			{# Do a fucking AJAX #}
+			{# Ajax Request to the binary request #}
+			var JQXHR = $.ajax({
+				type: "POST",
+				url: "binary",
+				data: {
+					"commit": 1,
+					"r": r,
+					"parent": parent,
+					"user": user_id
+				},
+				beforeSend: function () { }
+			})
+
+			{# Get the server response when the request is successful #}
+			JQXHR.done(function(data){
+				if (data == 1){
+					{# Refresh the fucking page then we are fucking done with that #}
+					location.href = "binary";
+					return;
+				}
+
+				{# Show server error message #}
+				errorMethod();
+			});
+
+			JQXHR.fail(errorMethod);
+		});
 	</script>
 	{# Modal Handling #}
 	<script type="text/javascript">
@@ -163,7 +215,7 @@
 			var modalBody = $("#addPerson").find(".modal-body");
 
 			$('#addPerson').on('shown.bs.modal', function () {
-				// When the add Person modal is shown  send Ajax request to List all of the avaiable Users
+				{# When the add Person modal is shown  send Ajax request to List all of the avaiable Users #}
 				{# Ajax Request to the binary request #}
 				var JQXHR = $.ajax({
 					type: "POST",
@@ -178,16 +230,17 @@
 				JQXHR.done(function(data){
 					if (data.length > 0){
 						data = JSON.parse(data);
-
+						{# Remove the modalBody Data #}
 						modalBody.html("");
 
+						{# Loop the data and put it on the list #}
 						for (var i=0; i < data.length; i++){
 							modalBody.append(
 								$("<input/>", {
-									"type": "radio", "name": "invitee", "value": "", "id":"a_"+data[i].id
+									"type": "radio", "name": "invitee", "value": data[i].invitee_id, "id":"a_"+data[i].invitee_id
 								}).css("display", "none")
 							).append(
-								$("<label/>", {"class": "form-control", "for": "a_"+data[i].id}).text(data[i].username)
+								$("<label/>", {"class": "form-control", "for": "a_"+data[i].invitee_id}).text(data[i].username)
 							)
 						}
 						return;
@@ -218,9 +271,9 @@
 				return  parentNode.data("treenode").collapse();
 			}
 
-			// TODO: Change it to treeNode > addperson, then use ajax to update modal
-			$(".add-person").on("click", function (e) {
-				alert("asd");
+			$("#collapsable-example").on("click", ".add-person",function (e) {
+				parent = ($(this).attr("data-parent"));
+				r = ($(this).attr("data-r")) === undefined ? 0 : 1
 			});
 
 			// Collapse the parentNode

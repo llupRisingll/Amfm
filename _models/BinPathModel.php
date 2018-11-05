@@ -144,11 +144,61 @@ class BinPathModel {
 	    }
     }
 
-    public static function addNode($parent, $id){
+    public static function addNode($parent, $id, bool $left){
+	    $database = DatabaseModel::initConnections();
+	    $connection = DatabaseModel::getMainConnection();
 
-		echo "INSERT INTO `binpath`(`anc`, `desc`, `parent`)
-			(SELECT `anc`, $id AS `desc`,  $parent AS `parent` FROm `binpath` WHERE `desc`=$parent) UNION
- 			(SELECT $id AS `enc`,$id AS `desc`, $parent AS `parent`);";
+	    $database->mysqli_begin_transaction($connection);
+
+	    /**
+	     * We will need to wrap our queries inside a TRY / CATCH block.
+	     * That way, we can rollback the transaction if a query fails and a PDO exception occurs.
+	     * Our catch block will handle any exceptions that are thrown.
+	     */
+	    try {
+
+		    // Start executing the deletion in the binpath
+		    $prepared = $database->mysqli_prepare($connection,
+			    "DELETE FROM `pending_binpath` WHERE `invitee_id`=:USER_ID AND `invitor_id`=:LOGGED_ID;"
+		    );
+
+		    $database->mysqli_execute($prepared, array(
+			    ":USER_ID" => $id,
+			    ":LOGGED_ID" => SessionModel::getUserID()
+		    ));
+
+		    // Start executing the the insertion in the path
+		    $prepared = $database->mysqli_prepare($connection, "
+              INSERT INTO `binpath`(`anc`, `desc`, `parent`, `lside`)
+				(SELECT `anc`, :USER_ID AS `desc`, :PARENT_ID AS `parent`, :LEFT_SIDE FROM `binpath` WHERE `desc`=:PARENT_ID) 
+					UNION
+ 				(SELECT :USER_ID AS `enc`, :USER_ID AS `desc`, :PARENT_ID AS `parent`, 1) 
+ 					ON DUPLICATE KEY UPDATE `parent`= :PARENT_ID;
+            ");
+
+
+		    $database->mysqli_execute($prepared, array(
+				":USER_ID" => $id,
+			    ":PARENT_ID" => $parent,
+			    ":LEFT_SIDE" => !$left
+		    ));
+
+		    // Commit the changes when no error found.
+		    $database->mysqli_commit($connection);
+
+		    return true;
+
+	    } catch(Exception $e){
+		    /**
+		     * An exception has occured, which means that one of our database queries
+		     * failed. Print out the error message.
+		     */
+		    echo $e->getMessage();
+
+		    //Rollback the transaction.
+		    $database->mysqli_rollback($connection);
+		    return false;
+	    }
     }
 
     public static function selectNodes(){
