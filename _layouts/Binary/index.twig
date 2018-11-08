@@ -252,10 +252,10 @@
 				JQXHR.fail(errorMethod);
 			});
 
+			{# When the modal is being hidden bring back the message to loading... please wait... #}
 			$('#addPerson').on('shown.bs.hidden', function () {
 				modalBody.html("Loading... Please wait...");
 			});
-
 		});
 	</script>
 
