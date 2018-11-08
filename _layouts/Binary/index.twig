@@ -244,11 +244,18 @@
 							)
 						}
 						return;
+					}else{
+						{# Remove the modalBody Data #}
+						modalBody.html("Sorry, no pending invites found");
 					}
 				});
-
 				JQXHR.fail(errorMethod);
-			})
+			});
+
+			$('#addPerson').on('shown.bs.hidden', function () {
+				modalBody.html("Loading... Please wait...");
+			});
+
 		});
 	</script>
 
