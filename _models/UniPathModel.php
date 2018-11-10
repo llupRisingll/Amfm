@@ -1,5 +1,56 @@
 <?php
 class UniPathModel {
+	/**
+	 * Check the current user if it has a pending request
+	 * @return bool
+	 */
+	public static function checkOnPending(){
+		// Database connection
+		$database = DatabaseModel::initConnections();
+		$connection = DatabaseModel::getMainConnection();
+
+		// Process of querying data
+		$sql = "SELECT u.`packg_type` AS `packg` FROM `pending_requests` pr 
+					LEFT JOIN `uni_packg` u ON u.tid=`pr`.id 
+				WHERE `pr`.`type`='unilevel' AND `pr`.`user_id`=:USER_ID LIMIT 1";
+		$prepare = $database->mysqli_prepare($connection, $sql);
+		$database->mysqli_execute($prepare, array(
+			":USER_ID" => SessionModel::getUserID()
+		));
+
+		// Get the matched data from the database
+		$result = $database->mysqli_fetch_assoc($prepare);
+
+		// Return false when the reference provided is wrong
+		if (count($result) < 1)
+			return false;
+
+		// Return the package type from the database
+		switch ($result[0]["packg"]){
+			case 'b':
+				return "Bronze Package";
+				break;
+			case 's':
+				return "Silver Package";
+				break;
+			case 'g':
+				return "Gold Package";
+				break;
+			case 'd':
+				return "Diamond Package";
+				break;
+			case 'v':
+				return "VIP Package";
+				break;
+			case 'p';
+				return "Personal Package";
+				break;
+			default;
+				return "Bronze Package";
+				break;
+		}
+	}
+
     public static function addPending(String $loanType){
 	    // Database connection
 	    $database = DatabaseModel::initConnections();

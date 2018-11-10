@@ -10,12 +10,11 @@ class ProfilePresenter {
 			header("location: /");
 			exit;
 	    }
-
 	    // Web page configuration
-        View::addVar("view_title", "Profile Page");
+	    View::addVar("view_title", "Profile Page");
 	    View::addVar("BODY_CLASS", "bg-light");
-        View::addVar("username", SessionModel::getUser());
-        View::addVar("FULL_NAME", SessionModel::getName());
+	    View::addVar("username", SessionModel::getUser());
+	    View::addVar("FULL_NAME", SessionModel::getName());
 
 	    // Import the Bootstrap
 	    View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
@@ -25,6 +24,13 @@ class ProfilePresenter {
 
 	    // Include the bootstrap JS
 	    View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
+
+	    // Check if the user has a pending request to the server
+	    $_LOAN_REQUEST = UniPathModel::checkOnPending();
+	    if ($_LOAN_REQUEST !== false){
+		    View::addVar("LOAN_REQUEST", $_LOAN_REQUEST);
+		    return;
+	    }
     }
 
     public function post(){
