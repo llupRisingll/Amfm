@@ -8,7 +8,15 @@
 		<div class="float-left ml-3 mt-0">
 			<h3 >{{ FULL_NAME }}</h3>
 			<div class="mt-1">
-				<strong>Current Loan Package: </strong><span> Not yet registered</span>
+				<strong>Current Loan Package: </strong>
+				{% if LOAN_EXISTS %}
+				{% else %}
+					{% if LOAN_REQUEST == false %}
+						<span>Not yet registered</span>
+					{% else %}
+						<span>Pending {{ LOAN_REQUEST }}</span>
+					{% endif %}
+				{% endif %}
 			</div>
 			<div class="mt-1">
 				<strong>Remaining Loan Balance: </strong><span> Not available</span>
