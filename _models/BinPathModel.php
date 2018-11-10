@@ -117,7 +117,7 @@ class BinPathModel {
 	    }
     }
 
-    public static function removePending(String $type){
+    public static function removePending(){
 		// DELETE FROM DATABASE algorithm
 	    // Database connection
 	    $database = DatabaseModel::initConnections();
@@ -126,12 +126,11 @@ class BinPathModel {
 	    try {
 		    // Save the account auth data
 		    $prepared = $database->mysqli_prepare($connection, "
-                DELETE FROM `pending_requests` WHERE `type`=:TYPE AND `user_id`=:USER_ID;
+                DELETE FROM `pending_requests` WHERE `type`='binary' AND `user_id`=:USER_ID;
             ");
 
 		    $database->mysqli_execute($prepared, array(
 			    ":USER_ID" => SessionModel::getUserID(),
-			    ":TYPE" => $type
 		    ));
 
 		    return true;

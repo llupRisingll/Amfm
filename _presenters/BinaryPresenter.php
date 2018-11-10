@@ -89,7 +89,7 @@ class BinaryPresenter {
 	    }
 
 	    if (Params::get("cancelRequest")){
-			$removedPending = BinPathModel::removePending("binary");
+			$removedPending = BinPathModel::removePending();
 			if ($removedPending){
 				echo 1;
 			}
