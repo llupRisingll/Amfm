@@ -37,6 +37,13 @@ class unilevelPresenter {
 	    View::addVar("DN", Route::domain());
 	    View::addVar("HASH_ID", SessionModel::getHash());
 
+	    // Check if the user has a pending request to the server
+	    $_LOAN_REQUEST = UniPathModel::checkOnPending();
+	    if ($_LOAN_REQUEST !== false){
+		    View::addVar("LOAN_REQUEST", $_LOAN_REQUEST);
+		    return;
+	    }
+
     }
     // HTTP Header Method: POST
     // Usually used when to insert a new data

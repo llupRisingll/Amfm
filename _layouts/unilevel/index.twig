@@ -5,6 +5,23 @@
 
 <div class="container-fluid mt-3">
 
+
+	{% if LOAN_REQUEST != false %}
+    <div class="container card text-center">
+        <div class="card-body">
+            <h4 align="center">Pending Loan</h4>
+            <hr class="separator">
+            <div>You have a successfully requested a loan and is currently pending. </div>
+            <div>Please go to our office to continue this transaction.</div>
+            <div>
+                <b>Loan Package: </b><span>{{ LOAN_REQUEST }}</span>
+            </div>
+            <a href="/profile" class="btn btn-outline-primary font-weight-bold mt-2">
+                <span>&laquo; Go back to homepage</span>
+            </a>
+        </div>
+    </div>
+    {% else %}
     <div class="container card text-center">
         <div class="card-body">
             <h4 align="center" class="text-success">Apply for Uni-level Program</h4>
@@ -15,6 +32,7 @@
             <a href="/profile" class="btn btn-success mt-2">Apply Now &raquo;</a>
         </div>
     </div>
+    {% endif %}
 
 	{% if unilevel %}
     <div class="row m-3">
