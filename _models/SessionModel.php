@@ -58,6 +58,17 @@ class SessionModel {
         self::start();
         $_SESSION["name"] = $fn. " ".$ln;
     }
+
+    // Log the user's invitor
+    public static function setParentID(int $parentID){
+        self::start();
+        $_SESSION["uniparent"] = $parentID;
+    }
+	/* ======= END SETTERS ======= */
+
+
+    /* ======= START GETTERS ======= */
+
     // Get Logged user
     public static function getUser(){
         self::start();
@@ -82,6 +93,11 @@ class SessionModel {
     public static function getName(){
         self::start();
         return ucwords($_SESSION["name"]);
+    }
+    // Get Logged Users Invitor
+    public static function getParentID(){
+        self::start();
+        return ucwords($_SESSION["uniparent"]);
     }
     // Get Logged User HASHID
     public static function getHash(){

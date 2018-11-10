@@ -51,7 +51,7 @@
 						The company will entitled you a membership to the uni-level affiliation program valid  for 12 Months (renewable).
 					</div>
 					<div>
-						<button class="btn btn-outline-primary float-right">Apply Now &raquo;</button>
+						<button class="btn btn-outline-primary bronze float-right">Apply Now &raquo;</button>
 					</div>
 				</div>
 			</div>
@@ -81,7 +81,7 @@
 						The company will entitled you a membership to the uni-level affiliation program valid  for 12 Months (renewable).
 					</div>
 					<div>
-						<button class="btn btn-outline-primary float-right">Apply Now &raquo;</button>
+						<button class="btn btn-outline-primary silver float-right">Apply Now &raquo;</button>
 					</div>
 				</div>
 			</div>
@@ -111,7 +111,7 @@
 						The company will entitled you a membership to the uni-level affiliation program valid  for 12 Months (renewable).
 					</div>
 					<div>
-						<button class="btn btn-outline-primary float-right">Apply Now &raquo;</button>
+						<button class="btn btn-outline-primary gold float-right">Apply Now &raquo;</button>
 					</div>
 				</div>
 			</div>
@@ -142,7 +142,7 @@
 						The company will entitled you a membership to the uni-level affiliation program valid  for 12 Months (renewable).
 					</div>
 					<div>
-						<button class="btn btn-outline-primary float-right">Apply Now &raquo;</button>
+						<button class="btn btn-outline-primary diamond float-right">Apply Now &raquo;</button>
 					</div>
 				</div>
 			</div>
@@ -171,10 +171,23 @@
 						The company will entitled you a membership to the uni-level affiliation program valid  for 12 Months (renewable).
 					</div>
 					<div>
-						<button class="btn btn-outline-primary float-right">Apply Now &raquo;</button>
+						<button class="btn btn-outline-primary vip float-right">Apply Now &raquo;</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		{# Redirect to act like an ajax #}
+		var sendRequest = function (type) { location.href = "/profile?rl="+type; };
+		{# EventListener List #}
+		$("button.bronze").on("click", function () { sendRequest("b"); });
+		$("button.silver").on("click", function () { sendRequest("s"); });
+		$("button.gold").on("click", function () { sendRequest("g"); });
+		$("button.diamond").on("click", function () { sendRequest("d"); });
+		$("button.vip").on("click", function () { sendRequest("v"); });
+
+	});
+</script>

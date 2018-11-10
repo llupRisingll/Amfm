@@ -7,7 +7,7 @@ class LoginAuthModel {
         $connection = DatabaseModel::getMainConnection();
 
         // Process of querying data
-        $sql = "SELECT id, hash_id, `bin_active`, `uni_active` 
+        $sql = "SELECT id, hash_id, `bin_active`, `uni_active`, `uniparent`
 					FROM `accounts` 
 				WHERE `username`=:username 
 					AND `pass`=:password LIMIT 1";

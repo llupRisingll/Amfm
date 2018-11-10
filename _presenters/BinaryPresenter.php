@@ -97,7 +97,7 @@ class BinaryPresenter {
 	    }
 
 		if (Params::get("targetID")){
-			$pendingStatus = BinPathModel::addPending(Params::get("targetID"), "binary");
+			$pendingStatus = BinPathModel::addPending(Params::get("targetID"));
 			if ($pendingStatus){
 				echo 1;
 			}

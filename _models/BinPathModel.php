@@ -84,8 +84,12 @@ class BinPathModel {
 	    return $result[0]["hash"];
     }
 
-
-    public static function addPending(String $parentID, String $type){
+	/**
+	 * Add to the pending List
+	 * @param String $parentID
+	 * @return bool
+	 */
+    public static function addPending(String $parentID){
 	    // Database connection
 	    $database = DatabaseModel::initConnections();
 	    $connection = DatabaseModel::getMainConnection();
@@ -93,14 +97,13 @@ class BinPathModel {
 	    try {
 		    // Save the account auth data
 		    $prepared = $database->mysqli_prepare($connection, "
-                INSERT INTO `pending_requests`(`user_id`, `parent_id`, `type`) 
-                		VALUES (:USER_ID, :PARENT_ID, :TYPE);
+                INSERT INTO `pending_requests`(`user_id`, `parent_id`) 
+                		VALUES (:USER_ID, :PARENT_ID);
             ");
 
 		    $database->mysqli_execute($prepared, array(
 			    ":USER_ID" => SessionModel::getUserID(),
-			    ":PARENT_ID" => $parentID,
-			    ":TYPE" => $type
+			    ":PARENT_ID" => $parentID
 		    ));
 
 		    return true;
