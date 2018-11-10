@@ -40,7 +40,7 @@ class BinaryPresenter {
 	    }
 
 	    // Check if the user has a pending request to the server
-	    $_REFHASH = BinPathModel::checkOnPending("binary");
+	    $_REFHASH = BinPathModel::checkOnPending();
 	    if ($_REFHASH !== false){
 		    View::addVar("REFERENCE", $_REFHASH);
 		    return;

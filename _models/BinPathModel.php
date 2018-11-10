@@ -55,10 +55,9 @@ class BinPathModel {
 
 	/**
 	 * Check the current user if it has a pending request
-	 * @param String $type
 	 * @return bool
 	 */
-    public static function checkOnPending(String $type){
+    public static function checkOnPending(){
 	    // Database connection
 	    $database = DatabaseModel::initConnections();
 	    $connection = DatabaseModel::getMainConnection();
@@ -66,10 +65,9 @@ class BinPathModel {
 	    // Process of querying data
 	    $sql = "SELECT `a`.`hash_id` AS `hash` FROM `pending_requests` pr 
 					LEFT JOIN `accounts` a ON `a`.id=`pr`.parent_id 
-				WHERE `pr`.`type`=:TYPE AND `pr`.`user_id`=:USER_ID LIMIT 1";
+				WHERE `pr`.`type`='binary' AND `pr`.`user_id`=:USER_ID LIMIT 1";
 	    $prepare = $database->mysqli_prepare($connection, $sql);
 	    $database->mysqli_execute($prepare, array(
-	    	":TYPE" => $type,
 		    ":USER_ID" => SessionModel::getUserID()
 	    ));
 
