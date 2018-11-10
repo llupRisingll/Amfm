@@ -32,7 +32,30 @@
 			<div>
 				<b>Loan Package: </b><span>{{ LOAN_REQUEST }}</span>
 			</div>
-			<button class="btn btn-outline-warning font-weight-bold mt-2">&laquo; Cancel Current Loan Request</button>
+			<button class="btn btn-outline-warning font-weight-bold mt-2" data-toggle="modal" data-target="#cancelRequest">
+				<span>&laquo; Cancel Current Loan Request</span>
+			</button>
+		</div>
+	</div>
+
+	{# Cancel Current Application Request Confirmation #}
+	<div class="modal fade" id="cancelRequest" tabindex="-1" role="dialog"  aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-danger text-white">
+					<h5 class="modal-title" >Cancel Binary Application</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Are you sure to cancel this current application?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger" id="cancel" data-dismiss="modal">Cancel Request</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	{% else %}
@@ -191,18 +214,26 @@
 		</div>
 	</div>
 	{% endif %}
-
 </div>
-<script type="text/javascript">
-	$(document).ready(function () {
-		{# Redirect to act like an ajax #}
-		var sendRequest = function (type) { location.href = "/profile?rl="+type; };
-		{# EventListener List #}
-		$("button.bronze").on("click", function () { sendRequest("b"); });
-		$("button.silver").on("click", function () { sendRequest("s"); });
-		$("button.gold").on("click", function () { sendRequest("g"); });
-		$("button.diamond").on("click", function () { sendRequest("d"); });
-		$("button.vip").on("click", function () { sendRequest("v"); });
 
-	});
-</script>
+
+{% if LOAN_REQUEST != false %}
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#cancel").on("click", function () { location.href = "/profile?cr=_"; })
+		});
+	</script>
+{% else %}
+	<script type="text/javascript">
+		$(document).ready(function () {
+			{# Redirect to act like an ajax #}
+			var sendRequest = function (type) { location.href = "/profile?rl="+type; };
+			{# EventListener List #}
+			$("button.bronze").on("click", function () { sendRequest("b"); });
+			$("button.silver").on("click", function () { sendRequest("s"); });
+			$("button.gold").on("click", function () { sendRequest("g"); });
+			$("button.diamond").on("click", function () { sendRequest("d"); });
+			$("button.vip").on("click", function () { sendRequest("v"); });
+		});
+	</script>
+{% endif %}

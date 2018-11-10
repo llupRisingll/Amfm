@@ -4,12 +4,20 @@ class ProfilePresenter {
 	    SessionModel::restrictNotLogged();
 
 	    // Check for a possible request loan
-	    Params::permit("rl");
+	    Params::permit("rl", "cr");
 	    if (Params::get("rl") != false){
 	    	UniPathModel::addPending(Params::get("rl"));
-			header("location: /");
+			header("location: /profile");
 			exit;
 	    }
+
+	    // Check for a cancel the request REQUEST
+	    if (Params::get("cr") != false){
+	    	UniPathModel::removePending();
+	    	header("location: /profile");
+	    	exit;
+	    }
+
 	    // Web page configuration
 	    View::addVar("view_title", "Profile Page");
 	    View::addVar("BODY_CLASS", "bg-light");
