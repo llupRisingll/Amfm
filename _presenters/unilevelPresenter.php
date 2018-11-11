@@ -44,6 +44,12 @@ class unilevelPresenter {
 		    return;
 	    }
 
+	    // Check of already registered on the binary program
+	    if (SessionModel::getUniStatus()){
+		    View::addVar("UNI_LEVEL", true);
+		    return;
+	    }
+
     }
     // HTTP Header Method: POST
     // Usually used when to insert a new data
