@@ -10,6 +10,7 @@
 			<div class="mt-1">
 				<strong>Current Loan Package: </strong>
 				{% if LOAN_EXISTS %}
+					Active Loan
 				{% else %}
 					{% if LOAN_REQUEST == false %}
 						<span>Not yet registered</span>
@@ -30,7 +31,18 @@
 		</div>
 	</div>
 
-	{% if LOAN_REQUEST != false %}
+	{% if UNI_LEVEL %}
+		<div class="card mt-5">
+			<div class="card-body text-center">
+				<h3 align="center" class="text-success font-weight-bold">Unilevel Program Member</h3>
+				<hr class="separator">
+				<div>You have a successfully loan and entitled with our unilevel affiliation program. </div>
+				<button class="btn btn-outline-success font-weight-bold mt-2">
+					<span>View Unilevel Program &raquo;</span>
+				</button>
+			</div>
+		</div>
+	{% elseif LOAN_REQUEST != false %}
 	<div class="card mt-5">
 		<div class="card-body text-center">
 			<h3 align="center">Pending Loan</h3>

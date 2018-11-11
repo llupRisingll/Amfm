@@ -39,6 +39,12 @@ class ProfilePresenter {
 		    View::addVar("LOAN_REQUEST", $_LOAN_REQUEST);
 		    return;
 	    }
+
+	    // Check of already registered on the binary program
+	    if (SessionModel::getUniStatus()){
+		    View::addVar("UNI_LEVEL", true);
+		    return;
+	    }
     }
 
     public function post(){
