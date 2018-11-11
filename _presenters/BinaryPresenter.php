@@ -24,8 +24,6 @@ class BinaryPresenter {
 	    // Add the JS dependencies
 	    View::addScript("/_layouts/Binary/Treant.js");
 	    View::addScript("/_layouts/Binary/jquery.easing.js");
-	    View::addScript("/_layouts/Binary/collapsable.js");
-	    View::addScript("/_layouts/Binary/raphael.js");
 	    View::addScript("/_layouts/Binary/raphael.js");
 
 	    // Use the server domain name address on the layout

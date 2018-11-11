@@ -261,6 +261,15 @@
 
 	<script type="text/javascript">
 		$(document).ready(function () {
+			var config = {
+				container: "#collapsable-example",
+				node: { collapsable: true },
+				animation: {
+					nodeSpeed: 100,
+					connectorsSpeed: 100
+				}
+			};
+
 			{# Initialize the Treant JS #}
 			var tree = new Treant( [config, {
 				HTMLid: "a_{{ USER_ID }}",
