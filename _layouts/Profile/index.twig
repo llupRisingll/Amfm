@@ -9,8 +9,8 @@
 			<h3 >{{ FULL_NAME }}</h3>
 			<div class="mt-1">
 				<strong>Current Loan Package: </strong>
-				{% if LOAN_EXISTS %}
-					Active Loan
+				{% if UNI_LEVEL or LOAN.loan_type %}
+					<span>{{ LOAN.loan_type }}</span>
 				{% else %}
 					{% if LOAN_REQUEST == false %}
 						<span>Not yet registered</span>
@@ -20,10 +20,20 @@
 				{% endif %}
 			</div>
 			<div class="mt-1">
-				<strong>Remaining Loan Balance: </strong><span> Not available</span>
+				<strong>Remaining Loan Balance: </strong>
+				{% if UNI_LEVEL or LOAN.loan_balance %}
+					<span>{{ LOAN.loan_balance|number_format(2) }}</span>
+				{% else %}
+					<span> Not available</span>
+				{% endif %}
 			</div>
 			<div class="mt-1">
-				<strong>Maturity Date: </strong><span> Not available</span>
+				<strong>Maturity Date: </strong>
+				{% if UNI_LEVEL or LOAN.maturity_date %}
+					<span>{{ LOAN.maturity_date }}</span>
+				{% else %}
+					<span> Not available</span>
+				{% endif %}
 			</div>
 			<div class="mt-1">
 				<a href="/account/settings">Edit Profile Information</a>
@@ -31,7 +41,7 @@
 		</div>
 	</div>
 
-	{% if UNI_LEVEL %}
+	{% if UNI_LEVEL or LOAN.loan_type %}
 		<div class="card mt-5">
 			<div class="card-body text-center">
 				<h3 align="center" class="text-success font-weight-bold">Unilevel Program Member</h3>

@@ -33,6 +33,9 @@ class ProfilePresenter {
 	    // Include the bootstrap JS
 	    View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
 
+	    // Loan Array - Loan Package, Remaining Balance, maturity date
+	    View::addVar("LOAN", LendingModel::loanInfo());
+
 	    // Check if the user has a pending request to the server
 	    $_LOAN_REQUEST = UniPathModel::checkOnPending();
 	    if ($_LOAN_REQUEST !== false){

@@ -5,7 +5,7 @@
 
 <div class="container-fluid mt-3">
 
-	{% if UNI_LEVEL %}
+	{% if UNI_LEVEL or LOAN.loan_type %}
         <div class="row m-3">
             <div class="col-4">
                 <div class="card card-body mb-2">
@@ -14,16 +14,16 @@
                         <div class="float-left mt-0 ml-2">
                             <h5 class="m-0">{{ FULL_NAME }}</h5>
                             <div class="mt-1">
-                                <b>Package: </b>NAN
+                                <b>Package: </b> {{ LOAN.loan_type }}
                             </div>
                             <div class="mt-1">
-                                <b>Level: </b>NAN
+                                <b>Level: </b>0
                             </div>
                             <div class="mt-1">
-                                <b>Invites: </b>NAN
+                                <b>Invites: </b>0
                             </div>
                             <div class="mt-1">
-                                <b>Earnings: PHP </b><span>NAN</span><span>.00</span>
+                                <b>Earnings: PHP </b><span>00</span><span>.00</span>
                             </div>
                         </div>
                     </div>

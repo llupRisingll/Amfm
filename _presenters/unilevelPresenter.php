@@ -34,6 +34,9 @@ class unilevelPresenter {
 	    View::addVar("HASH_ID", SessionModel::getHash());
 	    View::addVar("USER_ID", SessionModel::getUserID());
 
+	    // Loan Array - Loan Package, Remaining Balance, maturity date
+	    View::addVar("LOAN", LendingModel::loanInfo());
+
 	    // Check if the user has a pending request to the server
 	    $_LOAN_REQUEST = UniPathModel::checkOnPending();
 	    if ($_LOAN_REQUEST !== false){
