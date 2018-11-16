@@ -161,7 +161,7 @@
     {% endif %}
 </div>
 
-{% if UNI_LEVEL %}
+{% if UNI_LEVEL or LOAN.loan_type  %}
     <script type="text/javascript">
 		$(document).ready(function () {
 			{# It is a fucking error to display when a fucking ajax request fails or responses an unexpected fucking response. #}

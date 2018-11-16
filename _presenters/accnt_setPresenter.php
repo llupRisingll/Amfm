@@ -18,6 +18,8 @@ class accnt_setPresenter {
 
         // Include the bootstrap JS
         View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
+
+        View::addVar("INFO", AcctManagementModel::getInfo());
     }
 
     // HTTP Header Method: POST

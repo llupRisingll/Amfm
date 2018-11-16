@@ -3,7 +3,7 @@
 <div class="container mt-4">
     <div class="clearfix">
         <div class="float-left" style="display: inline-block;height: 150px; width: 150px; background: url('/img/person_icon.png') no-repeat; background-size: cover"></div>
-        <div class="float-left ml-3 mt-0">
+        <div class="float-left ml-3 mt-4">
             <h3 >{{ FULL_NAME }}</h3>
             <div class="mt-1">
                 <strong>Username: </strong>{{ username }}<span></span>
@@ -13,32 +13,51 @@
                 {#<span style="font-style: italic">ENCRYPTED </span>#}
                 <a href="/account/password">Encrypted, click to change</a>
             </div>
-            <div class="mt-1">
-                <a href="#" data-target="#editbasicInfo" data-toggle="modal">Edit basic info</a>
-            </div>
         </div>
     </div>
+
+    <h3 class="mt-4 text-secondary mr-2" align="right">Basic Information</h3>
+    <hr class="separator" style="margin-top: -20px">
     <div class="card mt-2">
         <div class="card-body" >
+            <a href="#"  data-target="#editbasicInfo" data-toggle="modal" class="float-right">Edit basic information</a>
             <table>
                 <tr>
-                    <td  style="width: 165px"><strong>Address: </strong></td>
-                    <td><span> calauag naga city</span></td>
+                    <td  style="width: 165px" class="font-weight-bold">First Name:</td>
+                    <td>{{ INFO.fn }}</td>
                 </tr>
                 <tr>
-                    <td><strong>Email: </strong></td>
-                    <td><span> calauag@nagacity.com</span></td>
+                    <td class="font-weight-bold">Last Name:</td>
+                    <td>{{ INFO.ln }}</td>
                 </tr>
                 <tr>
-                    <td><strong>Contact Number: </strong></td>
-                    <td><span>0983713891</span></td>
+                    <td class="font-weight-bold">Email:</td>
+                    <td>{{ INFO.email }}</td>
                 </tr>
                 <tr>
-                    <td><strong>Birthday: </strong></td>
-                    <td><span>07.21.1998</span></td>
+                    <td class="font-weight-bold">Contact Number:</td>
+                    <td>{{ INFO.cn }}</td>
                 </tr>
                 <tr>
-                    <a href="#" data-target="#editPriInfo" data-toggle="modal" class="float-right">Edit primary info</a>
+                    <td class="font-weight-bold">Birthday:</td>
+                    <td>{{ INFO.bdate }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h3 class="mt-4 text-secondary mr-2" align="right">Primary Information</h3>
+    <hr class="separator" style="margin-top: -20px">
+    <div class="card mt-2">
+        <div class="card-body" >
+            <a href="#" data-target="#editPriInfo" data-toggle="modal" class="float-right">Edit primary information</a>
+            <table>
+                <tr>
+                    <td  style="width: 165px" class="font-weight-bold">Username: </td>
+                    <td>{{ INFO.username }}</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Email:</td>
+                    <td>{{ INFO.email }}</td>
                 </tr>
             </table>
         </div>
