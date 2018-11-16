@@ -114,4 +114,32 @@ class AcctManagementModel {
 			return false;
 		}
 	}
+
+	public static function changePassword($password, $oldPassword){
+		// Database connection
+		$database = DatabaseModel::initConnections();
+		$connection = DatabaseModel::getMainConnection();
+
+		try {
+			// Save the account auth data
+			$prepared = $database->mysqli_prepare($connection, "
+				UPDATE `accounts` SET `pass`=:NEW_PASSWORD WHERE `id`=:USER_ID AND `pass`=:OLD_PASSWORD;
+			");
+
+			$database->mysqli_execute($prepared, array(
+				":USER_ID" => SessionModel::getUserID(),
+				":NEW_PASSWORD" => $password,
+				":OLD_PASSWORD" => $oldPassword
+			));
+
+			return true;
+		} catch(Exception $e){
+			/**
+			 * An exception has occured, which means that one of our database queries
+			 * failed. Print out the error message.
+			 */
+			echo $e->getMessage();
+			return false;
+		}
+	}
 }
