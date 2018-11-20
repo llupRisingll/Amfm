@@ -1547,7 +1547,9 @@ section.social_contact ul.list-social li.social-google-plus a:hover {
 /*** Section Contact Us ***/
 
 #contact{
-  background: #f1f1f1;
+  background: #07498C;
+  color: rgba(255, 255, 255, 0.9);
+
 }
 
 #contact h2{
@@ -1570,7 +1572,7 @@ section.social_contact ul.list-social li.social-google-plus a:hover {
 }
 
 #contact form .form-control::-moz-placeholder{
-  color: #ddd;
+
 }
 
 #contact form span.input-group-addon{
@@ -1618,9 +1620,8 @@ address p{
 /*** Footer ***/
 
 footer {
-  background-color: #07498C;
+  background-color: #f1f1f1;
   padding: 25px 0;
-  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   border-top: 1px solid #2C5F8F;
 }
@@ -1636,7 +1637,7 @@ footer ul {
 
 footer ul li a {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #2C5F8F;
 }
 
 footer ul li a:hover,

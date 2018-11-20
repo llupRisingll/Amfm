@@ -1,11 +1,9 @@
 <?php
 class HomePresenter {
-    // HTTP Header Method: GET
-    // Used to retrive a data or a view
     public function get(){
     	SessionModel::restrictLogged();
 
-        View::addVar("view_title", "Binary Level");
+        View::addVar("view_title", "Mon-Light OFW Credit Cooperative");
         View::addCSS("/_layouts/Home/css/bootstrap.min.css");
         View::addCSS("/_layouts/Home/css/main.css");
         View::addCSS("/_layouts/Home/css/font-awesome.min.css");
@@ -34,23 +32,16 @@ class HomePresenter {
         View::addScript("/_layouts/Home/js/testimonials.js");
         View::addScript("https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js");
         View::addScript("https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js");
-
     }
 
-    // HTTP Header Method: POST
-    // Usually used when to insert a new data
     public function post(){
         Route::returnCode(401);
     }
 
-    // HTTP Header Method: PUT
-    // Usually used when about to update a data
     public function put(){
         Route::returnCode(401);
     }
 
-    // HTTP Header Method: DELETE
-    // Usually used when about to delete a data
     public function delete(){
         Route::returnCode(401);
     }
