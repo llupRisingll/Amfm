@@ -7,7 +7,10 @@ class LendingModel {
 		$connection = DatabaseModel::getMainConnection();
 
 		// Process of querying data
-		$sql = "SELECT `loan_type`, `loan_balance`, `maturity_date` FROM `loan` WHERE `cid`=:USER_ID LIMIT 1";
+		$sql = "SELECT `loan_type`, `loan_balance`, `maturity_date`, `id`
+				FROM `loan` l
+				INNER JOIN `loan_info` li ON l.id=li.lid
+ 				WHERE li.`cid`=:USER_ID ORDER BY l.`id` DESC LIMIT 1";
 		$prepare = $database->mysqli_prepare($connection, $sql);
 		$database->mysqli_execute($prepare, array(
 			':USER_ID'=>SessionModel::getUserID()
