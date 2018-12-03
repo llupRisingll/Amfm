@@ -148,11 +148,6 @@ class BinPathModel {
 
 	    $database->mysqli_begin_transaction($connection);
 
-	    /**
-	     * We will need to wrap our queries inside a TRY / CATCH block.
-	     * That way, we can rollback the transaction if a query fails and a PDO exception occurs.
-	     * Our catch block will handle any exceptions that are thrown.
-	     */
 	    try {
 
 		    // Start executing the deletion in the binpath

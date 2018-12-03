@@ -1,5 +1,3 @@
-<!-- HTML/TWIG body content here -->
-
 {% set page = "ewallet" %}
 {% include "Profile/header.twig" %}
 
@@ -18,7 +16,7 @@
 
                     <div>
                         <h5 class="text-muted">Uni level Income: </h5>
-                        <input type="text" class="form-control disabled" value="PHP {{ UNI_BALANCE|number_format }}0" style="display: inline-block; width: 335px; text-align: right" disabled>
+                        <input type="text" class="form-control disabled" value="PHP {{ UNI_BALANCE|number_format }}" style="display: inline-block; width: 335px; text-align: right" disabled>
                         <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer" id="uni_transfer">Transfer fund</button>
                     </div>
                 </div>
@@ -32,11 +30,12 @@
                         <input type="text" class="form-control disabled" value="PHP {{ E_BALANCE|number_format }}" style="display: inline-block; width: 427px; text-align: right" disabled>
                     </div>
                     <hr class="sepator">
-                    <div>
+                    <form action="/eWallet" method="POST">
                         <h5 class="text-muted">Enter Amount: </h5>
-                        <input type="text" class="form-control disabled" style="display: inline-block; width: 307px; text-align: right">
-                        <button class="btn btn-outline-primary m-2" style="display: inline-block;">withdraw</button>
-                    </div>
+                        <input type="hidden" value="withdraw" name="type">
+                        <input type="number" class="form-control disabled" style="display: inline-block; width: 307px; text-align: right" placeholder="1000 for example" name="amount" required>
+                        <button type="submit" class="btn btn-outline-primary m-2" style="display: inline-block;">Withdraw</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -55,7 +54,7 @@
             </div>
             <div class="modal-body">
                 <span>Input the amount you want to transfer to E-Wallet</span>
-                <input type="text" value="bin" name="type" id="type">
+                <input type="hidden" value="bin" name="type" id="type">
                 <input type="number" class="form-control" placeholder="1000 for example.." name="amount" required>
             </div>
             <div class="modal-footer">

@@ -82,7 +82,7 @@ class eWalletModel {
 				ON DUPLICATE KEY UPDATE `amount`=`amount`+$amount;
 			");
 			$database->mysqli_execute($prepare, array(
-				":USER_ID" => SessionModel::getUserID(),
+				":USER_ID" => SessionModel::getUserID()
 			));
 
 			// Dynamic table
@@ -138,5 +138,50 @@ class eWalletModel {
 	public static function withdraw_money($amount){
 		$database = DatabaseModel::initConnections();
 		$connection = DatabaseModel::getMainConnection();
+		$database->mysqli_begin_transaction($connection);
+
+		try {
+			// Check the remaining balance
+			$prepare = $database->mysqli_prepare($connection, "
+				SELECT `amount` FROM `e_wallet` WHERE `cid`=:USER_ID
+			");
+			$database->mysqli_execute($prepare, array(
+				":USER_ID" => SessionModel::getUserID()
+			));
+			$balance = $database->mysqli_fetch_assoc($prepare)[0]["amount"];
+			if ($balance - $amount < 0){
+				$database->mysqli_rollback($connection);
+				return false;
+			}
+
+			// Increase e_wallet amount
+			$prepare = $database->mysqli_prepare($connection, "
+				UPDATE `e_wallet` SET `amount`=`amount`-:AMOUNT WHERE `cid`=:USER_ID;
+			");
+			$database->mysqli_execute($prepare, array(
+				":USER_ID" => SessionModel::getUserID(),
+				":AMOUNT" => $amount
+			));
+
+			// Increase e_wallet amount
+			$prepare = $database->mysqli_prepare($connection, "
+				INSERT INTO `withdrawal_request`(`cid`, `amount`, `resq_date`) VALUES (:USER_ID,$amount,now())
+				ON DUPLICATE KEY UPDATE `amount`=`amount`+$amount;
+			");
+			$database->mysqli_execute($prepare, array(
+				":USER_ID" => SessionModel::getUserID()
+			));
+
+			// Commit the changes when no error found.
+			$database->mysqli_commit($connection);
+			return true;
+
+		} catch(Exception $e){
+			echo $e->getMessage();
+
+			//Rollback the transaction.
+			$database->mysqli_rollback($connection);
+			return false;
+		}
 	}
 }

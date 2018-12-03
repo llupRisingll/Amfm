@@ -26,9 +26,23 @@ class eWalletPresenter {
     	Params::permit("type", "amount");
     	if (Params::get("type") != false && Params::get("amount") != false){
 
-    		$stat = eWalletModel::transfer_to_wallet(Params::get("type"), Params::get("amount"));
+    		// Throw away the no-use amount
+		    if (Params::get("amount") <= 0){
+			    // Reload the page
+			    header("location: /eWallet");
+			    exit;
+		    }
 
-    		var_dump($stat);
+    		if (Params::get("type") == "withdraw"){
+				eWalletModel::withdraw_money(Params::get("amount"));
+
+			    // Reload the page
+			    header("location: /eWallet");
+			    exit;
+		    }
+
+    		eWalletModel::transfer_to_wallet(Params::get("type"), Params::get("amount"));
+
     		// Reload the page
 		    header("location: /eWallet");
 		    exit;
