@@ -12,14 +12,14 @@
                     <div>
                         <h5 class="text-muted">Binary level Income: </h5>
                         <input type="text" class="form-control disabled" value="PHP {{ BIN_BALANCE|number_format }}" style="display: inline-block; width: 335px; text-align: right" disabled>
-                        <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer">Transfer fund</button>
+                        <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer" id="bin_transfer">Transfer fund</button>
                     </div>
                     <hr class="sepator">
 
                     <div>
                         <h5 class="text-muted">Uni level Income: </h5>
                         <input type="text" class="form-control disabled" value="PHP {{ UNI_BALANCE|number_format }}0" style="display: inline-block; width: 335px; text-align: right" disabled>
-                        <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer">Transfer fund</button>
+                        <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer" id="uni_transfer">Transfer fund</button>
                     </div>
                 </div>
             </div>
@@ -43,25 +43,37 @@
     </div>
 </div>
 
-
 <!-- Modal Transfer-->
-<div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <form action="/eWallet" method="POST" class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="exampleModalLabel">Transfer Amount:</h5>
+                <h5 class="modal-title text-white">Transfer Amount:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <span>Input the amount you want to transfer to E-Wallet</span>
-                <input type="number" class="form-control" placeholder="input amount">
+                <input type="text" value="bin" name="type" id="type">
+                <input type="number" class="form-control" placeholder="1000 for example.." name="amount" required>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Transfer</button>
+                <button type="submit" class="btn btn-primary">Transfer</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    	$("#uni_transfer").on("click", function () {
+            $("#type").val("uni");
+	    })
+
+    	$("#bin_transfer").on("click", function () {
+		    $("#type").val("bin");
+	    })
+    });
+</script>

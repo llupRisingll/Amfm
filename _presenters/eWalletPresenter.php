@@ -23,7 +23,16 @@ class eWalletPresenter {
     }
 
     public function post(){
-        Route::returnCode(401);
+    	Params::permit("type", "amount");
+    	if (Params::get("type") != false && Params::get("amount") != false){
+
+    		$stat = eWalletModel::transfer_to_wallet(Params::get("type"), Params::get("amount"));
+
+    		var_dump($stat);
+    		// Reload the page
+		    header("location: /eWallet");
+		    exit;
+	    }
     }
 
     public function put(){
