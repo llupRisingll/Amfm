@@ -20,6 +20,15 @@ class eWalletPresenter {
 	    View::addVar("E_BALANCE", eWalletModel::fetch_e_wallet());
 	    View::addVar("BIN_BALANCE", eWalletModel::fetch_bin_wallet());
 	    View::addVar("UNI_BALANCE", eWalletModel::fetch_uni_wallet());
+
+	    View::addVar("PENDING_WITHDRAWAL", eWalletModel::fetch_pending_withdrawal());
+
+	    Params::permit("cw");
+	    if (Params::get("cw") != false){
+	    	eWalletModel::cancel_withdraw();
+	    	header("location: /eWallet");
+	    	exit;
+	    }
     }
 
     public function post(){

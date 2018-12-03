@@ -30,12 +30,21 @@
                         <input type="text" class="form-control disabled" value="PHP {{ E_BALANCE|number_format }}" style="display: inline-block; width: 427px; text-align: right" disabled>
                     </div>
                     <hr class="sepator">
-                    <form action="/eWallet" method="POST">
-                        <h5 class="text-muted">Enter Amount: </h5>
-                        <input type="hidden" value="withdraw" name="type">
-                        <input type="number" class="form-control disabled" style="display: inline-block; width: 307px; text-align: right" placeholder="1000 for example" name="amount" required>
-                        <button type="submit" class="btn btn-outline-primary m-2" style="display: inline-block;">Withdraw</button>
-                    </form>
+                    {% if PENDING_WITHDRAWAL %}
+                        <div>
+                            <h5 class="text-warning">Pending Request: </h5>
+                            You have a pending <b>PHP {{ PENDING_WITHDRAWAL }}.00 </b> withdrawal request.
+                            <span>Please go to our office to complete your transaction. Thank you.</span>
+                            <br><a href="?cw=sTfU">Click to cancel transaction</a>
+                        </div>
+                    {% else %}
+                        <form action="/eWallet" method="POST">
+                            <h5 class="text-muted">Enter Amount: </h5>
+                            <input type="hidden" value="withdraw" name="type">
+                            <input type="number" class="form-control disabled" style="display: inline-block; width: 307px; text-align: right" placeholder="1000 for example" name="amount" required>
+                            <button type="submit" class="btn btn-outline-primary m-2" style="display: inline-block;">Withdraw</button>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
