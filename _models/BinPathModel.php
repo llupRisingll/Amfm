@@ -28,8 +28,6 @@ class BinPathModel {
     }
 
     public static function checkPendingPath(){
-		// Check the status of the account according to its session id
-	    // Database connection
 	    $database = DatabaseModel::initConnections();
 	    $connection = DatabaseModel::getMainConnection();
 
@@ -212,7 +210,7 @@ class BinPathModel {
     			ON (a.id=b.`desc`)
     		WHERE b.anc = :USER_ID AND  a.id != :USER_ID";
 
-	       $prepare = $database->mysqli_prepare($connection, $sql);
+        $prepare = $database->mysqli_prepare($connection, $sql);
 	    $database->mysqli_execute($prepare, array(
 		    ":USER_ID" => SessionModel::getUserID()
 	    ));

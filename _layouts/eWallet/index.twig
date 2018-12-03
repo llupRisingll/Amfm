@@ -11,14 +11,14 @@
 
                     <div>
                         <h5 class="text-muted">Binary level Income: </h5>
-                        <input type="text" class="form-control disabled" value="PHP 5,000" style="display: inline-block; width: 335px; text-align: right" disabled>
+                        <input type="text" class="form-control disabled" value="PHP {{ BIN_BALANCE|number_format }}" style="display: inline-block; width: 335px; text-align: right" disabled>
                         <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer">Transfer fund</button>
                     </div>
                     <hr class="sepator">
 
                     <div>
                         <h5 class="text-muted">Uni level Income: </h5>
-                        <input type="text" class="form-control disabled" value="PHP 5,000" style="display: inline-block; width: 335px; text-align: right" disabled>
+                        <input type="text" class="form-control disabled" value="PHP {{ UNI_BALANCE|number_format }}0" style="display: inline-block; width: 335px; text-align: right" disabled>
                         <button class="btn btn-outline-primary m-2" style="display: inline-block;" data-toggle="modal" data-target="#transfer">Transfer fund</button>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <div>
                         <h5 class="text-muted">E-Wallet Amount: </h5>
-                        <input type="text" class="form-control disabled" value="PHP 5,000" style="display: inline-block; width: 427px; text-align: right" disabled>
+                        <input type="text" class="form-control disabled" value="PHP {{ E_BALANCE|number_format }}" style="display: inline-block; width: 427px; text-align: right" disabled>
                     </div>
                     <hr class="sepator">
                     <div>

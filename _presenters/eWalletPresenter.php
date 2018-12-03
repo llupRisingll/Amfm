@@ -1,7 +1,5 @@
 <?php
 class eWalletPresenter {
-    // HTTP Header Method: GET
-    // Used to retrive a data or a view
     public function get(){
 	    SessionModel::restrictNotLogged();
 
@@ -18,22 +16,20 @@ class eWalletPresenter {
 
         // Include the bootstrap JS
         View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
+
+	    View::addVar("E_BALANCE", eWalletModel::fetch_e_wallet());
+	    View::addVar("BIN_BALANCE", eWalletModel::fetch_bin_wallet());
+	    View::addVar("UNI_BALANCE", eWalletModel::fetch_uni_wallet());
     }
 
-    // HTTP Header Method: POST
-    // Usually used when to insert a new data
     public function post(){
         Route::returnCode(401);
     }
 
-    // HTTP Header Method: PUT
-    // Usually used when about to update a data
     public function put(){
         Route::returnCode(401);
     }
 
-    // HTTP Header Method: DELETE
-    // Usually used when about to delete a data
     public function delete(){
         Route::returnCode(401);
     }
