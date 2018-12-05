@@ -4,6 +4,7 @@ class BinaryPresenter {
     	// Do not allow those users that is not logged
 	    SessionModel::restrictNotLogged();
 
+
 	    // Set up the body class and the view_title
 	    View::addVar("view_title", "Binary Affiliation Program");
 	    View::addVar("BODY_CLASS", "bg-light");

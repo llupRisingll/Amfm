@@ -176,6 +176,10 @@ class BinPathModel {
 			    ":LEFT_SIDE" => !$left
 		    ));
 
+		    // Recompute the Earnings
+		    $arrayTotal = BinaryEarningModel::compute_total_earnings($id);
+		    DB_BinaryEarningModel::save_information($arrayTotal);
+
 		    // Commit the changes when no error found.
 		    $database->mysqli_commit($connection);
 
