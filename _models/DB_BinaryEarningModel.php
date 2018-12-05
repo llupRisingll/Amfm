@@ -103,24 +103,7 @@ class DB_BinaryEarningModel {
 
 
 	public static function save_information($arrayValues){
-		$database = DatabaseModel::initConnections();
-		$connection = DatabaseModel::getMainConnection();
-
-		$database->mysqli_begin_transaction($connection);
-
-		try {
-			self::add_bin_history($arrayValues);
-			self::update_bin_wallet($arrayValues);
-
-			// Commit the changes when no error found.
-			$database->mysqli_commit($connection);
-			return true;
-		} catch(Exception $e){
-			echo $e->getMessage();
-
-			//Rollback the transaction.
-			$database->mysqli_rollback($connection);
-			return false;
-		}
+		self::add_bin_history($arrayValues);
+		self::update_bin_wallet($arrayValues);
 	}
 }
