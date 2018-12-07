@@ -4,6 +4,7 @@ class BinaryPresenter {
     	// Do not allow those users that is not logged
 	    SessionModel::restrictNotLogged();
 
+	    $_USER_ID = SessionModel::getUserID();
 
 	    // Set up the body class and the view_title
 	    View::addVar("view_title", "Binary Affiliation Program");
@@ -30,8 +31,12 @@ class BinaryPresenter {
 	    // Use the server domain name address on the layout
 	    View::addVar("DN", Route::domain());
 	    View::addVar("HASH_ID", SessionModel::getHash());
-	    View::addVar("USER_ID", SessionModel::getUserID());
+	    View::addVar("USER_ID", $_USER_ID);
 	    View::addVar("BIN_EARNINGS", eWalletModel::fetch_bin_wallet("amount"));
+
+	    BinaryEarningModel::classify_tree_levels($_USER_ID);
+
+	    View::addVar("LEVEL", max(array_keys(BinaryEarningModel::$treeArray[$_USER_ID])));
 
 	    // Check of already registered on the binary program
 	    if (SessionModel::getBinStatus()){

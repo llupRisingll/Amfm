@@ -5,6 +5,8 @@ class unilevelPresenter {
     public function get() {
 	    SessionModel::restrictNotLogged();
 
+	    $_USER_ID = SessionModel::getUserID();
+
 	    View::addVar("view_title", "Unilevel");
 	    View::addVar("BODY_CLASS", "bg-light");
 
@@ -28,6 +30,11 @@ class unilevelPresenter {
 	    View::addScript("/_layouts/Binary/collapsable.js");
 	    View::addScript("/_layouts/Binary/collapsable.js");
 	    View::addScript("/_layouts/Binary/raphael.js");
+
+
+	    UniLevelEarningModel::classify_tree_levels($_USER_ID);
+
+	    View::addVar("LEVEL", max(array_keys(UniLevelEarningModel::$treeArray[$_USER_ID])));
 
 	    // Use the server domain name address on the layout
 	    View::addVar("DN", Route::domain());

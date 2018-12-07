@@ -1,11 +1,11 @@
 <?php
 
 class BinaryEarningModel {
-	private static $treeArray = [];
+	public static $treeArray = [];
 	private static $pairArray = [];
 	private static $parent_list = [];
 
-	private static function get_parent_level($parent_id, $target_ancestor){
+	public static function get_parent_level($parent_id, $target_ancestor){
 		foreach (self::$treeArray[$target_ancestor] as $key => $value){
 			foreach ($value as $val){
 				if ($parent_id == $val){
@@ -16,7 +16,7 @@ class BinaryEarningModel {
 		return false;
 	}
 
-	private static function classify_tree_levels($userID, $loop_handler=[]){
+	public static function classify_tree_levels($userID, $loop_handler=[]){
 		// Fetch From the Database
 		$nodeList = DB_BinaryEarningModel::fetch_binary_children($userID);
 
