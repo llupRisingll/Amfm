@@ -20,7 +20,7 @@
                                 <b>Level: </b>{{ (LEVEL) ? LEVEL : "0" }}
                             </div>
                             <div class="mt-1">
-                                <b>Invites: </b>0
+                                <b>Invites: </b>{{ (TOTAL_INVITES) ? TOTAL_INVITES : "0" }}
                             </div>
                             <div class="mt-1">
                                 <b>Earnings: PHP </b><span>{{ (UNI_EARNINGS) ? UNI_EARNINGS : "0" }}</span><span>.00</span>
@@ -43,27 +43,27 @@
                         </tr>
                         <tr>
                             <td style="width: 45%;"><b>VIP: </b></td>
-                            <td class="text-center" style="width: 15%;"><span>55</span></td>
+                            <td class="text-center" style="width: 15%;"><span>{{ (PACKAGES.v) ? PACKAGES.v: "0" }}</span></td>
                             <td class="text-center"><a href="#" onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td><b>Diamond:</b></td>
-                            <td class="text-center"><span>51</span></td>
+                            <td class="text-center"><span>{{ (PACKAGES.d) ? PACKAGES.d: "0" }}</span></td>
                             <td class="text-center"><a href="#" onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td><b>Gold:</b></td>
-                            <td class="text-center" ><span>51</span></td>
+                            <td class="text-center" ><span>{{ (PACKAGES.g) ? PACKAGES.g: "0" }}</span></td>
                             <td class="text-center"><a href="#" onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td><b>Silver:</b></td>
-                            <td class="text-center" ><span>51</span></td>
+                            <td class="text-center" ><span>{{ (PACKAGES.s) ? PACKAGES.s: "0" }}</span></td>
                             <td class="text-center"><a href="#" onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td><b>Bronze:</b></td>
-                            <td class="text-center"><span>51</span></td>
+                            <td class="text-center"><span>{{ (PACKAGES.b) ? PACKAGES.b: "0" }}</span></td>
                             <td class="text-center"><a href="#" onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                     </table>
@@ -77,53 +77,38 @@
                         </tr>
                         <tr>
                             <td class="text-center"><b>1</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
+                            <td class="text-center"><span>{{ (LEVEL_ARR.1) ? LEVEL_ARR.1: "0" }}</span></td>
+                            <td class="text-center"><a href="#"onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td class="text-center"><b>2</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
+                            <td class="text-center"><span>{{ (LEVEL_ARR.2) ? LEVEL_ARR.2: "0" }}</span></td>
+                            <td class="text-center"><a href="#"onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td class="text-center"><b>3</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
+                            <td class="text-center"><span>{{ (LEVEL_ARR.3) ? LEVEL_ARR.3: "0" }}</span></td>
+                            <td class="text-center"><a href="#"onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td class="text-center"><b>4</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
+                            <td class="text-center"><span>{{ (LEVEL_ARR.4) ? LEVEL_ARR.4: "0" }}</span></td>
+                            <td class="text-center"><a href="#"onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td class="text-center"><b>5</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
+                            <td class="text-center"><span>{{ (LEVEL_ARR.5) ? LEVEL_ARR.5: "0" }}</span></td>
+                            <td class="text-center"><a href="#"onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td class="text-center"><b>6</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
+                            <td class="text-center"><span>{{ (LEVEL_ARR.6) ? LEVEL_ARR.6: "0" }}</span></td>
+                            <td class="text-center"><a href="#"onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                         <tr>
                             <td class="text-center"><b>7</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"><b>8</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"><b>9</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"><b>10</b></td>
-                            <td class="text-center"><span>55</span></td>
-                            <td class="text-center"><a href="#">View Persons</a></td>
+                            <td class="text-center"><span>{{ (LEVEL_ARR.7) ? LEVEL_ARR.7: "0" }}</span></td>
+                            <td class="text-center"><a href="#"onclick="alert('BETA')">View Persons</a></td>
                         </tr>
                     </table>
                 </div>

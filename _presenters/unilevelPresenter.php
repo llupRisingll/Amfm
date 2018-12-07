@@ -36,6 +36,35 @@ class unilevelPresenter {
 
 	    View::addVar("LEVEL", max(array_keys(UniLevelEarningModel::$treeArray[$_USER_ID])));
 
+	    $totalInvites = 0;
+	    $packagesCount = [];
+	    $levelCount = [];
+
+	    $uniData = DB_UnilevelEarning::fetch_unilevel_children($_USER_ID);
+
+	    // Compute BY level and by package
+	    foreach($uniData as $nodes){
+			$parent = $nodes["parent"];
+			$package = $nodes["loan_type"];
+
+			// Skip yourself
+			if ($nodes["desc"] == $_USER_ID)
+				continue;
+
+			if ($parent == $_USER_ID)
+				$totalInvites++;
+
+			$packagesCount[$package]++;
+	    }
+
+	    for ($i=1; $i<=7; $i++){
+	    	$levelCount[$i] = count(UniLevelEarningModel::$treeArray[$_USER_ID][$i]);
+	    }
+
+	    View::addVar("TOTAL_INVITES", $totalInvites);
+	    View::addVar("LEVEL_ARR", $levelCount);
+	    View::addVar("PACKAGES", $packagesCount);
+
 	    // Use the server domain name address on the layout
 	    View::addVar("DN", Route::domain());
 	    View::addVar("HASH_ID", SessionModel::getHash());
