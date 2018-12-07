@@ -31,6 +31,7 @@ class BinaryPresenter {
 	    View::addVar("DN", Route::domain());
 	    View::addVar("HASH_ID", SessionModel::getHash());
 	    View::addVar("USER_ID", SessionModel::getUserID());
+	    View::addVar("BIN_EARNINGS", eWalletModel::fetch_bin_wallet("amount"));
 
 	    // Check of already registered on the binary program
 	    if (SessionModel::getBinStatus()){

@@ -33,6 +33,7 @@ class unilevelPresenter {
 	    View::addVar("DN", Route::domain());
 	    View::addVar("HASH_ID", SessionModel::getHash());
 	    View::addVar("USER_ID", SessionModel::getUserID());
+	    View::addVar("UNI_EARNINGS", eWalletModel::fetch_uni_wallet("amount"));
 
 	    // Loan Array - Loan Package, Remaining Balance, maturity date
 	    View::addVar("LOAN", LendingModel::loanInfo());
