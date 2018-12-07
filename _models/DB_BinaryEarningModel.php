@@ -55,7 +55,8 @@ class DB_BinaryEarningModel {
 			if ($firstFlag)
 				$firstFlag = false;
 
-			$sqlTemplate .= "$union (SELECT $amount AS `amount`, $cid AS `cid`)\n";
+			$string = "SELECT $amount AS `amount`, $cid AS `cid`";
+			$sqlTemplate .= "$union ". (count($array_values) > 1 ? "($string)": $string). "\n";
 		}
 
 		return $sqlTemplate;

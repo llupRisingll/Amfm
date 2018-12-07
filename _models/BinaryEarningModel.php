@@ -3,7 +3,6 @@
 class BinaryEarningModel {
 	private static $treeArray = [];
 	private static $pairArray = [];
-	private static $pairArrayDeep = [];
 	private static $parent_list = [];
 
 	private static function get_parent_level($parent_id, $target_ancestor){
