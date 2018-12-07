@@ -38,6 +38,21 @@ class BinaryPresenter {
 
 	    View::addVar("LEVEL", max(array_keys(BinaryEarningModel::$treeArray[$_USER_ID])));
 
+	    $binData = (DB_BinaryEarningModel::fetch_binary_children($_USER_ID));
+
+	    $directCount = 0;
+	    $indirectCount = 0;
+	    foreach ($binData as $nodes){
+			if ($nodes["binparent"] == $_USER_ID){
+				$directCount++;
+			}else{
+				$indirectCount++;
+			}
+	    }
+
+	    View::addVar("DIRECT",$directCount);
+	    View::addVar("INDIRECT",$indirectCount);
+
 	    // Check of already registered on the binary program
 	    if (SessionModel::getBinStatus()){
 		    View::addVar("BINARY", SessionModel::getBinStatus());
