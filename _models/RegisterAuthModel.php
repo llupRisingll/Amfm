@@ -1,7 +1,7 @@
 <?php
 class RegisterAuthModel {
 
-    public static function register($fn, $ln, $bd, $ad, $ea, $cn, $un, $pw){
+    public static function register($fn, $ln, $bd, $ad, $ea, $cn, $un, $pw, $up){
         $database = DatabaseModel::initConnections();
         $connection = DatabaseModel::getMainConnection();
 
@@ -13,16 +13,19 @@ class RegisterAuthModel {
          * Our catch block will handle any exceptions that are thrown.
          */
         try {
+        	$uniparent = UniPathModel::checkReference($up);
+
             // Save the account auth data
             $prepared = $database->mysqli_prepare($connection, "
-                INSERT INTO `accounts`(`username`, `pass`, `hash_id`) 
-                      VALUES (:username,:password, :hash_id);
+                INSERT INTO `accounts`(`username`, `pass`, `hash_id`, `uniparent`) 
+                      VALUES (:username,:password, :hash_id, :uni_parent);
             ");
 
             $database->mysqli_execute($prepared, array(
                 ":username" => $un,
                 ":password" => $pw,
-	            ":hash_id" =>md5($un).time()
+	            ":hash_id" =>md5($un).time(),
+	            ":uni_parent" => (!$up) ? 1 : $uniparent
             ));
 
             // Save the insert id

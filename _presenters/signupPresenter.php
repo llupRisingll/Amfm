@@ -21,10 +21,13 @@ class signupPresenter {
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
 	    View::addVar("fc", \Plugins\FlashCard::getFlashCard()[0]);
+
+	    Params::permit("up");
+	    View::addVar("uniparent", Params::get("up"));
     }
 
     public function post(){
-        Params::permit('fn', 'ln', 'bd', 'ad', 'cn', 'ea', 'usn', 'pwd', 'cfpwd');
+        Params::permit('fn', 'ln', 'bd', 'ad', 'cn', 'ea', 'usn', 'pwd', 'cfpwd', "up");
 
         // Put to variable to be used in model
         $first_name = Params::get("fn");
@@ -36,6 +39,7 @@ class signupPresenter {
         $usn = Params::get("usn");
         $pwd = Params::get("pwd");
         $cfpwd = Params::get("cfpwd");
+	    $uniparent = Params::get("up");
 
         // Check kung may laman ang gabos na data
         if(!isset($first_name, $last_name, $address, $contact_num, $usn, $pwd, $cfpwd)){
@@ -86,7 +90,7 @@ class signupPresenter {
         }
 
         // Start the Registration Backend process
-        $registered = RegisterAuthModel::register($first_name, $last_name, $birth_date, $address, $email_add, $contact_num, $usn, $pwd);
+        $registered = RegisterAuthModel::register($first_name, $last_name, $birth_date, $address, $email_add, $contact_num, $usn, $pwd, $uniparent);
 
         if ($registered === true){
 	        \Plugins\FlashCard::setFlashCard("Registration Success", "/login", " Thank you for joining with us. Your journey to rise starts now!");
