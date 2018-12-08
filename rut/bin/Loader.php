@@ -9,14 +9,13 @@ $recordTime = Route::config("time_record");
 $errorReport = Route::config("display_error");
 if ($errorReport){
     // Reports all errors
-//    error_reporting(E_ALL);
+    error_reporting(E_ALL);
     // Do not display errors for the end-users (security issue)
-    ini_set('display_errors','On');
+    ini_set('display_errors','Off');
     
     // Override the default error handler behavior
     set_exception_handler(function($exception) {
         error_log($exception);
-        echo $exception;
     });
 }
 if ($recordTime){ Plugins\RecordTime::start(); }

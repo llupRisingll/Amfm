@@ -20,7 +20,7 @@ class signupPresenter {
         View::addVar("BODY_CLASS", "bg-light");
         View::addCSS("http://".Route::domain()."/css/".md5("Bootstrap").".min.css");
 
-	    View::addVar("fc", \Plugins\FlashCard::getFlashCard()[0]);
+	    @ View::addVar("fc", \Plugins\FlashCard::getFlashCard()[0]);
 
 	    Params::permit("up");
 	    View::addVar("uniparent", Params::get("up"));
