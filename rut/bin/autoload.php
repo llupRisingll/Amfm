@@ -31,7 +31,7 @@ class MyAutoloader {
 		
 		$presenterPath = PRESENTER_PATH.DS.($className).'.php';
 		$processorsPath = RUT.DS.'bin'.DS.ucfirst($className).'.php';
-		$modelsPath = MODEL_PATH.DS.ucfirst($className).'.php';
+		$modelsPath = MODEL_PATH.DS.($className).'.php';
 
 		if (file_exists($presenterPath)){
 			// Use the Handler Class
