@@ -11,12 +11,11 @@ if ($errorReport){
     // Reports all errors
     error_reporting(E_ALL);
     // Do not display errors for the end-users (security issue)
-    ini_set('display_errors','Off');
+    ini_set('display_errors','On');
     
     // Override the default error handler behavior
     set_exception_handler(function($exception) {
         error_log($exception);
-        error_page("Something went wrong!");
     });
 }
 if ($recordTime){ Plugins\RecordTime::start(); }
