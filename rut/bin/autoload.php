@@ -29,7 +29,7 @@ class MyAutoloader {
 
 	public static function normalLoad($className){
 		
-		$presenterPath = PRESENTER_PATH.DS.ucfirst($className).'.php';
+		$presenterPath = PRESENTER_PATH.DS.($className).'.php';
 		$processorsPath = RUT.DS.'bin'.DS.ucfirst($className).'.php';
 		$modelsPath = MODEL_PATH.DS.ucfirst($className).'.php';
 
