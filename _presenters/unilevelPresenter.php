@@ -54,6 +54,10 @@ class unilevelPresenter {
 			if ($parent == $_USER_ID)
 				$totalInvites++;
 
+
+			if (!isset($packagesCount[$package])){
+				$packagesCount[$package] = 0;
+			}
 			$packagesCount[$package]++;
 	    }
 
