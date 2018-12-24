@@ -34,7 +34,7 @@ class unilevelPresenter {
 
 	    UniLevelEarningModel::classify_tree_levels($_USER_ID);
 
-	    View::addVar("LEVEL", max(array_keys(UniLevelEarningModel::$treeArray[$_USER_ID])));
+	    @ View::addVar("LEVEL", max(array_keys(UniLevelEarningModel::$treeArray[$_USER_ID])));
 
 	    $totalInvites = 0;
 	    $packagesCount = [];
@@ -58,7 +58,7 @@ class unilevelPresenter {
 	    }
 
 	    for ($i=1; $i<=7; $i++){
-	    	$levelCount[$i] = count(UniLevelEarningModel::$treeArray[$_USER_ID][$i]);
+	    	@ $levelCount[$i] = count(UniLevelEarningModel::$treeArray[$_USER_ID][$i]);
 	    }
 
 	    View::addVar("TOTAL_INVITES", $totalInvites);
