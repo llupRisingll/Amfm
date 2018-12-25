@@ -158,10 +158,18 @@ class UniPathModel {
 		$connection = DatabaseModel::getMainConnection();
 
 		// Process of querying data
-		$sql = "SELECT a.username, a.id, b.parent FROM `accounts` a 
+		/*$sql = "SELECT a.username, a.id, b.parent FROM `accounts` a
 			JOIN `unipath` b
     			ON (a.id=b.`desc`)
-    		WHERE b.anc = :USER_ID AND  a.id != :USER_ID";
+    		WHERE b.anc = :USER_ID AND  a.id != :USER_ID";*/
+
+		$sql = "SELECT up.*, l.loan_type, a.username, a.id,
+		 IF(TIMESTAMPDIFF(MONTH, l.`maturity_date`, SYSDATE()) <=0, TRUE , FALSE) as mature
+	  		FROM `unipath` up 
+            INNER JOIN `accounts` a ON (a.id=up.`desc`)
+			INNER JOIN (SELECT MAX(lid) as lid, cid FROM `loan_info` GROUP BY `cid`) li ON up.desc = li.cid
+			INNER JOIN `loan` l ON l.id=li.lid
+		WHERE anc = :USER_ID AND  a.id != :USER_ID";
 
 		$prepare = $database->mysqli_prepare($connection, $sql);
 		$database->mysqli_execute($prepare, array(
@@ -184,6 +192,11 @@ class UniPathModel {
 
 		// generate the JS Array
 		foreach($nodeData as $nodes){
+			// Escape the matured nodes
+			/*if ($nodes["mature"] == 1){
+				continue;
+			}*/
+
 			// Person Node Configuration
 			$personNode = array(
 				"collapsed" =>  true,
