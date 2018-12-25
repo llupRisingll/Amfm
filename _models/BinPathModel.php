@@ -234,8 +234,11 @@ class BinPathModel {
 			    $nodeList[$nodes["id"]] = 0; // default 0 for the children Nodes
 		    }
 
+		    if (!isset($nodeList[$nodes["parent"]])){
+			    $nodeList[$nodes["parent"]] = 0;
+		    }
 		    // Increment the parent
-		    $nodeList[$nodes["parent"]] += 1;
+		    $nodeList[$nodes["parent"]] ++;
 	    }
 
 	    // Generating a node Data config
