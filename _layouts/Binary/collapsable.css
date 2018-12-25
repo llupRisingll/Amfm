@@ -10,12 +10,19 @@ abbr,acronym { border:0; }
 body { background: #fff; }
 /* optional Container STYLES */
 .chart { height: 600px; min-width: 900px; margin: auto;}
-.Treant > .node { padding: 3px; border: 1px solid #484848; border-radius: 50%; }
+.Treant > .node { padding: 3px; border: 5px solid black; border-radius: 50%; }
+
+.Treant > .node.b { border-color: #a1570d }
+.Treant > .node.s { border-color: #7a7a7a }
+.Treant > .node.g { border-color: #a39009 }
+.Treant > .node.d { border-color: #1b9cb9 }
+.Treant > .node.v { border-color: #8B008B }
+
 .Treant > .node img { width: 100%; height: 100%; }
 
 .Treant .collapse-switch { width: 100%; height: 100%; border: none; }
-.Treant .node.collapsed { background-color: #DEF82D; }
-.Treant .node.collapsed .collapse-switch { background: none; }
+.Treant .node.collapsed { background-color: #b0f8ff; }
+.Treant .node.collapsed .collapse-switch { background: none;  }
 
 
 input + label{

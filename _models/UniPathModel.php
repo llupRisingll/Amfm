@@ -202,6 +202,7 @@ class UniPathModel {
 				"collapsed" =>  true,
 				"image" => "img/person_icon.png",
 				"HTMLid" => "a_".$nodes["id"],
+				"HTMLclass" => $nodes["loan_type"],
 				"parentId" => "a_".$nodes["parent"],
 				"text" => array(
 					"data-toggle" => "tooltip",
