@@ -47,6 +47,27 @@ class eWalletModel {
 		return 0;
 	}
 
+	public static function fetch_uni_monthly(){
+		$database = DatabaseModel::initConnections();
+		$connection = DatabaseModel::getMainConnection();
+
+		$prepare = $database->mysqli_prepare($connection, "
+			SELECT `amount` FROM `uni_monthly` WHERE `cid`=:USER_ID LIMIT 1
+		");
+
+		$database->mysqli_execute($prepare, array(
+			":USER_ID" => SessionModel::getUserID()
+		));
+
+		$result = $database->mysqli_fetch_assoc($prepare);
+
+		if (count($result)){
+			return ($result[0]["amount"]);
+		}
+
+		return 0;
+	}
+
 	public static function fetch_e_wallet(){
 		$database = DatabaseModel::initConnections();
 		$connection = DatabaseModel::getMainConnection();
