@@ -58,6 +58,12 @@ class unilevelPresenter {
 			if (!isset($packagesCount[$package])){
 				$packagesCount[$package] = 0;
 			}
+
+			// Exclude the mature accounts from the count
+			if ($nodes["mature"] == 1){
+				continue;
+			}
+
 			$packagesCount[$package]++;
 	    }
 
