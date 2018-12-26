@@ -103,9 +103,35 @@ class UniLevelEarningModel {
 	public static function compute_total_earnings($userID){
 		$parentList = DB_UnilevelEarning::fetch_unilevel_parents($userID);
 
-		print_r($parentList);
+		foreach ($parentList as $parent){
+			self::classify_tree_levels($parent, function ($nodes) use ($parent, &$directEarning) {
+
+
+				if (!isset($directEarning[$parent])){
+					$directEarning[$parent] = 0;
+				}
+
+				$directEarning[$parent] += self::compute_direct_earning($nodes, $parent);
+			});
+		}
+
+		return $directEarning;
+	}
+
+	public static function compute_child_earnings($userID){
+		$parentList = DB_UnilevelEarning::fetch_unilevel_children($userID);
+
+		// Fetch all of the nodes that is not yet matured
 
 		foreach ($parentList as $parent){
+
+			// Escape the matured accounts
+			if ($parent["mature"] == 1){
+				continue;
+			}
+
+			$parent = $parent["desc"];
+
 			self::classify_tree_levels($parent, function ($nodes) use ($parent, &$directEarning) {
 
 
