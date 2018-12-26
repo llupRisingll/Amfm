@@ -5,6 +5,11 @@ class UniLevelEarningModel {
 	private static $yourPackage = "b";
 
 	private static function get_parent_level($parent_id, $target_ancestor){
+
+		if (!isset(self::$treeArray[$target_ancestor])){
+			return false;
+		}
+
 		foreach (self::$treeArray[$target_ancestor] as $key => $value){
 			foreach ($value as $val){
 				if ($parent_id == $val){
@@ -98,9 +103,16 @@ class UniLevelEarningModel {
 	public static function compute_total_earnings($userID){
 		$parentList = DB_UnilevelEarning::fetch_unilevel_parents($userID);
 
-		$directEarning = [];
+		print_r($parentList);
+
 		foreach ($parentList as $parent){
 			self::classify_tree_levels($parent, function ($nodes) use ($parent, &$directEarning) {
+
+
+				if (!isset($directEarning[$parent])){
+					$directEarning[$parent] = 0;
+				}
+
 				$directEarning[$parent] += self::compute_direct_earning($nodes, $parent);
 			});
 		}
