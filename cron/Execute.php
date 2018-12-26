@@ -59,11 +59,54 @@ class Execute{
 		$database->mysqli_execute($prepare, [ ]);
 	}
 
+	public static function generate_sql_values(Array $array_values){
+		$sqlTemplate = "";
+		$firstFlag = true;
+		foreach ($array_values as $cid => $amount){
+			// Skip the 0 amount earnings
+			if ($amount == 0)
+				continue;
+
+			// Capture the first value then remove the UNION
+			$union = ($firstFlag) ? "" : "UNION ALL";
+
+			if ($firstFlag)
+				$firstFlag = false;
+
+			$string = "SELECT $amount AS `amount`, $cid AS `cid`";
+			$sqlTemplate .= "$union ". (count($array_values) > 1 ? "($string)": $string). "\n";
+		}
+
+		return $sqlTemplate;
+	}
+
+	private static function upsert_uni_monthly($arrayValues){
+		$database = DatabaseModel::initConnections();
+		$connection = DatabaseModel::getMainConnection();
+
+		$generatedQuery = self::generate_sql_values($arrayValues);
+
+		// FETCH THE BRANCH TREE DATA
+		$sql = "
+		INSERT INTO `uni_monthly`(`amount`, `cid`) 
+		SELECT amount, cid FROm
+		( $generatedQuery) gs ON DUPLICATE KEY UPDATE amount = gs.amount 
+		";
+
+		$prepare = $database->mysqli_prepare($connection, $sql);
+		$database->mysqli_execute($prepare, [ ]);
+	}
+
 	public static function init(){
+		// Recompute the wallet...
 		$last_executed = self::fetch_JSON();
 		$current_date = date('Y-m-d');
 
 		if ($current_date > $last_executed){
+
+			$earnings = UniLevelEarningModel::compute_child_earnings(1);
+			self::upsert_uni_monthly($earnings);
+
 			// Add to wallets and history per amount per user
 			self::add_to_history();
 			self::add_to_wallet();
