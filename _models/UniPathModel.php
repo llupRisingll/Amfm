@@ -164,7 +164,7 @@ class UniPathModel {
     		WHERE b.anc = :USER_ID AND  a.id != :USER_ID";*/
 
 		$sql = "SELECT up.*, l.loan_type, a.username, a.id,
-		 IF(TIMESTAMPDIFF(MONTH, l.`maturity_date`, SYSDATE()) <=0, TRUE , FALSE) as mature
+		 IF(TIMESTAMPDIFF(MONTH, l.maturity_date, SYSDATE()) >= 1,true,false) as mature
 	  		FROM `unipath` up 
             INNER JOIN `accounts` a ON (a.id=up.`desc`)
 			INNER JOIN (SELECT MAX(lid) as lid, cid FROM `loan_info` GROUP BY `cid`) li ON up.desc = li.cid
@@ -196,6 +196,7 @@ class UniPathModel {
 			/*if ($nodes["mature"] == 1){
 				continue;
 			}*/
+
 
 			// Person Node Configuration
 			$personNode = array(
