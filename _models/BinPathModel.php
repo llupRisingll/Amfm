@@ -217,10 +217,6 @@ class BinPathModel {
 	    // Get the matched data from the database
 	    $result = $database->mysqli_fetch_assoc($prepare);
 
-	    // Return false when the reference provided is wrong
-	    if (count($result) < 1)
-		    return false;
-
 	    // Return the user id and hash from the database
 	    return self::node2JSON($result);
     }
@@ -253,6 +249,18 @@ class BinPathModel {
 				    "data-parent" => $parent
 			    )
 		    );
+	    }
+
+	    // Create add button when you have no invites so far
+	    if (count($nodeData) < 1){
+		    $rightNode = addNodeArr(SessionModel::getUserID());
+		    $rightNode["text"]["data-r"] = "true";
+
+		    array_push($jsonArr, addNodeArr(SessionModel::getUserID()));
+		    array_push($jsonArr, $rightNode);
+
+		    // Encode the the JSON the plot to the Javascript Graph
+		    return json_encode($jsonArr,JSON_PRETTY_PRINT);
 	    }
 
 	    // generate the JS Array
