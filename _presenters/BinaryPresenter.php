@@ -36,7 +36,7 @@ class BinaryPresenter {
 
 	    BinaryEarningModel::classify_tree_levels($_USER_ID);
 
-	    View::addVar("LEVEL", max(array_keys(BinaryEarningModel::$treeArray[$_USER_ID])));
+	    @ View::addVar("LEVEL", max(array_keys(BinaryEarningModel::$treeArray[$_USER_ID])));
 
 	    $binData = (DB_BinaryEarningModel::fetch_binary_children($_USER_ID));
 
