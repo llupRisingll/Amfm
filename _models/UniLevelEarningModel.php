@@ -49,6 +49,46 @@ class UniLevelEarningModel {
 		// Fetch From the Database
 		$nodeList = DB_UnilevelEarning::fetch_unilevel_children($userID);
 
+		$result = array();
+		foreach ($nodeList as $element) {
+			$result[$element['parent']][] = $element["desc"];
+		}
+
+		$sortIndex = array_keys($result);
+
+		// Resort the SortIndex According to the required parent
+		foreach(array_keys($result) as $iterParent){
+			// Iterate the parents
+			foreach ($result as $parent => $values){
+				foreach ($values as $value){
+
+					// When descendant of the other parent
+					if ($value == $iterParent){
+						if (($position = array_search($parent, $sortIndex)+1) !== false){
+							array_splice( $sortIndex, $position, 0, $iterParent);
+						}
+
+						if (($key = array_search($iterParent, $sortIndex)) !== false) {
+							unset($sortIndex[$key]);
+						}
+
+						// Resort the index
+						$sortIndex = array_values($sortIndex);
+					}
+				}
+			}
+		}
+
+		// Generate the treeLevels according to the sortIndex
+		foreach ($sortIndex as $index => $val){
+			$treeLevel[$index+1] = $result[$val];
+		}
+
+		self::$treeArray[$userID] =  $treeLevel;
+
+/*
+ * OBSOLETE ALGORITHM
+ *
 		// Classify the nodes/ Generate Leveled Data
 		foreach ($nodeList as $nodes){
 			$parent = $nodes["parent"];
@@ -76,7 +116,7 @@ class UniLevelEarningModel {
 
 			// Add the child
 			self::$treeArray[$userID][$key][] =  $child;
-		}
+		}*/
 	}
 
 	private static function compute_direct_earning($nodes, $target_anc){
