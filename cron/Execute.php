@@ -98,6 +98,8 @@ class Execute{
 	}
 
 	public static function init(){
+		date_default_timezone_set('Asia/Manila');
+
 		// Recompute the wallet...
 		$last_executed = self::fetch_JSON();
 		$current_date = date('Y-m-d');
@@ -105,16 +107,17 @@ class Execute{
 		if ($current_date > $last_executed){
 
 			$earnings = UniLevelEarningModel::compute_child_earnings(1);
+
 			self::upsert_uni_monthly($earnings);
 
 			// Add to wallets and history per amount per user
 			self::add_to_history();
 			self::add_to_wallet();
-
+//
 			self::replace_JSON($current_date);
 
 		}else{
-			echo "canceled";
+			echo "canceled: $current_date !> $last_executed";
 		}
 	}
 }
