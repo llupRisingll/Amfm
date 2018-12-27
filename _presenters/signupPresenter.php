@@ -7,7 +7,7 @@ class signupPresenter {
 			"Registration Error", "/signup", $msg
 		);
 //		echo $msg;
-		header("location: /signup");
+		header("location: /signup?up=".@Params::get("up"));
 		exit;
 	}
 
