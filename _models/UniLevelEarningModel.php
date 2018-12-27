@@ -52,6 +52,17 @@ class UniLevelEarningModel {
 		$result = array();
 		foreach ($nodeList as $element) {
 			$result[$element['parent']][] = $element["desc"];
+
+			// Save the package
+			if ($element["desc"] == $userID){
+				self::$yourPackage = $element["loan_type"];
+				continue;
+			}
+
+			// Execute the Loop handlers
+			if (isset($loop_handler) && !empty($loop_handler)){
+				$loop_handler($element);
+			}
 		}
 
 		$sortIndex = array_keys($result);
