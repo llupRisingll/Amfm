@@ -68,6 +68,10 @@ class BinaryEarningModel {
 
 		foreach (self::$pairArray as $parent => $p){
 
+			if (!isset($totalEarnings[$parent])){
+				$totalEarnings[$parent] = 0;
+			}
+
 			// Loop the data within the namespace of the value
 			foreach ($p as $pairs){
 				// Constraints
@@ -100,12 +104,11 @@ class BinaryEarningModel {
 		// Compute Total Earnings Amount in Direct Invitation
 		$directEarnings = [];
 		foreach (self::$parent_list as $parent){
+			if (!isset($directEarnings[$parent])){
+				$directEarnings[$parent] = 0;
+			}
 			self::classify_tree_levels($parent, function ($nodes) use ($parent, &$directEarnings){
 				self::classify_tree_parents($nodes, $parent);
-
-				if (!isset($directEarnings[$parent])){
-					$directEarnings[$parent] = 0;
-				}
 
 				$directEarnings[$parent] += self::earn_direct_from($nodes, $parent);
 			});
