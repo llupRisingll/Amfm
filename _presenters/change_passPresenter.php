@@ -26,7 +26,7 @@ class change_passPresenter {
         View::addScript("http://".Route::domain()."/js/".md5("Bootstrap").".min.js");
 
         // Add the flashCard
-	    View::addVar("fc", \Plugins\FlashCard::getFlashCard()[0]);
+	    @ View::addVar("fc", \Plugins\FlashCard::getFlashCard()[0]);
     }
 
     public function post(){
