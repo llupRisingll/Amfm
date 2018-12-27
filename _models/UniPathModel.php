@@ -183,8 +183,53 @@ class UniPathModel {
 		if (count($result) < 1)
 			return false;
 
+		$result = self::sortNode($result);
+
 		// Return the user id and hash from the database
 		return self::node2JSON($result);
+	}
+
+	// Idea original from the unilevel classify by levels
+	private static function sortNode(Array $nodeData){
+		$result = array();
+		$nodeByParent = array();
+		foreach ($nodeData as $element) {
+			$result[$element['parent']][] = $element["desc"];
+			$nodeByParent[$element['parent']][] = $element;
+		}
+
+		$sortIndex = array_keys($result);
+
+		// Resort the SortIndex According to the required parent
+		foreach(array_keys($result) as $iterParent){
+			// Iterate the parents
+			foreach ($result as $parent => $values){
+				foreach ($values as $value){
+
+					// When descendant of the other parent
+					if ($value == $iterParent){
+						if (($position = array_search($parent, $sortIndex)+1) !== false){
+							array_splice( $sortIndex, $position, 0, $iterParent);
+						}
+
+						if (($key = array_search($iterParent, $sortIndex)) !== false) {
+							unset($sortIndex[$key]);
+						}
+
+						// Resort the index
+						$sortIndex = array_values($sortIndex);
+					}
+				}
+			}
+		}
+
+		$treeLevel = array();
+		// Generate the treeLevels according to the sortIndex
+		foreach ($sortIndex as $index => $val){
+			$treeLevel = array_merge($treeLevel, $nodeByParent[$val]);
+		}
+
+		return $treeLevel;
 	}
 
 	private static function node2JSON(Array $nodeData){
