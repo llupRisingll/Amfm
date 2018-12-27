@@ -103,6 +103,10 @@ class BinaryEarningModel {
 			self::classify_tree_levels($parent, function ($nodes) use ($parent, &$directEarnings){
 				self::classify_tree_parents($nodes, $parent);
 
+				if (!isset($directEarnings[$parent])){
+					$directEarnings[$parent] = 0;
+				}
+
 				$directEarnings[$parent] += self::earn_direct_from($nodes, $parent);
 			});
 		}
