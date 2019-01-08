@@ -168,6 +168,9 @@ class BinPathModel {
  				(SELECT :USER_ID AS `enc`, :USER_ID AS `desc`, :PARENT_ID AS `parent`, 1) 
  					ON DUPLICATE KEY UPDATE `parent`= :PARENT_ID;
             ");
+			
+			print_r($left);
+			exit;
 
 
 		    $database->mysqli_execute($prepared, array(
